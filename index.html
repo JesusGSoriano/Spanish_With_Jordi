@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Español con Jordi — Prepara tu DELE</title>
+<style>
+  :root {
+    --cream: #F7EFDC;
+    --cream-dark: #EFE1BE;
+    --olive: #5C6B3B;
+    --olive-dark: #40492A;
+    --terracotta: #D9822E;
+    --terracotta-dark: #B5691F;
+    --brown: #5A3F28;
+    --ink: #3A3122;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Decorative vine corners, subtle, echoing the original flyer style */
+  .vine {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .vine svg { width: 100%; height: 100%; }
+  .vine.tl { top: 10px; left: 10px; }
+  .vine.br { bottom: 10px; right: 10px; transform: rotate(180deg); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 64px 24px 48px;
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 6vw, 44px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--cream-dark);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.25);
+    margin: 0 auto 22px;
+    display: block;
+  }
+
+  .hero p.lead {
+    font-size: 17px;
+    max-width: 480px;
+    margin: 0 auto;
+    color: #5A5340;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 6px 16px rgba(217, 130, 46, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(217, 130, 46, 0.4); }
+
+  /* SECTION LABEL */
+  .section-title {
+    text-align: center;
+    padding: 8px 0 6px;
+  }
+  .section-title h2 {
+    font-size: 26px;
+  }
+  .section-title .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--terracotta);
+    margin: 14px auto 0;
+    border-radius: 2px;
+  }
+
+  /* COURSE CARDS */
+  .courses {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 36px 0 20px;
+  }
+
+  @media (min-width: 640px) {
+    .courses { grid-template-columns: 1fr 1fr; }
+  }
+
+  .card {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 26px 24px;
+    position: relative;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .card.sold-out {
+    opacity: 0.72;
+  }
+
+  .card .icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .card h3 {
+    font-size: 21px;
+    margin-bottom: 4px;
+  }
+
+  .card .tagline {
+    font-size: 13px;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+  }
+
+  .card li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .card li::before {
+    content: "✓";
+    color: var(--olive);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-box {
+    background: var(--terracotta);
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-weight: 700;
+  }
+
+  .price-box .amount {
+    font-size: 22px;
+  }
+
+  .price-box .note {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  .badge-full {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    background: var(--brown);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 10px;
+    border-radius: 999px;
+  }
+
+  .waitlist-btn {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--olive-dark);
+    text-decoration: underline;
+  }
+
+  /* AVAILABILITY NOTE */
+  .note-strip {
+    text-align: center;
+    font-style: italic;
+    color: #6b6252;
+    font-size: 14px;
+    padding: 6px 24px 40px;
+  }
+
+  /* CONTACT / FOOTER */
+  .contact {
+    background: var(--olive-dark);
+    color: var(--cream);
+    padding: 48px 24px 40px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .contact h2 {
+    color: var(--cream);
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .contact p {
+    color: #D9D6C4;
+    font-size: 15px;
+    max-width: 420px;
+    margin: 0 auto 24px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .contact-links a {
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .contact-links a.secondary {
+    background: transparent;
+    border: 1px solid rgba(247, 239, 220, 0.4);
+  }
+
+  footer.legal {
+    text-align: center;
+    font-size: 12px;
+    color: #A99E86;
+    padding: 18px 24px 30px;
+    background: var(--olive-dark);
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="vine tl">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 Q 30 20 25 45 Q 20 70 45 75" stroke="#5C6B3B" stroke-width="2" fill="none"/>
+        <circle cx="25" cy="45" r="4" fill="#5C6B3B"/>
+        <circle cx="45" cy="75" r="3" fill="#5C6B3B"/>
+      </svg>
+    </div>
+    <div class="wrap">
+      <span class="eyebrow">Preparación oficial DELE</span>
+      <img class="avatar" src="assets/jordi_preview.jpg" alt="Jordi, profesor de español">
+      <h1>¡Aprueba el DELE a la primera!</h1>
+      <p class="lead">Prepárate con un Examinador Oficial y descubre todos los trucos del examen. Grupos reducidos, clases grabadas y horarios pensados para gente que trabaja.</p>
+      <a href="#contacto" class="cta-btn">Reserva tu plaza</a>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Elige tu nivel</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="courses">
+
+      <div class="card">
+        <div class="icon">🛂</div>
+        <h3>Nivel A2</h3>
+        <div class="tagline">Tu nacionalidad, asegurada</div>
+        <ul>
+          <li>Martes y jueves (mañanas) — horario a convenir</li>
+          <li>Clases de 1h 30min (se graban por si faltas)</li>
+          <li>Trucos directos de examinador</li>
+          <li>Grupos entre 3 y 5 personas</li>
+          <li>Inicio en agosto. 100% online</li>
+        </ul>
+        <div class="price-box">
+          <div class="amount">139€/mes</div>
+          <div class="note">Precio de lanzamiento · plazas limitadas</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3>Nivel B1</h3>
+        <div class="tagline">Domina las bases sin agobios</div>
+        <ul>
+          <li>Martes y jueves (mañanas) — horario a convenir</li>
+          <li>Clases de 1h 30min (se graban por si faltas)</li>
+          <li>Trucos directos de examinador</li>
+          <li>Grupos entre 3 y 5 personas</li>
+          <li>Inicio en agosto. 100% online</li>
+        </ul>
+        <div class="price-box">
+          <div class="amount">139€/mes</div>
+          <div class="note">Precio de lanzamiento · plazas limitadas</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔑</div>
+        <h3>Nivel B2</h3>
+        <div class="tagline">El salto definitivo a la fluidez</div>
+        <ul>
+          <li>Martes y jueves (mañanas) — horario a convenir</li>
+          <li>Clases de 1h 30min (se graban por si faltas)</li>
+          <li>Trucos directos de examinador</li>
+          <li>Grupos entre 3 y 5 personas</li>
+          <li>Inicio en agosto. 100% online</li>
+        </ul>
+        <div class="price-box">
+          <div class="amount">139€/mes</div>
+          <div class="note">Precio de lanzamiento · plazas limitadas</div>
+        </div>
+      </div>
+
+      <div class="card sold-out">
+        <span class="badge-full">Completo</span>
+        <div class="icon">🖋️</div>
+        <h3>Nivel C1</h3>
+        <div class="tagline">El dominio absoluto del español</div>
+        <ul>
+          <li>Martes y jueves — de 09:00 a 10:30</li>
+          <li>Clases de 1h 30min (se graban por si faltas)</li>
+          <li>Trucos directos de examinador</li>
+          <li>Grupos entre 3 y 5 personas</li>
+          <li>Inicio en agosto. 100% online</li>
+        </ul>
+        <a href="#contacto" class="waitlist-btn">Apuntarme a la lista de espera →</a>
+      </div>
+
+    </div>
+
+    <p class="note-strip">¿Trabajas por la mañana? Escríbeme tu disponibilidad y vemos opciones.</p>
+  </div>
+
+  <section class="contact" id="contacto">
+    <h2>¿Hablamos?</h2>
+    <p>Cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo.</p>
+    <div class="contact-links">
+      <a href="https://www.tiktok.com/@spanish_with_jordi" target="_blank" rel="noopener">TikTok @spanish_with_jordi</a>
+      <a class="secondary" href="mailto:CONTACTO@EJEMPLO.COM">Escríbeme un email</a>
+    </div>
+  </section>
+
+  <footer class="legal">
+    © 2026 Español con Jordi · Preparación DELE online
+  </footer>
+
+</body>
+</html>
