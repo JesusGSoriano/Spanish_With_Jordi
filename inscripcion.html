@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserva tu plaza — Español con Jordi</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --cream: #F7EFDC;
+    --cream-dark: #EFE1BE;
+    --olive: #5C6B3B;
+    --olive-dark: #40492A;
+    --terracotta: #D9822E;
+    --terracotta-dark: #B5691F;
+    --ink: #3A3122;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    margin: 0 0 6px;
+    font-size: clamp(24px, 5vw, 32px);
+  }
+
+  .wrap {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  a.back {
+    display: inline-block;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--olive-dark);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  p.lead {
+    color: #5A5340;
+    margin: 0 0 28px;
+  }
+
+  form {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--olive-dark);
+    margin-bottom: 6px;
+  }
+
+  .field {
+    margin-bottom: 18px;
+  }
+
+  input[type=text], input[type=tel], textarea, select {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  textarea { resize: vertical; min-height: 70px; }
+
+  .required { color: var(--terracotta-dark); }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(217, 130, 46, 0.35);
+  }
+  .submit-btn:hover { background: var(--terracotta-dark); }
+
+  .thanks {
+    display: none;
+    text-align: center;
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 40px 24px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .thanks h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <a class="back" href="index.html">← Volver a los cursos</a>
+    <h1>Reserva tu plaza</h1>
+    <p class="lead">Rellena tus datos y te escribo por WhatsApp en menos de 24h para confirmar tu plaza.</p>
+
+    <form id="inscripcionForm">
+      <div class="field">
+        <label for="nombre">¿Cómo te llamas? <span class="required">*</span></label>
+        <input type="text" id="nombre" required>
+      </div>
+
+      <div class="field">
+        <label for="pais">¿En qué país vives y cuál es tu lengua materna? <span class="required">*</span></label>
+        <input type="text" id="pais" required>
+      </div>
+
+      <div class="field">
+        <label for="nivel">¿De qué nivel vas a hacer el examen? <span class="required">*</span></label>
+        <select id="nivel" required>
+          <option value="">Selecciona un nivel</option>
+          <option value="A2 (de 11:00 a 12:30)">A2 (de 11:00 a 12:30)</option>
+          <option value="B1 (de 9:00 a 10:30)">B1 (de 9:00 a 10:30)</option>
+          <option value="B2 (de 13:00 a 14:30)">B2 (de 13:00 a 14:30)</option>
+          <option value="C1 (horario por definir)">C1 (horario por definir)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="whatsapp">Número de WhatsApp para contactar contigo <span class="required">*</span></label>
+        <input type="tel" id="whatsapp" required>
+      </div>
+
+      <div class="field">
+        <label for="duda">¿Alguna duda?</label>
+        <textarea id="duda"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Enviar</button>
+    </form>
+
+    <div class="thanks" id="thanks">
+      <h2>¡Gracias!</h2>
+      <p>Te escribo por WhatsApp en menos de 24h para confirmar tu plaza y mandarte el link de pago.</p>
+    </div>
+  </div>
+
+  <!-- Envío silencioso al formulario real de Google -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+  <form id="gform"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfpLnU_Zx5zwR3WkVUd9gMQ9j-KOhwByw45sM_9Amn3JLk0Kg/formResponse"
+        method="POST" target="hidden_iframe" style="display:none;">
+    <input type="text" name="entry.368829682" id="g-nombre">
+    <input type="text" name="entry.1825855586" id="g-pais">
+    <input type="text" name="entry.8186469" id="g-nivel">
+    <input type="text" name="entry.174317246" id="g-whatsapp">
+    <input type="text" name="entry.609687656" id="g-duda">
+  </form>
+
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var nivelParam = params.get('nivel');
+    var nivelMap = {
+      A2: "A2 (de 11:00 a 12:30)",
+      B1: "B1 (de 9:00 a 10:30)",
+      B2: "B2 (de 13:00 a 14:30)",
+      C1: "C1 (horario por definir)"
+    };
+    if (nivelParam && nivelMap[nivelParam]) {
+      document.getElementById('nivel').value = nivelMap[nivelParam];
+    }
+
+    document.getElementById('inscripcionForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      document.getElementById('g-nombre').value = document.getElementById('nombre').value;
+      document.getElementById('g-pais').value = document.getElementById('pais').value;
+      document.getElementById('g-nivel').value = document.getElementById('nivel').value;
+      document.getElementById('g-whatsapp').value = document.getElementById('whatsapp').value;
+      document.getElementById('g-duda').value = document.getElementById('duda').value;
+
+      document.getElementById('gform').submit();
+
+      document.getElementById('inscripcionForm').style.display = 'none';
+      document.getElementById('thanks').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
