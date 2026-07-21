@@ -208,11 +208,19 @@
   }
 
   .price-box {
+    display: block;
     background: var(--terracotta);
     color: #fff;
     border-radius: 10px;
     padding: 14px 16px;
     font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  a.price-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(217, 130, 46, 0.35);
   }
 
   .price-box .amount {
@@ -224,6 +232,13 @@
     font-weight: 400;
     opacity: 0.9;
     margin-top: 2px;
+  }
+
+  .price-box .cta-label {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.95;
+    margin-top: 4px;
   }
 
   .card.sold-out {
@@ -405,36 +420,72 @@
     margin: 0 auto 24px;
   }
 
-  .email-box {
-    display: inline-flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    background: rgba(247, 239, 220, 0.08);
-    border: 1px solid rgba(247, 239, 220, 0.4);
-    border-radius: 10px;
-    padding: 14px 20px;
+  .dudas-form {
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 26px 24px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
   }
 
-  .email-box a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 16px;
+  .dudas-form .field {
+    margin-bottom: 14px;
   }
 
-  .copy-btn {
-    background: var(--terracotta);
-    color: #fff;
-    border: none;
-    padding: 9px 16px;
-    border-radius: 8px;
+  .dudas-form label {
+    display: block;
     font-weight: 700;
     font-size: 13px;
+    color: var(--olive-dark);
+    margin-bottom: 6px;
+  }
+
+  .dudas-form textarea,
+  .dudas-form input[type=text] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  .dudas-form textarea { resize: vertical; min-height: 70px; }
+
+  .dudas-submit {
+    width: 100%;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
     cursor: pointer;
   }
-  .copy-btn:hover { background: var(--terracotta-dark); }
+  .dudas-submit:hover { background: var(--terracotta-dark); }
+
+  .dudas-thanks {
+    display: none;
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 32px 24px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .dudas-thanks h3 {
+    color: var(--olive-dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+  .dudas-thanks p { color: #5A5340; margin: 0; }
 
   .contact-links {
     display: flex;
@@ -511,10 +562,10 @@
           <li>Grupos entre 3 y 5 personas</li>
           <li>Inicio en agosto. 100% online</li>
         </ul>
-        <div class="price-box">
-          <div class="amount">139€/mes</div>
-        </div>
-        <a href="inscripcion.html?nivel=A2" class="enroll-btn">Inscribirme →</a>
+        <a href="inscripcion.html?nivel=A2" class="price-box">
+          <div class="amount">139€/curso</div>
+          <div class="cta-label">Inscribirme →</div>
+        </a>
       </div>
 
       <div class="card">
@@ -528,10 +579,10 @@
           <li>Grupos entre 3 y 5 personas</li>
           <li>Inicio en agosto. 100% online</li>
         </ul>
-        <div class="price-box">
-          <div class="amount">139€/mes</div>
-        </div>
-        <a href="inscripcion.html?nivel=B1" class="enroll-btn">Inscribirme →</a>
+        <a href="inscripcion.html?nivel=B1" class="price-box">
+          <div class="amount">139€/curso</div>
+          <div class="cta-label">Inscribirme →</div>
+        </a>
       </div>
 
       <div class="card">
@@ -545,10 +596,10 @@
           <li>Grupos entre 3 y 5 personas</li>
           <li>Inicio en agosto. 100% online</li>
         </ul>
-        <div class="price-box">
-          <div class="amount">139€/mes</div>
-        </div>
-        <a href="inscripcion.html?nivel=B2" class="enroll-btn">Inscribirme →</a>
+        <a href="inscripcion.html?nivel=B2" class="price-box">
+          <div class="amount">139€/curso</div>
+          <div class="cta-label">Inscribirme →</div>
+        </a>
       </div>
 
       <div class="card sold-out">
@@ -563,6 +614,7 @@
           <li>Grupos entre 3 y 5 personas</li>
           <li>Inicio en agosto. 100% online</li>
         </ul>
+        <a href="inscripcion.html?nivel=C1" class="enroll-btn">Apuntarme a la lista de espera →</a>
       </div>
 
     </div>
@@ -598,7 +650,7 @@
       </div>
     </div>
 
-    <p class="exam-source">Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.<br>Confírmalas siempre en su web antes de inscribirte.</p>
+    <p class="exam-source">Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.</p>
   </div>
 
   <section class="about">
@@ -615,7 +667,7 @@
         <h2>¿Quién te va a preparar?</h2>
         <p>Soy Jordi, <strong>corrector oficial de exámenes DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.</p>
         <p>Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como corrector DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.</p>
-        <p>Esa misma pasión por enseñar la comparto cada día en mi <strong>canal de TikTok</strong>, donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.</p>
+        <p>Esa misma pasión por enseñar la comparto cada día en mi <strong>canal de TikTok</strong> y en mi <strong>cuenta de Instagram</strong> (@spanish_with_jordi en ambos), donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.</p>
         <p>Cada curso está pensado para que llegues al examen <strong>con seguridad</strong>, no solo con gramática memorizada. Ver a mis alumnos <strong>aprobar el DELE</strong> tras semanas de trabajo conjunto es la parte del oficio que más me llena.</p>
       </div>
     </div>
@@ -631,10 +683,32 @@
     </div>
     <h2>¿Hablamos?</h2>
     <p>Cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo.</p>
-    <div class="email-box">
-      <a href="mailto:jordicasa2003@gmail.com" id="emailLink">jordicasa2003@gmail.com</a>
-      <button type="button" class="copy-btn" id="copyEmailBtn">Copiar email</button>
+    <form class="dudas-form" id="dudasForm">
+      <div class="field">
+        <label for="duda">¿Alguna duda?</label>
+        <textarea id="duda" required></textarea>
+      </div>
+      <div class="field">
+        <label for="dudaContacto">Número de WhatsApp o email para contactar contigo</label>
+        <input type="text" id="dudaContacto" required>
+      </div>
+      <button type="submit" class="dudas-submit">Enviar duda</button>
+    </form>
+
+    <div class="dudas-thanks" id="dudasThanks">
+      <h3>¡Gracias!</h3>
+      <p>Te contesto lo antes posible.</p>
     </div>
+
+    <!-- Envío silencioso al formulario de dudas de Google -->
+    <iframe name="dudas_iframe" id="dudas_iframe" style="display:none;"></iframe>
+    <form id="dudasGform"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdv0zPclfTk9HD-USDIlzHBOmjdj7W2Tz1Q3UmwjgEQRtgQmg/formResponse"
+          method="POST" target="dudas_iframe" style="display:none;">
+      <input type="text" name="entry.609687656" id="g-duda">
+      <input type="text" name="entry.922508728" id="g-contacto">
+    </form>
+
     <div class="contact-links">
       <a href="https://www.tiktok.com/@spanish_with_jordi" target="_blank" rel="noopener">TikTok</a>
       <a href="https://www.instagram.com/spanish_with_jordi" target="_blank" rel="noopener">Instagram</a>
@@ -655,13 +729,14 @@
       scrollFill.style.width = pct + '%';
     });
 
-    var copyEmailBtn = document.getElementById('copyEmailBtn');
-    copyEmailBtn.addEventListener('click', function () {
-      navigator.clipboard.writeText('jordicasa2003@gmail.com').then(function () {
-        var original = copyEmailBtn.textContent;
-        copyEmailBtn.textContent = '¡Copiado!';
-        setTimeout(function () { copyEmailBtn.textContent = original; }, 1800);
-      });
+    var dudasForm = document.getElementById('dudasForm');
+    dudasForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('g-duda').value = document.getElementById('duda').value;
+      document.getElementById('g-contacto').value = document.getElementById('dudaContacto').value;
+      document.getElementById('dudasGform').submit();
+      dudasForm.style.display = 'none';
+      document.getElementById('dudasThanks').style.display = 'block';
     });
   </script>
 
