@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Español con Jordi — Prepara tu DELE</title>
+<title>Español con Jordi: prepara tu DELE</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
   :root {
@@ -19,7 +19,7 @@
 
   * { box-sizing: border-box; }
 
-  /* SCROLL PROGRESS — se rellena con la bandera de España al hacer scroll */
+  /* SCROLL PROGRESS: se rellena con la bandera de España al hacer scroll */
   .scroll-track {
     position: fixed;
     top: 0;
@@ -260,6 +260,118 @@
     padding: 6px 24px 40px;
   }
 
+  /* CONVOCATORIAS DELE */
+  .exam-dates {
+    padding: 36px 0 10px;
+  }
+
+  .exam-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  @media (min-width: 640px) {
+    .exam-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .exam-card {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 22px 24px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .exam-card .month {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--terracotta-dark);
+    margin-bottom: 6px;
+  }
+
+  .exam-card .date {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: var(--olive-dark);
+    margin-bottom: 10px;
+  }
+
+  .exam-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .exam-card li {
+    margin-bottom: 4px;
+  }
+
+  .exam-card li strong {
+    color: var(--olive-dark);
+  }
+
+  .exam-source {
+    text-align: center;
+    font-size: 13px;
+    color: #6b6252;
+    margin-top: 22px;
+  }
+
+  .exam-source a {
+    color: var(--terracotta-dark);
+    font-weight: 700;
+  }
+
+  /* SOBRE JORDI */
+  .about {
+    background: var(--cream-dark);
+    padding: 56px 24px;
+    margin-top: 20px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    .about-grid {
+      grid-template-columns: 160px 1fr;
+      text-align: left;
+    }
+  }
+
+  .about-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--cream);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.2);
+    margin: 0 auto;
+    display: block;
+  }
+
+  .about h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .about p {
+    font-size: 15px;
+    color: #5A5340;
+    margin: 0 0 14px;
+  }
+
+  .about p:last-child { margin-bottom: 0; }
+
   /* CONTACT / FOOTER */
   .contact {
     background: var(--olive-dark);
@@ -344,7 +456,7 @@
         <h3>Nivel A2</h3>
         <div class="tagline">Tu nacionalidad, asegurada</div>
         <ul>
-          <li>Martes y jueves (mañanas) — de 11:00 a 12:30</li>
+          <li>Martes y jueves (mañanas), de 11:00 a 12:30</li>
           <li>Clases de 1h 30min (se graban por si faltas)</li>
           <li>Trucos directos de examinador</li>
           <li>Grupos entre 3 y 5 personas</li>
@@ -361,7 +473,7 @@
         <h3>Nivel B1</h3>
         <div class="tagline">Domina las bases sin agobios</div>
         <ul>
-          <li>Martes y jueves (mañanas) — de 9:00 a 10:30</li>
+          <li>Martes y jueves (mañanas), de 9:00 a 10:30</li>
           <li>Clases de 1h 30min (se graban por si faltas)</li>
           <li>Trucos directos de examinador</li>
           <li>Grupos entre 3 y 5 personas</li>
@@ -378,7 +490,7 @@
         <h3>Nivel B2</h3>
         <div class="tagline">El salto definitivo a la fluidez</div>
         <ul>
-          <li>Martes y jueves (mañanas) — de 13:00 a 14:30</li>
+          <li>Martes y jueves (mañanas), de 13:00 a 14:30</li>
           <li>Clases de 1h 30min (se graban por si faltas)</li>
           <li>Trucos directos de examinador</li>
           <li>Grupos entre 3 y 5 personas</li>
@@ -396,7 +508,7 @@
         <h3>Nivel C1</h3>
         <div class="tagline">El dominio absoluto del español</div>
         <ul>
-          <li>Martes y jueves (mañanas) — horario exacto a convenir</li>
+          <li>Martes y jueves (mañanas), horario exacto a convenir</li>
           <li>Clases de 1h 30min (se graban por si faltas)</li>
           <li>Trucos directos de examinador</li>
           <li>Grupos entre 3 y 5 personas</li>
@@ -409,6 +521,49 @@
 
     <p class="note-strip">¿Trabajas por la mañana? Escríbeme tu disponibilidad y vemos opciones.</p>
   </div>
+
+  <div class="wrap exam-dates">
+    <div class="section-title">
+      <h2>Próximas convocatorias oficiales del DELE</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="exam-grid">
+      <div class="exam-card">
+        <div class="month">Octubre 2026</div>
+        <div class="date">16 y 17 de octubre</div>
+        <ul>
+          <li><strong>Viernes 16:</strong> B1, B2, C1</li>
+          <li><strong>Sábado 17:</strong> A2</li>
+          <li>Inscripción hasta el 2 de septiembre</li>
+        </ul>
+      </div>
+
+      <div class="exam-card">
+        <div class="month">Noviembre 2026</div>
+        <div class="date">13 y 14 de noviembre</div>
+        <ul>
+          <li><strong>Viernes 13:</strong> A2</li>
+          <li><strong>Sábado 14:</strong> A1, B1, B2, C1, C2</li>
+          <li>Inscripción hasta el 30 de septiembre</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="exam-source">Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>. Confírmalas siempre en su web antes de inscribirte.</p>
+  </div>
+
+  <section class="about">
+    <div class="wrap about-grid">
+      <img class="about-avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español">
+      <div>
+        <h2>¿Quién te va a preparar?</h2>
+        <p>Soy Jordi, corrector oficial de exámenes DELE y un apasionado de los idiomas desde siempre. Estoy terminando el Máster en Enseñanza de Español como Lengua Extranjera en la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo francés, catalán e italiano a nivel avanzado.</p>
+        <p>Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en otras lenguas. Como corrector DELE conozco de primera mano qué busca el tribunal en cada prueba, y eso es justo lo que traslado a mis clases, tanto online como en la Escuela El Tándem de Valencia.</p>
+        <p>Cada curso está pensado para que llegues al examen con seguridad, no solo con gramática memorizada. Ver a mis alumnos aprobar el DELE tras semanas de trabajo conjunto es la parte del oficio que más me llena.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="contact" id="contacto">
     <h2>¿Hablamos?</h2>
