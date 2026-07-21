@@ -394,6 +394,37 @@
     margin: 0 auto 24px;
   }
 
+  .email-box {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(247, 239, 220, 0.08);
+    border: 1px solid rgba(247, 239, 220, 0.4);
+    border-radius: 10px;
+    padding: 14px 20px;
+  }
+
+  .email-box a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .copy-btn {
+    background: var(--terracotta);
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .copy-btn:hover { background: var(--terracotta-dark); }
+
   .contact-links {
     display: flex;
     flex-wrap: wrap;
@@ -569,7 +600,10 @@
   <section class="contact" id="contacto">
     <h2>¿Hablamos?</h2>
     <p>Cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo.</p>
-    <a class="cta-btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=jordicasa2003@gmail.com&amp;su=Consulta%20cursos%20DELE" target="_blank" rel="noopener">Escríbeme un email</a>
+    <div class="email-box">
+      <a href="mailto:jordicasa2003@gmail.com" id="emailLink">jordicasa2003@gmail.com</a>
+      <button type="button" class="copy-btn" id="copyEmailBtn">Copiar email</button>
+    </div>
     <div class="contact-links">
       <a href="https://www.tiktok.com/@spanish_with_jordi" target="_blank" rel="noopener">TikTok</a>
       <a href="https://www.instagram.com/spanish_with_jordi" target="_blank" rel="noopener">Instagram</a>
@@ -588,6 +622,15 @@
       var max = doc.scrollHeight - doc.clientHeight;
       var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
       scrollFill.style.width = pct + '%';
+    });
+
+    var copyEmailBtn = document.getElementById('copyEmailBtn');
+    copyEmailBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText('jordicasa2003@gmail.com').then(function () {
+        var original = copyEmailBtn.textContent;
+        copyEmailBtn.textContent = '¡Copiado!';
+        setTimeout(function () { copyEmailBtn.textContent = original; }, 1800);
+      });
     });
   </script>
 
