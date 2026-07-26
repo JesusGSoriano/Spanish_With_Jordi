@@ -135,13 +135,13 @@
       </div>
 
       <div class="field">
-        <label for="nivel">¿Para qué nivel quieres prepararte? <span class="required">*</span></label>
+        <label for="nivel">¿Para qué nivel quieres prepararte? (horario de Madrid) <span class="required">*</span></label>
         <select id="nivel" required>
           <option value="">Selecciona un nivel</option>
-          <option value="A2 (de 11:00 a 12:30)">A2 (martes y jueves, de 11:00 a 12:30)</option>
-          <option value="B1 (de 9:00 a 10:30)">B1 (martes y jueves, de 9:00 a 10:30)</option>
-          <option value="B2 (de 13:00 a 14:30)">B2 (martes y jueves, de 13:00 a 14:30)</option>
-          <option value="C1 (horario por definir)">C1 (horario por definir)</option>
+          <option value="A2 (de 17:30 a 19:00)">A2 (martes y jueves, de 17:30 a 19:00)</option>
+          <option value="B1 (de 17:30 a 19:00)">B1 (lunes y miércoles, de 17:30 a 19:00)</option>
+          <option value="B2 (de 19:30 a 21:00)">B2 (lunes y miércoles, de 19:30 a 21:00)</option>
+          <option value="C1 (de 15:30 a 17:00)">C1 (martes y jueves, de 15:30 a 17:00)</option>
         </select>
       </div>
 
@@ -180,10 +180,10 @@
     var params = new URLSearchParams(window.location.search);
     var nivelParam = params.get('nivel');
     var nivelMap = {
-      A2: "A2 (de 11:00 a 12:30)",
-      B1: "B1 (de 9:00 a 10:30)",
-      B2: "B2 (de 13:00 a 14:30)",
-      C1: "C1 (horario por definir)"
+      A2: "A2 (de 17:30 a 19:00)",
+      B1: "B1 (de 17:30 a 19:00)",
+      B2: "B2 (de 19:30 a 21:00)",
+      C1: "C1 (de 15:30 a 17:00)"
     };
     if (nivelParam && nivelMap[nivelParam]) {
       document.getElementById('nivel').value = nivelMap[nivelParam];
