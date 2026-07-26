@@ -139,8 +139,8 @@
         <select id="nivel" required>
           <option value="">Selecciona un nivel</option>
           <option value="A2 (de 17:30 a 19:00)">A2 (martes y jueves, de 17:30 a 19:00)</option>
-          <option value="B1 (de 17:30 a 19:00)">B1 (lunes y miércoles, de 17:30 a 19:00)</option>
-          <option value="B2 (de 19:30 a 21:00)">B2 (lunes y miércoles, de 19:30 a 21:00)</option>
+          <option value="B1 (de 17:15 a 18:45)">B1 (lunes y miércoles, de 17:15 a 18:45)</option>
+          <option value="B2 (de 19:00 a 20:30)">B2 (lunes y miércoles, de 19:00 a 20:30)</option>
           <option value="C1 (de 15:30 a 17:00)">C1 (martes y jueves, de 15:30 a 17:00)</option>
         </select>
       </div>
@@ -181,8 +181,8 @@
     var nivelParam = params.get('nivel');
     var nivelMap = {
       A2: "A2 (de 17:30 a 19:00)",
-      B1: "B1 (de 17:30 a 19:00)",
-      B2: "B2 (de 19:30 a 21:00)",
+      B1: "B1 (de 17:15 a 18:45)",
+      B2: "B2 (de 19:00 a 20:30)",
       C1: "C1 (de 15:30 a 17:00)"
     };
     if (nivelParam && nivelMap[nivelParam]) {
