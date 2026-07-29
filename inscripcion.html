@@ -114,53 +114,89 @@
     font-family: Georgia, 'Times New Roman', serif;
     color: var(--olive-dark);
   }
+
+  /* LANGUAGE SWITCH */
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 10000;
+    display: flex;
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.2);
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 4px 10px rgba(90, 63, 40, 0.15);
+  }
+
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .lang-btn.active {
+    background: var(--terracotta);
+    color: #fff;
+  }
 </style>
 </head>
 <body>
 
+  <div class="lang-switch" id="langSwitch">
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </div>
+
   <div class="wrap">
-    <a class="back" href="index.html">← Volver a los cursos</a>
-    <h1>Reserva tu plaza</h1>
-    <p class="lead">Rellena tus datos y te escribo por email en menos de 24h para confirmar tu plaza.</p>
+    <a class="back" href="index.html" data-i18n="backLink">← Volver a los cursos</a>
+    <h1 data-i18n="h1">Reserva tu plaza</h1>
+    <p class="lead" data-i18n="lead">Rellena tus datos y te escribo por email en menos de 24h para confirmar tu plaza.</p>
 
     <form id="inscripcionForm">
       <div class="field">
-        <label for="nombre">¿Cómo te llamas? <span class="required">*</span></label>
+        <label for="nombre" data-i18n-html="nombreLabel">¿Cómo te llamas? <span class="required">*</span></label>
         <input type="text" id="nombre" required>
       </div>
 
       <div class="field">
-        <label for="pais">¿En qué país vives y cuál es tu lengua materna? <span class="required">*</span></label>
+        <label for="pais" data-i18n-html="paisLabel">¿En qué país vives y cuál es tu lengua materna? <span class="required">*</span></label>
         <input type="text" id="pais" required>
       </div>
 
       <div class="field">
-        <label for="nivel">¿Para qué nivel quieres prepararte? (horario de Madrid) <span class="required">*</span></label>
+        <label for="nivel" data-i18n-html="nivelLabel">¿Para qué nivel quieres prepararte? (horario de Madrid) <span class="required">*</span></label>
         <select id="nivel" required>
-          <option value="">Selecciona un nivel</option>
-          <option value="A2 (de 17:30 a 19:00)">A2 (martes y jueves, de 17:30 a 19:00)</option>
-          <option value="B1 (de 17:15 a 18:45)">B1 (lunes y miércoles, de 17:15 a 18:45)</option>
-          <option value="B2 (de 19:00 a 20:30)">B2 (lunes y miércoles, de 19:00 a 20:30)</option>
-          <option value="C1 (de 15:30 a 17:00)">C1 (martes y jueves, de 15:30 a 17:00)</option>
+          <option value="" data-i18n="selectPlaceholder">Selecciona un nivel</option>
+          <option value="A2 (de 17:30 a 19:00)" data-i18n="optA2">A2 (martes y jueves, de 17:30 a 19:00)</option>
+          <option value="B1 (de 17:15 a 18:45)" data-i18n="optB1">B1 (lunes y miércoles, de 17:15 a 18:45)</option>
+          <option value="B2 (de 19:00 a 20:30)" data-i18n="optB2">B2 (lunes y miércoles, de 19:00 a 20:30)</option>
+          <option value="C1 (de 15:30 a 17:00)" data-i18n="optC1">C1 (martes y jueves, de 15:30 a 17:00)</option>
         </select>
       </div>
 
       <div class="field">
-        <label for="whatsapp">Número de WhatsApp o email para contactar contigo <span class="required">*</span></label>
+        <label for="whatsapp" data-i18n-html="whatsappLabel">Número de WhatsApp o email para contactar contigo <span class="required">*</span></label>
         <input type="tel" id="whatsapp" required>
       </div>
 
       <div class="field">
-        <label for="duda">¿Alguna duda?</label>
+        <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
         <textarea id="duda"></textarea>
       </div>
 
-      <button type="submit" class="submit-btn">Enviar</button>
+      <button type="submit" class="submit-btn" data-i18n="submitBtn">Enviar</button>
     </form>
 
     <div class="thanks" id="thanks">
-      <h2>¡Gracias!</h2>
-      <p>Te escribo por email en menos de 24h para confirmar tu plaza.</p>
+      <h2 data-i18n="thanksTitle">¡Gracias!</h2>
+      <p data-i18n="thanksText">Te escribo por email en menos de 24h para confirmar tu plaza.</p>
     </div>
   </div>
 
@@ -203,6 +239,76 @@
       document.getElementById('inscripcionForm').style.display = 'none';
       document.getElementById('thanks').style.display = 'block';
     });
+
+    var translations = {
+      es: {
+        pageTitle: `Reserva tu plaza en Español con Jordi`,
+        backLink: `← Volver a los cursos`,
+        h1: `Reserva tu plaza`,
+        lead: `Rellena tus datos y te escribo por email en menos de 24h para confirmar tu plaza.`,
+        nombreLabel: `¿Cómo te llamas? <span class="required">*</span>`,
+        paisLabel: `¿En qué país vives y cuál es tu lengua materna? <span class="required">*</span>`,
+        nivelLabel: `¿Para qué nivel quieres prepararte? (horario de Madrid) <span class="required">*</span>`,
+        selectPlaceholder: `Selecciona un nivel`,
+        optA2: `A2 (martes y jueves, de 17:30 a 19:00)`,
+        optB1: `B1 (lunes y miércoles, de 17:15 a 18:45)`,
+        optB2: `B2 (lunes y miércoles, de 19:00 a 20:30)`,
+        optC1: `C1 (martes y jueves, de 15:30 a 17:00)`,
+        whatsappLabel: `Número de WhatsApp o email para contactar contigo <span class="required">*</span>`,
+        dudaLabel: `¿Alguna duda?`,
+        submitBtn: `Enviar`,
+        thanksTitle: `¡Gracias!`,
+        thanksText: `Te escribo por email en menos de 24h para confirmar tu plaza.`
+      },
+      en: {
+        pageTitle: `Reserve your spot with Spanish with Jordi`,
+        backLink: `← Back to courses`,
+        h1: `Reserve your spot`,
+        lead: `Fill in your details and I'll email you within 24h to confirm your spot.`,
+        nombreLabel: `What's your name? <span class="required">*</span>`,
+        paisLabel: `What country do you live in and what's your native language? <span class="required">*</span>`,
+        nivelLabel: `Which level do you want to prepare for? (Madrid time) <span class="required">*</span>`,
+        selectPlaceholder: `Select a level`,
+        optA2: `A2 (Tuesdays and Thursdays, 17:30-19:00)`,
+        optB1: `B1 (Mondays and Wednesdays, 17:15-18:45)`,
+        optB2: `B2 (Mondays and Wednesdays, 19:00-20:30)`,
+        optC1: `C1 (Tuesdays and Thursdays, 15:30-17:00)`,
+        whatsappLabel: `WhatsApp number or email to reach you <span class="required">*</span>`,
+        dudaLabel: `Any questions?`,
+        submitBtn: `Submit`,
+        thanksTitle: `Thank you!`,
+        thanksText: `I'll email you within 24h to confirm your spot.`
+      }
+    };
+
+    function applyLanguage(lang) {
+      var dict = translations[lang] || translations.es;
+      document.documentElement.lang = lang;
+      document.title = dict.pageTitle;
+
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      localStorage.setItem('siteLang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    applyLanguage(localStorage.getItem('siteLang') || 'es');
   </script>
 
 </body>

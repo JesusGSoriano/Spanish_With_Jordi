@@ -476,27 +476,63 @@
     padding: 18px 24px 30px;
     background: var(--olive-dark);
   }
+
+  /* LANGUAGE SWITCH */
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 10000;
+    display: flex;
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.2);
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 4px 10px rgba(90, 63, 40, 0.15);
+  }
+
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .lang-btn.active {
+    background: var(--terracotta);
+    color: #fff;
+  }
 </style>
 </head>
 <body>
 
   <div class="scroll-track"><div class="scroll-fill" id="scrollFill"></div></div>
 
+  <div class="lang-switch" id="langSwitch">
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </div>
+
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">Preparación oficial DELE</span>
+      <span class="eyebrow" data-i18n="heroEyebrow">Preparación oficial DELE</span>
       <div class="avatar-frame">
-        <img class="avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español">
+        <img class="avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
       </div>
-      <h1>¡Aprueba el DELE a la primera!</h1>
-      <p class="lead">Prepárate con un Examinador Oficial y descubre todos los trucos del examen. Clases siempre en directo, grabadas por si faltas, y en grupos reducidos.</p>
-      <a href="#cursos" class="cta-btn">Reserva tu plaza</a>
+      <h1 data-i18n="heroH1">¡Aprueba el DELE a la primera!</h1>
+      <p class="lead" data-i18n="heroLead">Prepárate con un Examinador Oficial y descubre todos los trucos del examen. Clases siempre en directo, grabadas por si faltas, y en grupos reducidos.</p>
+      <a href="#cursos" class="cta-btn" data-i18n="heroCta">Reserva tu plaza</a>
     </div>
   </section>
 
   <div class="wrap" id="cursos">
     <div class="section-title">
-      <h2>Elige tu nivel</h2>
+      <h2 data-i18n="cursosTitle">Elige tu nivel</h2>
       <div class="divider"></div>
     </div>
 
@@ -505,142 +541,142 @@
       <div class="card">
         <div class="icon">🪪</div>
         <h3>Nivel A2</h3>
-        <div class="tagline">Tu nacionalidad, asegurada</div>
+        <div class="tagline" data-i18n="a2Tagline">Tu nacionalidad, asegurada</div>
         <ul>
-          <li>Martes y jueves, de 17:30 a 19:00 (hora de Madrid)</li>
-          <li>Clases de 1h 30min (se graban por si faltas)</li>
-          <li>Trucos directos de examinador</li>
-          <li>Grupos entre 3 y 5 personas</li>
-          <li>100% online</li>
-          <li>Inicio primera semana de septiembre</li>
+          <li data-i18n="a2Schedule">Martes y jueves, de 17:30 a 19:00 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
+          <li data-i18n="liTrucos">Trucos directos de examinador</li>
+          <li data-i18n="liGrupos">Grupos entre 3 y 5 personas</li>
+          <li data-i18n="liOnline">100% online</li>
+          <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
         </ul>
         <a href="inscripcion.html?nivel=A2" class="price-box">
           <div class="amount">129€/mes</div>
-          <div class="cta-label">Inscribirme →</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
 
       <div class="card">
         <div class="icon">📚</div>
         <h3>Nivel B1</h3>
-        <div class="tagline">Domina las bases sin agobios</div>
+        <div class="tagline" data-i18n="b1Tagline">Domina las bases sin agobios</div>
         <ul>
-          <li>Lunes y miércoles, de 17:15 a 18:45 (hora de Madrid)</li>
-          <li>Clases de 1h 30min (se graban por si faltas)</li>
-          <li>Trucos directos de examinador</li>
-          <li>Grupos entre 3 y 5 personas</li>
-          <li>100% online</li>
-          <li>Inicio primera semana de septiembre</li>
+          <li data-i18n="b1Schedule">Lunes y miércoles, de 17:15 a 18:45 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
+          <li data-i18n="liTrucos">Trucos directos de examinador</li>
+          <li data-i18n="liGrupos">Grupos entre 3 y 5 personas</li>
+          <li data-i18n="liOnline">100% online</li>
+          <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
         </ul>
         <a href="inscripcion.html?nivel=B1" class="price-box">
           <div class="amount">139€/mes</div>
-          <div class="cta-label">Inscribirme →</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
 
       <div class="card">
         <div class="icon">🔑</div>
         <h3>Nivel B2</h3>
-        <div class="tagline">El salto definitivo a la fluidez</div>
+        <div class="tagline" data-i18n="b2Tagline">El salto definitivo a la fluidez</div>
         <ul>
-          <li>Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)</li>
-          <li>Clases de 1h 30min (se graban por si faltas)</li>
-          <li>Trucos directos de examinador</li>
-          <li>Grupos entre 3 y 5 personas</li>
-          <li>100% online</li>
-          <li>Inicio primera semana de septiembre</li>
+          <li data-i18n="b2Schedule">Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
+          <li data-i18n="liTrucos">Trucos directos de examinador</li>
+          <li data-i18n="liGrupos">Grupos entre 3 y 5 personas</li>
+          <li data-i18n="liOnline">100% online</li>
+          <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
         </ul>
         <a href="inscripcion.html?nivel=B2" class="price-box">
           <div class="amount">149€/mes</div>
-          <div class="cta-label">Inscribirme →</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
 
       <div class="card">
         <div class="icon">🖋️</div>
         <h3>Nivel C1</h3>
-        <div class="tagline">El dominio absoluto del español</div>
+        <div class="tagline" data-i18n="c1Tagline">El dominio absoluto del español</div>
         <ul>
-          <li>Martes y jueves, de 15:30 a 17:00 (hora de Madrid)</li>
-          <li>Clases de 1h 30min (se graban por si faltas)</li>
-          <li>Trucos directos de examinador</li>
-          <li>Grupos entre 3 y 5 personas</li>
-          <li>100% online</li>
-          <li>Inicio primera semana de septiembre</li>
+          <li data-i18n="c1Schedule">Martes y jueves, de 15:30 a 17:00 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
+          <li data-i18n="liTrucos">Trucos directos de examinador</li>
+          <li data-i18n="liGrupos">Grupos entre 3 y 5 personas</li>
+          <li data-i18n="liOnline">100% online</li>
+          <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
         </ul>
         <a href="inscripcion.html?nivel=C1" class="price-box">
           <div class="amount">159€/mes</div>
-          <div class="cta-label">Inscribirme →</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
 
     </div>
 
-    <p class="note-strip">¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.</p>
+    <p class="note-strip" data-i18n-html="noteStrip">¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.</p>
   </div>
 
   <div class="wrap exam-dates">
     <div class="section-title">
-      <h2>Próximas convocatorias oficiales del DELE</h2>
+      <h2 data-i18n="examTitle">Próximas convocatorias oficiales del DELE</h2>
       <div class="divider"></div>
     </div>
 
     <div class="exam-grid">
       <div class="exam-card">
-        <div class="month">Octubre 2026</div>
-        <div class="date">16 y 17 de octubre</div>
+        <div class="month" data-i18n="octMonth">Octubre 2026</div>
+        <div class="date" data-i18n="octDate">16 y 17 de octubre</div>
         <ul>
-          <li><strong>Viernes 16:</strong> B1, B2, C1</li>
-          <li><strong>Sábado 17:</strong> A2</li>
-          <li>Inscripción hasta el 2 de septiembre</li>
+          <li data-i18n-html="octLi1"><strong>Viernes 16:</strong> B1, B2, C1</li>
+          <li data-i18n-html="octLi2"><strong>Sábado 17:</strong> A2</li>
+          <li data-i18n="octLi3">Inscripción hasta el 2 de septiembre</li>
         </ul>
       </div>
 
       <div class="exam-card">
-        <div class="month">Noviembre 2026</div>
-        <div class="date">13 y 14 de noviembre</div>
+        <div class="month" data-i18n="novMonth">Noviembre 2026</div>
+        <div class="date" data-i18n="novDate">13 y 14 de noviembre</div>
         <ul>
-          <li><strong>Viernes 13:</strong> A2</li>
-          <li><strong>Sábado 14:</strong> A1, B1, B2, C1, C2</li>
-          <li>Inscripción hasta el 30 de septiembre</li>
+          <li data-i18n-html="novLi1"><strong>Viernes 13:</strong> A2</li>
+          <li data-i18n-html="novLi2"><strong>Sábado 14:</strong> A1, B1, B2, C1, C2</li>
+          <li data-i18n="novLi3">Inscripción hasta el 30 de septiembre</li>
         </ul>
       </div>
     </div>
 
-    <p class="exam-source">Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.</p>
+    <p class="exam-source" data-i18n-html="examSource">Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.</p>
   </div>
 
   <section class="about">
     <div class="wrap about-grid">
-      <img class="about-avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español">
+      <img class="about-avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
       <div>
-        <h2>¿Quién te va a preparar?</h2>
-        <p>Soy Jordi, <strong>corrector oficial de exámenes DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.</p>
-        <p>Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como corrector DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.</p>
-        <p>Esa misma pasión por enseñar la comparto cada día en mi <strong>cuenta de TikTok e Instagram</strong> (@spanish_with_jordi), donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.</p>
-        <p>Cada curso está pensado para que llegues al examen <strong>con seguridad</strong>, no solo con gramática memorizada. Ver a mis alumnos <strong>aprobar el DELE</strong> tras semanas de trabajo conjunto es la parte del oficio que más me llena.</p>
+        <h2 data-i18n="aboutTitle">¿Quién te va a preparar?</h2>
+        <p data-i18n-html="aboutP1">Soy Jordi, <strong>corrector oficial de exámenes DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.</p>
+        <p data-i18n-html="aboutP2">Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como corrector DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.</p>
+        <p data-i18n-html="aboutP3">Esa misma pasión por enseñar la comparto cada día en mi <strong>cuenta de TikTok e Instagram</strong> (@spanish_with_jordi), donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.</p>
+        <p data-i18n-html="aboutP4">Cada curso está pensado para que llegues al examen <strong>con seguridad</strong>, no solo con gramática memorizada. Ver a mis alumnos <strong>aprobar el DELE</strong> tras semanas de trabajo conjunto es la parte del oficio que más me llena.</p>
       </div>
     </div>
   </section>
 
   <section class="contact" id="contacto">
-    <h2>¿Hablamos?</h2>
-    <p>Si no lo tienes claro, aquí abajo cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo. También puedes dejarme cualquier otra duda y no tardaré en responderte.</p>
+    <h2 data-i18n="contactTitle">¿Hablamos?</h2>
+    <p data-i18n="contactLead">Si no lo tienes claro, aquí abajo cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo. También puedes dejarme cualquier otra duda y no tardaré en responderte.</p>
     <form class="dudas-form" id="dudasForm">
       <div class="field">
-        <label for="duda">¿Alguna duda?</label>
+        <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
         <textarea id="duda" required></textarea>
       </div>
       <div class="field">
-        <label for="dudaContacto">Número de WhatsApp o email para contactar contigo</label>
+        <label for="dudaContacto" data-i18n="dudaContactoLabel">Número de WhatsApp o email para contactar contigo</label>
         <input type="text" id="dudaContacto" required>
       </div>
-      <button type="submit" class="dudas-submit">Enviar duda</button>
+      <button type="submit" class="dudas-submit" data-i18n="dudasSubmit">Enviar duda</button>
     </form>
 
     <div class="dudas-thanks" id="dudasThanks">
-      <h3>¡Gracias!</h3>
-      <p>Te contesto lo antes posible.</p>
+      <h3 data-i18n="dudasThanksTitle">¡Gracias!</h3>
+      <p data-i18n="dudasThanksText">Te contesto lo antes posible.</p>
     </div>
 
     <!-- Envío silencioso al formulario de dudas de Google -->
@@ -655,12 +691,12 @@
     <div class="contact-links">
       <a href="https://www.tiktok.com/@spanish_with_jordi" target="_blank" rel="noopener">TikTok</a>
       <a href="https://www.instagram.com/spanish_with_jordi" target="_blank" rel="noopener">Instagram</a>
-      <a href="inscripcion.html">Inscribirme</a>
+      <a href="inscripcion.html" data-i18n="linkInscribirme">Inscribirme</a>
     </div>
   </section>
 
   <footer class="legal">
-    © 2026 Spanish with Jordi · Preparación DELE online
+    <span data-i18n="footer">© 2026 Spanish with Jordi · Preparación DELE online</span>
   </footer>
 
   <script>
@@ -681,6 +717,142 @@
       dudasForm.style.display = 'none';
       document.getElementById('dudasThanks').style.display = 'block';
     });
+
+    var translations = {
+      es: {
+        pageTitle: `Español con Jordi: prepara tu DELE`,
+        heroEyebrow: `Preparación oficial DELE`,
+        avatarAlt: `Jordi, profesor de español`,
+        heroH1: `¡Aprueba el DELE a la primera!`,
+        heroLead: `Prepárate con un Examinador Oficial y descubre todos los trucos del examen. Clases siempre en directo, grabadas por si faltas, y en grupos reducidos.`,
+        heroCta: `Reserva tu plaza`,
+        cursosTitle: `Elige tu nivel`,
+        a2Tagline: `Tu nacionalidad, asegurada`,
+        a2Schedule: `Martes y jueves, de 17:30 a 19:00 (hora de Madrid)`,
+        b1Tagline: `Domina las bases sin agobios`,
+        b1Schedule: `Lunes y miércoles, de 17:15 a 18:45 (hora de Madrid)`,
+        b2Tagline: `El salto definitivo a la fluidez`,
+        b2Schedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
+        c1Tagline: `El dominio absoluto del español`,
+        c1Schedule: `Martes y jueves, de 15:30 a 17:00 (hora de Madrid)`,
+        liClases: `Clases de 1h 30min (se graban por si faltas)`,
+        liTrucos: `Trucos directos de examinador`,
+        liGrupos: `Grupos entre 3 y 5 personas`,
+        liOnline: `100% online`,
+        liInicio: `Inicio primera semana de septiembre`,
+        ctaInscribirme: `Inscribirme →`,
+        noteStrip: `¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.`,
+        examTitle: `Próximas convocatorias oficiales del DELE`,
+        octMonth: `Octubre 2026`,
+        octDate: `16 y 17 de octubre`,
+        octLi1: `<strong>Viernes 16:</strong> B1, B2, C1`,
+        octLi2: `<strong>Sábado 17:</strong> A2`,
+        octLi3: `Inscripción hasta el 2 de septiembre`,
+        novMonth: `Noviembre 2026`,
+        novDate: `13 y 14 de noviembre`,
+        novLi1: `<strong>Viernes 13:</strong> A2`,
+        novLi2: `<strong>Sábado 14:</strong> A1, B1, B2, C1, C2`,
+        novLi3: `Inscripción hasta el 30 de septiembre`,
+        examSource: `Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.`,
+        aboutTitle: `¿Quién te va a preparar?`,
+        aboutP1: `Soy Jordi, <strong>corrector oficial de exámenes DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.`,
+        aboutP2: `Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como corrector DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.`,
+        aboutP3: `Esa misma pasión por enseñar la comparto cada día en mi <strong>cuenta de TikTok e Instagram</strong> (@spanish_with_jordi), donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.`,
+        aboutP4: `Cada curso está pensado para que llegues al examen <strong>con seguridad</strong>, no solo con gramática memorizada. Ver a mis alumnos <strong>aprobar el DELE</strong> tras semanas de trabajo conjunto es la parte del oficio que más me llena.`,
+        contactTitle: `¿Hablamos?`,
+        contactLead: `Si no lo tienes claro, aquí abajo cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo. También puedes dejarme cualquier otra duda y no tardaré en responderte.`,
+        dudaLabel: `¿Alguna duda?`,
+        dudaContactoLabel: `Número de WhatsApp o email para contactar contigo`,
+        dudasSubmit: `Enviar duda`,
+        dudasThanksTitle: `¡Gracias!`,
+        dudasThanksText: `Te contesto lo antes posible.`,
+        linkInscribirme: `Inscribirme`,
+        footer: `© 2026 Spanish with Jordi · Preparación DELE online`
+      },
+      en: {
+        pageTitle: `Spanish with Jordi: Prepare for your DELE`,
+        heroEyebrow: `Official DELE Exam Prep`,
+        avatarAlt: `Jordi, Spanish teacher`,
+        heroH1: `Pass the DELE on your first try!`,
+        heroLead: `Prepare with an Official Examiner and learn all the exam's tricks. Classes are always live (recorded in case you miss one), in small groups.`,
+        heroCta: `Reserve your spot`,
+        cursosTitle: `Choose your level`,
+        a2Tagline: `Your citizenship, secured`,
+        a2Schedule: `Tuesdays and Thursdays, 17:30-19:00 (Madrid time)`,
+        b1Tagline: `Master the basics, stress-free`,
+        b1Schedule: `Mondays and Wednesdays, 17:15-18:45 (Madrid time)`,
+        b2Tagline: `The definitive leap to fluency`,
+        b2Schedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
+        c1Tagline: `Total mastery of Spanish`,
+        c1Schedule: `Tuesdays and Thursdays, 15:30-17:00 (Madrid time)`,
+        liClases: `1h30 classes (recorded in case you miss one)`,
+        liTrucos: `Direct tips from an examiner`,
+        liGrupos: `Groups of 3 to 5 people`,
+        liOnline: `100% online`,
+        liInicio: `Starts the first week of September`,
+        ctaInscribirme: `Enroll →`,
+        noteStrip: `Doesn't this schedule work for you?<br>Message me your availability and we'll find a fit.`,
+        examTitle: `Upcoming official DELE exam dates`,
+        octMonth: `October 2026`,
+        octDate: `October 16-17`,
+        octLi1: `<strong>Friday 16:</strong> B1, B2, C1`,
+        octLi2: `<strong>Saturday 17:</strong> A2`,
+        octLi3: `Registration until September 2`,
+        novMonth: `November 2026`,
+        novDate: `November 13-14`,
+        novLi1: `<strong>Friday 13:</strong> A2`,
+        novLi2: `<strong>Saturday 14:</strong> A1, B1, B2, C1, C2`,
+        novLi3: `Registration until September 30`,
+        examSource: `Dates and deadlines according to the official <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a> calendar.`,
+        aboutTitle: `Who will be preparing you?`,
+        aboutP1: `I'm Jordi, an <strong>official DELE exam corrector</strong> and a lifelong language enthusiast. I hold a <strong>Master's in Teaching Spanish as a Foreign Language</strong> from the Universidad Internacional de Valencia, and before that I studied Translation and Interlingual Mediation. I've spent years surrounded by languages: besides Spanish, I speak <strong>French, Catalan, Italian, English and Portuguese</strong>.`,
+        aboutP2: `That means I don't just know the language inside out, I also know what it feels like to prepare for an official exam, because I've been through it myself in several of those languages. I've worked at <strong>prestigious language schools in Valencia</strong>, and as a DELE corrector I know firsthand <strong>what the examining board is really looking for in each task</strong>.`,
+        aboutP3: `I share that same passion for teaching every day on my <strong>TikTok and Instagram</strong> (@spanish_with_jordi), where I help <strong>students from all over the world</strong> improve their Spanish and prepare for the DELE.`,
+        aboutP4: `Every course is designed to help you walk into the exam <strong>with confidence</strong>, not just memorized grammar. Seeing my students <strong>pass the DELE</strong> after weeks of working together is the part of the job I find most rewarding.`,
+        contactTitle: `Let's talk`,
+        contactLead: `If you're not sure, tell me your level and availability below and I'll let you know which group is the best fit. You can also leave me any other question and I'll get back to you soon.`,
+        dudaLabel: `Any questions?`,
+        dudaContactoLabel: `WhatsApp number or email to reach you`,
+        dudasSubmit: `Send`,
+        dudasThanksTitle: `Thank you!`,
+        dudasThanksText: `I'll get back to you as soon as possible.`,
+        linkInscribirme: `Enroll`,
+        footer: `© 2026 Spanish with Jordi · Online DELE exam prep`
+      }
+    };
+
+    function applyLanguage(lang) {
+      var dict = translations[lang] || translations.es;
+      document.documentElement.lang = lang;
+      document.title = dict.pageTitle;
+
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-attr-alt]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-attr-alt');
+        if (dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      localStorage.setItem('siteLang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    applyLanguage(localStorage.getItem('siteLang') || 'es');
   </script>
 
 </body>
