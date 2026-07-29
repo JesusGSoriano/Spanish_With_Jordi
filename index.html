@@ -551,7 +551,7 @@
           <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
         </ul>
         <a href="inscripcion.html?nivel=A2" class="price-box">
-          <div class="amount">129€/mes</div>
+          <div class="amount" data-i18n="a2Price">129€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
@@ -569,7 +569,7 @@
           <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
         </ul>
         <a href="inscripcion.html?nivel=B1" class="price-box">
-          <div class="amount">139€/mes</div>
+          <div class="amount" data-i18n="b1Price">139€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
@@ -587,7 +587,7 @@
           <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
         </ul>
         <a href="inscripcion.html?nivel=B2" class="price-box">
-          <div class="amount">149€/mes</div>
+          <div class="amount" data-i18n="b2Price">149€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
@@ -605,7 +605,7 @@
           <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
         </ul>
         <a href="inscripcion.html?nivel=C1" class="price-box">
-          <div class="amount">159€/mes</div>
+          <div class="amount" data-i18n="c1Price">159€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
@@ -735,6 +735,10 @@
         b2Schedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
         c1Tagline: `El dominio absoluto del español`,
         c1Schedule: `Martes y jueves, de 15:30 a 17:00 (hora de Madrid)`,
+        a2Price: `129€/mes`,
+        b1Price: `139€/mes`,
+        b2Price: `149€/mes`,
+        c1Price: `159€/mes`,
         liClases: `Clases de 1h 30min (se graban por si faltas)`,
         liTrucos: `Trucos directos de examinador`,
         liGrupos: `Grupos entre 3 y 5 personas`,
@@ -785,6 +789,10 @@
         b2Schedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
         c1Tagline: `Total mastery of Spanish`,
         c1Schedule: `Tuesdays and Thursdays, 15:30-17:00 (Madrid time)`,
+        a2Price: `129€/month`,
+        b1Price: `139€/month`,
+        b2Price: `149€/month`,
+        c1Price: `159€/month`,
         liClases: `1h30 classes (recorded in case you miss one)`,
         liTrucos: `Direct tips from an examiner`,
         liGrupos: `Groups of 3 to 5 people`,
@@ -852,7 +860,14 @@
       });
     });
 
-    applyLanguage(localStorage.getItem('siteLang') || 'es');
+    function detectDefaultLang() {
+      var saved = localStorage.getItem('siteLang');
+      if (saved) return saved;
+      var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      return browserLang.indexOf('en') === 0 ? 'en' : 'es';
+    }
+
+    applyLanguage(detectDefaultLang());
   </script>
 
 </body>

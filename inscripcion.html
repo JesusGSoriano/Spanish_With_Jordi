@@ -308,7 +308,14 @@
       });
     });
 
-    applyLanguage(localStorage.getItem('siteLang') || 'es');
+    function detectDefaultLang() {
+      var saved = localStorage.getItem('siteLang');
+      if (saved) return saved;
+      var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      return browserLang.indexOf('en') === 0 ? 'en' : 'es';
+    }
+
+    applyLanguage(detectDefaultLang());
   </script>
 
 </body>
