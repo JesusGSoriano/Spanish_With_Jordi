@@ -134,8 +134,8 @@
     background: transparent;
     color: var(--olive-dark);
     font-weight: 700;
-    font-size: 12px;
-    padding: 6px 12px;
+    font-size: 11px;
+    padding: 6px 9px;
     border-radius: 999px;
     cursor: pointer;
     font-family: inherit;
@@ -144,6 +144,7 @@
   .lang-btn.active {
     background: var(--terracotta);
     color: #fff;
+    text-decoration: underline;
   }
 </style>
 </head>
@@ -152,6 +153,8 @@
   <div class="lang-switch" id="langSwitch">
     <button type="button" class="lang-btn" data-lang="es">ES</button>
     <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="fr">FR</button>
+    <button type="button" class="lang-btn" data-lang="it">IT</button>
   </div>
 
   <div class="wrap">
@@ -278,6 +281,44 @@
         submitBtn: `Submit`,
         thanksTitle: `Thank you!`,
         thanksText: `I'll email you within 24h to confirm your spot.`
+      },
+      fr: {
+        pageTitle: `Réservez votre place avec Spanish with Jordi`,
+        backLink: `← Retour aux cours`,
+        h1: `Réservez votre place`,
+        lead: `Remplissez vos informations et je vous écris par email sous 24h pour confirmer votre place.`,
+        nombreLabel: `Comment vous appelez-vous ? <span class="required">*</span>`,
+        paisLabel: `Dans quel pays vivez-vous et quelle est votre langue maternelle ? <span class="required">*</span>`,
+        nivelLabel: `Pour quel niveau souhaitez-vous vous préparer ? (heure de Madrid) <span class="required">*</span>`,
+        selectPlaceholder: `Sélectionnez un niveau`,
+        optA2: `A2 (mardi et jeudi, de 17h30 à 19h00)`,
+        optB1: `B1 (lundi et mercredi, de 17h15 à 18h45)`,
+        optB2: `B2 (lundi et mercredi, de 19h00 à 20h30)`,
+        optC1: `C1 (mardi et jeudi, de 15h30 à 17h00)`,
+        whatsappLabel: `Numéro WhatsApp ou email pour vous contacter <span class="required">*</span>`,
+        dudaLabel: `Une question ?`,
+        submitBtn: `Envoyer`,
+        thanksTitle: `Merci !`,
+        thanksText: `Je vous écris par email sous 24h pour confirmer votre place.`
+      },
+      it: {
+        pageTitle: `Prenota il tuo posto con Spanish with Jordi`,
+        backLink: `← Torna ai corsi`,
+        h1: `Prenota il tuo posto`,
+        lead: `Compila i tuoi dati e ti scrivo via email entro 24h per confermare il tuo posto.`,
+        nombreLabel: `Come ti chiami? <span class="required">*</span>`,
+        paisLabel: `In quale paese vivi e qual è la tua lingua madre? <span class="required">*</span>`,
+        nivelLabel: `Per quale livello vuoi prepararti? (ora di Madrid) <span class="required">*</span>`,
+        selectPlaceholder: `Seleziona un livello`,
+        optA2: `A2 (martedì e giovedì, dalle 17:30 alle 19:00)`,
+        optB1: `B1 (lunedì e mercoledì, dalle 17:15 alle 18:45)`,
+        optB2: `B2 (lunedì e mercoledì, dalle 19:00 alle 20:30)`,
+        optC1: `C1 (martedì e giovedì, dalle 15:30 alle 17:00)`,
+        whatsappLabel: `Numero WhatsApp o email per contattarti <span class="required">*</span>`,
+        dudaLabel: `Hai qualche domanda?`,
+        submitBtn: `Invia`,
+        thanksTitle: `Grazie!`,
+        thanksText: `Ti scrivo via email entro 24h per confermare il tuo posto.`
       }
     };
 
@@ -312,7 +353,11 @@
       var saved = localStorage.getItem('siteLang');
       if (saved) return saved;
       var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-      return browserLang.indexOf('en') === 0 ? 'en' : 'es';
+      var supported = ['en', 'fr', 'it'];
+      for (var i = 0; i < supported.length; i++) {
+        if (browserLang.indexOf(supported[i]) === 0) return supported[i];
+      }
+      return 'es';
     }
 
     applyLanguage(detectDefaultLang());
