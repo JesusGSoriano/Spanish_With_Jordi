@@ -146,6 +146,82 @@
   }
   .level-picker .picker-links a:hover { background: var(--terracotta-dark); }
 
+  .dudas-section {
+    margin-top: 32px;
+  }
+
+  .dudas-lead {
+    color: #5A5340;
+    font-size: 14px;
+    margin: 0 0 14px;
+    text-align: center;
+  }
+
+  .dudas-form {
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 26px 24px;
+    text-align: left;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .dudas-form .field {
+    margin-bottom: 14px;
+  }
+
+  .dudas-form label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--olive-dark);
+    margin-bottom: 6px;
+  }
+
+  .dudas-form textarea,
+  .dudas-form input[type=text] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  .dudas-form textarea { resize: vertical; min-height: 70px; }
+
+  .dudas-submit {
+    width: 100%;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .dudas-submit:hover { background: var(--terracotta-dark); }
+
+  .dudas-thanks {
+    display: none;
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+  .dudas-thanks h3 {
+    color: var(--olive-dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+  .dudas-thanks p { color: #5A5340; margin: 0; }
+
   /* LANGUAGE SWITCH */
   .lang-switch {
     position: fixed;
@@ -218,7 +294,36 @@
         <a href="inscripcion.html?nivel=C1">C1</a>
       </div>
     </div>
+
+    <div class="dudas-section">
+      <p class="dudas-lead" data-i18n="dudasLead">¿Tienes alguna duda antes de inscribirte? Escríbela aquí y te respondo lo antes posible.</p>
+      <form class="dudas-form" id="dudasForm">
+        <div class="field">
+          <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
+          <textarea id="duda" required></textarea>
+        </div>
+        <div class="field">
+          <label for="dudaContacto" data-i18n="dudaContactoLabel">Número de WhatsApp o email para contactar contigo</label>
+          <input type="text" id="dudaContacto" required>
+        </div>
+        <button type="submit" class="dudas-submit" data-i18n="dudasSubmit">Enviar duda</button>
+      </form>
+
+      <div class="dudas-thanks" id="dudasThanks">
+        <h3 data-i18n="dudasThanksTitle">¡Gracias!</h3>
+        <p data-i18n="dudasThanksText">Te contesto lo antes posible.</p>
+      </div>
+    </div>
   </div>
+
+  <!-- Envío silencioso al formulario de dudas de Google -->
+  <iframe name="dudas_iframe" id="dudas_iframe" style="display:none;"></iframe>
+  <form id="dudasGform"
+        action="https://docs.google.com/forms/d/e/1FAIpQLScMv5Tm5l31CUkk5w17WnYIB-g1LlPQHKOgNLi4W872bhERLw/formResponse"
+        method="POST" target="dudas_iframe" style="display:none;">
+    <input type="text" name="entry.609687656" id="g-duda">
+    <input type="text" name="entry.174317246" id="g-contacto">
+  </form>
 
   <script>
     var courseData = {
@@ -239,6 +344,16 @@
       document.getElementById('courseCard').style.display = 'none';
       document.getElementById('levelPicker').style.display = 'block';
     }
+
+    var dudasForm = document.getElementById('dudasForm');
+    dudasForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('g-duda').value = document.getElementById('duda').value;
+      document.getElementById('g-contacto').value = document.getElementById('dudaContacto').value;
+      document.getElementById('dudasGform').submit();
+      dudasForm.style.display = 'none';
+      document.getElementById('dudasThanks').style.display = 'block';
+    });
 
     var translations = {
       es: {
@@ -267,8 +382,14 @@
         liGrupos: `Grupos entre 3 y 5 personas`,
         liOnline: `100% online`,
         liInicio: `Inicio primera semana de septiembre`,
-        payBtn: `Pagar con Stripe →`,
-        pickLevel: `Elige un nivel para continuar con el pago:`
+        payBtn: `Quiero inscribirme ahora →`,
+        pickLevel: `Elige un nivel para continuar con el pago:`,
+        dudasLead: `¿Tienes alguna duda antes de inscribirte? Escríbela aquí y te respondo lo antes posible.`,
+        dudaLabel: `¿Alguna duda?`,
+        dudaContactoLabel: `Número de WhatsApp o email para contactar contigo`,
+        dudasSubmit: `Enviar duda`,
+        dudasThanksTitle: `¡Gracias!`,
+        dudasThanksText: `Te contesto lo antes posible.`
       },
       en: {
         pageTitle: `Reserve your spot with Spanish with Jordi`,
@@ -296,8 +417,14 @@
         liGrupos: `Groups of 3 to 5 people`,
         liOnline: `100% online`,
         liInicio: `Starts the first week of September`,
-        payBtn: `Pay with Stripe →`,
-        pickLevel: `Choose a level to continue with payment:`
+        payBtn: `I want to enroll now →`,
+        pickLevel: `Choose a level to continue with payment:`,
+        dudasLead: `Have any questions before enrolling? Write them here and I'll get back to you as soon as possible.`,
+        dudaLabel: `Any questions?`,
+        dudaContactoLabel: `WhatsApp number or email to reach you`,
+        dudasSubmit: `Send`,
+        dudasThanksTitle: `Thank you!`,
+        dudasThanksText: `I'll get back to you as soon as possible.`
       },
       fr: {
         pageTitle: `Réservez votre place avec Spanish with Jordi`,
@@ -325,8 +452,14 @@
         liGrupos: `Groupes de 3 à 5 personnes`,
         liOnline: `100% en ligne`,
         liInicio: `Début la première semaine de septembre`,
-        payBtn: `Payer avec Stripe →`,
-        pickLevel: `Choisissez un niveau pour continuer le paiement :`
+        payBtn: `Je veux m'inscrire maintenant →`,
+        pickLevel: `Choisissez un niveau pour continuer le paiement :`,
+        dudasLead: `Une question avant de vous inscrire ? Écrivez-la ici, je vous répondrai dès que possible.`,
+        dudaLabel: `Une question ?`,
+        dudaContactoLabel: `Numéro WhatsApp ou email pour vous contacter`,
+        dudasSubmit: `Envoyer`,
+        dudasThanksTitle: `Merci !`,
+        dudasThanksText: `Je vous réponds dès que possible.`
       },
       it: {
         pageTitle: `Prenota il tuo posto con Spanish with Jordi`,
@@ -354,8 +487,14 @@
         liGrupos: `Gruppi da 3 a 5 persone`,
         liOnline: `100% online`,
         liInicio: `Inizio nella prima settimana di settembre`,
-        payBtn: `Paga con Stripe →`,
-        pickLevel: `Scegli un livello per procedere con il pagamento:`
+        payBtn: `Voglio iscrivermi ora →`,
+        pickLevel: `Scegli un livello per procedere con il pagamento:`,
+        dudasLead: `Hai qualche dubbio prima di iscriverti? Scrivilo qui e ti risponderò il prima possibile.`,
+        dudaLabel: `Hai qualche domanda?`,
+        dudaContactoLabel: `Numero WhatsApp o email per contattarti`,
+        dudasSubmit: `Invia`,
+        dudasThanksTitle: `Grazie!`,
+        dudasThanksText: `Ti rispondo il prima possibile.`
       }
     };
 
