@@ -53,67 +53,98 @@
     margin: 0 0 28px;
   }
 
-  form {
+  .course-card {
     background: var(--cream-dark);
     border-radius: 16px;
     padding: 28px 24px;
     border: 1px solid rgba(90, 63, 40, 0.12);
   }
 
-  label {
-    display: block;
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--olive-dark);
+  .course-card .icon {
+    font-size: 32px;
     margin-bottom: 6px;
   }
 
-  .field {
-    margin-bottom: 18px;
+  .course-card h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    font-size: 24px;
+    margin: 0 0 4px;
   }
 
-  input[type=text], input[type=tel], textarea, select {
-    width: 100%;
-    padding: 11px 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(90, 63, 40, 0.25);
-    background: #fff;
-    font-size: 15px;
-    font-family: inherit;
+  .course-card .tagline {
+    font-size: 13px;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+
+  .course-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+
+  .course-card li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 14px;
+    margin-bottom: 8px;
     color: var(--ink);
   }
 
-  textarea { resize: vertical; min-height: 70px; }
+  .course-card li::before {
+    content: "✓";
+    color: var(--olive);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
 
-  .required { color: var(--terracotta-dark); }
+  .course-card .price {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--olive-dark);
+    margin: 0 0 20px;
+  }
 
-  .submit-btn {
+  .pay-btn {
+    display: block;
+    text-align: center;
     width: 100%;
     background: var(--terracotta);
     color: #fff;
     font-weight: 700;
-    border: none;
+    text-decoration: none;
     padding: 14px 20px;
     border-radius: 8px;
     font-size: 16px;
-    cursor: pointer;
     box-shadow: 0 6px 16px rgba(217, 130, 46, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .submit-btn:hover { background: var(--terracotta-dark); }
+  .pay-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(217, 130, 46, 0.4); }
 
-  .thanks {
-    display: none;
-    text-align: center;
-    background: var(--cream-dark);
-    border-radius: 16px;
-    padding: 40px 24px;
-    border: 1px solid rgba(90, 63, 40, 0.12);
+  .level-picker { text-align: center; }
+
+  .level-picker .picker-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 18px;
   }
 
-  .thanks h2 {
-    font-family: Georgia, 'Times New Roman', serif;
-    color: var(--olive-dark);
+  .level-picker .picker-links a {
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
   }
+  .level-picker .picker-links a:hover { background: var(--terracotta-dark); }
 
   /* LANGUAGE SWITCH */
   .lang-switch {
@@ -160,165 +191,171 @@
   <div class="wrap">
     <a class="back" href="index.html" data-i18n="backLink">← Volver a los cursos</a>
     <h1 data-i18n="h1">Reserva tu plaza</h1>
-    <p class="lead" data-i18n="lead">Rellena tus datos y te escribo por email en menos de 24h para confirmar tu plaza.</p>
+    <p class="lead" data-i18n="lead">Revisa los detalles de tu curso y completa el pago de forma segura con Stripe.</p>
 
-    <form id="inscripcionForm">
-      <div class="field">
-        <label for="nombre" data-i18n-html="nombreLabel">¿Cómo te llamas? <span class="required">*</span></label>
-        <input type="text" id="nombre" required>
+    <div class="course-card" id="courseCard">
+      <div class="icon" id="courseIcon"></div>
+      <h2 id="courseLevel"></h2>
+      <div class="tagline" id="courseTagline"></div>
+      <ul>
+        <li id="courseSchedule"></li>
+        <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
+        <li data-i18n="liTrucos">Trucos directos de examinador</li>
+        <li data-i18n="liGrupos">Grupos entre 3 y 5 personas</li>
+        <li data-i18n="liOnline">100% online</li>
+        <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
+      </ul>
+      <div class="price" id="coursePrice"></div>
+      <a href="#" id="stripeBtn" class="pay-btn" data-i18n="payBtn">Pagar con Stripe →</a>
+    </div>
+
+    <div class="course-card level-picker" id="levelPicker" style="display:none">
+      <p data-i18n="pickLevel">Elige un nivel para continuar con el pago:</p>
+      <div class="picker-links">
+        <a href="inscripcion.html?nivel=A2">A2</a>
+        <a href="inscripcion.html?nivel=B1">B1</a>
+        <a href="inscripcion.html?nivel=B2">B2</a>
+        <a href="inscripcion.html?nivel=C1">C1</a>
       </div>
-
-      <div class="field">
-        <label for="pais" data-i18n-html="paisLabel">¿En qué país vives y cuál es tu lengua materna? <span class="required">*</span></label>
-        <input type="text" id="pais" required>
-      </div>
-
-      <div class="field">
-        <label for="nivel" data-i18n-html="nivelLabel">¿Para qué nivel quieres prepararte? (horario de Madrid) <span class="required">*</span></label>
-        <select id="nivel" required>
-          <option value="" data-i18n="selectPlaceholder">Selecciona un nivel</option>
-          <option value="A2 (de 17:30 a 19:00)" data-i18n="optA2">A2 (martes y jueves, de 17:30 a 19:00)</option>
-          <option value="B1 (de 17:15 a 18:45)" data-i18n="optB1">B1 (lunes y miércoles, de 17:15 a 18:45)</option>
-          <option value="B2 (de 19:00 a 20:30)" data-i18n="optB2">B2 (lunes y miércoles, de 19:00 a 20:30)</option>
-          <option value="C1 (de 15:30 a 17:00)" data-i18n="optC1">C1 (martes y jueves, de 15:30 a 17:00)</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="whatsapp" data-i18n-html="whatsappLabel">Número de WhatsApp o email para contactar contigo <span class="required">*</span></label>
-        <input type="tel" id="whatsapp" required>
-      </div>
-
-      <div class="field">
-        <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
-        <textarea id="duda"></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn" data-i18n="submitBtn">Enviar</button>
-    </form>
-
-    <div class="thanks" id="thanks">
-      <h2 data-i18n="thanksTitle">¡Gracias!</h2>
-      <p data-i18n="thanksText">Te escribo por email en menos de 24h para confirmar tu plaza.</p>
     </div>
   </div>
 
-  <!-- Envío silencioso al formulario real de Google -->
-  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-  <form id="gform"
-        action="https://docs.google.com/forms/d/e/1FAIpQLScMv5Tm5l31CUkk5w17WnYIB-g1LlPQHKOgNLi4W872bhERLw/formResponse"
-        method="POST" target="hidden_iframe" style="display:none;">
-    <input type="text" name="entry.368829682" id="g-nombre">
-    <input type="text" name="entry.1825855586" id="g-pais">
-    <input type="text" name="entry.8186469" id="g-nivel">
-    <input type="text" name="entry.174317246" id="g-whatsapp">
-    <input type="text" name="entry.609687656" id="g-duda">
-  </form>
-
   <script>
-    var params = new URLSearchParams(window.location.search);
-    var nivelParam = params.get('nivel');
-    var nivelMap = {
-      A2: "A2 (de 17:30 a 19:00)",
-      B1: "B1 (de 17:15 a 18:45)",
-      B2: "B2 (de 19:00 a 20:30)",
-      C1: "C1 (de 15:30 a 17:00)"
+    var courseData = {
+      A2: { icon: '🪪', levelKey: 'a2Level', taglineKey: 'a2Tagline', scheduleKey: 'a2Schedule', priceKey: 'a2Price', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' },
+      B1: { icon: '📚', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', stripe: 'https://buy.stripe.com/28E14p8QHcJU87U9wG3ZK01' },
+      B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
+      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' }
     };
-    if (nivelParam && nivelMap[nivelParam]) {
-      document.getElementById('nivel').value = nivelMap[nivelParam];
+
+    var params = new URLSearchParams(window.location.search);
+    var nivelParam = (params.get('nivel') || '').toUpperCase();
+    var currentCourse = courseData[nivelParam] || null;
+
+    if (currentCourse) {
+      document.getElementById('courseIcon').textContent = currentCourse.icon;
+      document.getElementById('stripeBtn').href = currentCourse.stripe;
+    } else {
+      document.getElementById('courseCard').style.display = 'none';
+      document.getElementById('levelPicker').style.display = 'block';
     }
-
-    document.getElementById('inscripcionForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      document.getElementById('g-nombre').value = document.getElementById('nombre').value;
-      document.getElementById('g-pais').value = document.getElementById('pais').value;
-      document.getElementById('g-nivel').value = document.getElementById('nivel').value;
-      document.getElementById('g-whatsapp').value = document.getElementById('whatsapp').value;
-      document.getElementById('g-duda').value = document.getElementById('duda').value;
-
-      document.getElementById('gform').submit();
-
-      document.getElementById('inscripcionForm').style.display = 'none';
-      document.getElementById('thanks').style.display = 'block';
-    });
 
     var translations = {
       es: {
         pageTitle: `Reserva tu plaza en Español con Jordi`,
         backLink: `← Volver a los cursos`,
         h1: `Reserva tu plaza`,
-        lead: `Rellena tus datos y te escribo por email en menos de 24h para confirmar tu plaza.`,
-        nombreLabel: `¿Cómo te llamas? <span class="required">*</span>`,
-        paisLabel: `¿En qué país vives y cuál es tu lengua materna? <span class="required">*</span>`,
-        nivelLabel: `¿Para qué nivel quieres prepararte? (horario de Madrid) <span class="required">*</span>`,
-        selectPlaceholder: `Selecciona un nivel`,
-        optA2: `A2 (martes y jueves, de 17:30 a 19:00)`,
-        optB1: `B1 (lunes y miércoles, de 17:15 a 18:45)`,
-        optB2: `B2 (lunes y miércoles, de 19:00 a 20:30)`,
-        optC1: `C1 (martes y jueves, de 15:30 a 17:00)`,
-        whatsappLabel: `Número de WhatsApp o email para contactar contigo <span class="required">*</span>`,
-        dudaLabel: `¿Alguna duda?`,
-        submitBtn: `Enviar`,
-        thanksTitle: `¡Gracias!`,
-        thanksText: `Te escribo por email en menos de 24h para confirmar tu plaza.`
+        lead: `Revisa los detalles de tu curso y completa el pago de forma segura con Stripe.`,
+        a2Level: `Nivel A2`,
+        b1Level: `Nivel B1`,
+        b2Level: `Nivel B2`,
+        c1Level: `Nivel C1`,
+        a2Tagline: `Tu nacionalidad, asegurada`,
+        b1Tagline: `Domina las bases sin agobios`,
+        b2Tagline: `El salto definitivo a la fluidez`,
+        c1Tagline: `El dominio absoluto del español`,
+        a2Schedule: `Martes y jueves, de 17:30 a 19:00 (hora de Madrid)`,
+        b1Schedule: `Lunes y miércoles, de 17:15 a 18:45 (hora de Madrid)`,
+        b2Schedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
+        c1Schedule: `Martes y jueves, de 15:30 a 17:00 (hora de Madrid)`,
+        a2Price: `129€/mes`,
+        b1Price: `139€/mes`,
+        b2Price: `149€/mes`,
+        c1Price: `159€/mes`,
+        liClases: `Clases de 1h 30min (se graban por si faltas)`,
+        liTrucos: `Trucos directos de examinador`,
+        liGrupos: `Grupos entre 3 y 5 personas`,
+        liOnline: `100% online`,
+        liInicio: `Inicio primera semana de septiembre`,
+        payBtn: `Pagar con Stripe →`,
+        pickLevel: `Elige un nivel para continuar con el pago:`
       },
       en: {
         pageTitle: `Reserve your spot with Spanish with Jordi`,
         backLink: `← Back to courses`,
         h1: `Reserve your spot`,
-        lead: `Fill in your details and I'll email you within 24h to confirm your spot.`,
-        nombreLabel: `What's your name? <span class="required">*</span>`,
-        paisLabel: `What country do you live in and what's your native language? <span class="required">*</span>`,
-        nivelLabel: `Which level do you want to prepare for? (Madrid time) <span class="required">*</span>`,
-        selectPlaceholder: `Select a level`,
-        optA2: `A2 (Tuesdays and Thursdays, 17:30-19:00)`,
-        optB1: `B1 (Mondays and Wednesdays, 17:15-18:45)`,
-        optB2: `B2 (Mondays and Wednesdays, 19:00-20:30)`,
-        optC1: `C1 (Tuesdays and Thursdays, 15:30-17:00)`,
-        whatsappLabel: `WhatsApp number or email to reach you <span class="required">*</span>`,
-        dudaLabel: `Any questions?`,
-        submitBtn: `Submit`,
-        thanksTitle: `Thank you!`,
-        thanksText: `I'll email you within 24h to confirm your spot.`
+        lead: `Review your course details and complete your payment securely with Stripe.`,
+        a2Level: `A2 Level`,
+        b1Level: `B1 Level`,
+        b2Level: `B2 Level`,
+        c1Level: `C1 Level`,
+        a2Tagline: `Your citizenship, secured`,
+        b1Tagline: `Master the basics, stress-free`,
+        b2Tagline: `The definitive leap to fluency`,
+        c1Tagline: `Total mastery of Spanish`,
+        a2Schedule: `Tuesdays and Thursdays, 17:30-19:00 (Madrid time)`,
+        b1Schedule: `Mondays and Wednesdays, 17:15-18:45 (Madrid time)`,
+        b2Schedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
+        c1Schedule: `Tuesdays and Thursdays, 15:30-17:00 (Madrid time)`,
+        a2Price: `129€/month`,
+        b1Price: `139€/month`,
+        b2Price: `149€/month`,
+        c1Price: `159€/month`,
+        liClases: `1h30 classes (recorded in case you miss one)`,
+        liTrucos: `Direct tips from an examiner`,
+        liGrupos: `Groups of 3 to 5 people`,
+        liOnline: `100% online`,
+        liInicio: `Starts the first week of September`,
+        payBtn: `Pay with Stripe →`,
+        pickLevel: `Choose a level to continue with payment:`
       },
       fr: {
         pageTitle: `Réservez votre place avec Spanish with Jordi`,
         backLink: `← Retour aux cours`,
         h1: `Réservez votre place`,
-        lead: `Remplissez vos informations et je vous écris par email sous 24h pour confirmer votre place.`,
-        nombreLabel: `Comment vous appelez-vous ? <span class="required">*</span>`,
-        paisLabel: `Dans quel pays vivez-vous et quelle est votre langue maternelle ? <span class="required">*</span>`,
-        nivelLabel: `Pour quel niveau souhaitez-vous vous préparer ? (heure de Madrid) <span class="required">*</span>`,
-        selectPlaceholder: `Sélectionnez un niveau`,
-        optA2: `A2 (mardi et jeudi, de 17h30 à 19h00)`,
-        optB1: `B1 (lundi et mercredi, de 17h15 à 18h45)`,
-        optB2: `B2 (lundi et mercredi, de 19h00 à 20h30)`,
-        optC1: `C1 (mardi et jeudi, de 15h30 à 17h00)`,
-        whatsappLabel: `Numéro WhatsApp ou email pour vous contacter <span class="required">*</span>`,
-        dudaLabel: `Une question ?`,
-        submitBtn: `Envoyer`,
-        thanksTitle: `Merci !`,
-        thanksText: `Je vous écris par email sous 24h pour confirmer votre place.`
+        lead: `Vérifiez les détails de votre cours et finalisez votre paiement en toute sécurité avec Stripe.`,
+        a2Level: `Niveau A2`,
+        b1Level: `Niveau B1`,
+        b2Level: `Niveau B2`,
+        c1Level: `Niveau C1`,
+        a2Tagline: `Votre nationalité, assurée`,
+        b1Tagline: `Maîtrisez les bases sans stress`,
+        b2Tagline: `Le saut décisif vers l'aisance`,
+        c1Tagline: `La maîtrise totale de l'espagnol`,
+        a2Schedule: `Mardi et jeudi, de 17h30 à 19h00 (heure de Madrid)`,
+        b1Schedule: `Lundi et mercredi, de 17h15 à 18h45 (heure de Madrid)`,
+        b2Schedule: `Lundi et mercredi, de 19h00 à 20h30 (heure de Madrid)`,
+        c1Schedule: `Mardi et jeudi, de 15h30 à 17h00 (heure de Madrid)`,
+        a2Price: `129€/mois`,
+        b1Price: `139€/mois`,
+        b2Price: `149€/mois`,
+        c1Price: `159€/mois`,
+        liClases: `Cours de 1h30 (enregistrés si vous en manquez un)`,
+        liTrucos: `Astuces directes d'un examinateur`,
+        liGrupos: `Groupes de 3 à 5 personnes`,
+        liOnline: `100% en ligne`,
+        liInicio: `Début la première semaine de septembre`,
+        payBtn: `Payer avec Stripe →`,
+        pickLevel: `Choisissez un niveau pour continuer le paiement :`
       },
       it: {
         pageTitle: `Prenota il tuo posto con Spanish with Jordi`,
         backLink: `← Torna ai corsi`,
         h1: `Prenota il tuo posto`,
-        lead: `Compila i tuoi dati e ti scrivo via email entro 24h per confermare il tuo posto.`,
-        nombreLabel: `Come ti chiami? <span class="required">*</span>`,
-        paisLabel: `In quale paese vivi e qual è la tua lingua madre? <span class="required">*</span>`,
-        nivelLabel: `Per quale livello vuoi prepararti? (ora di Madrid) <span class="required">*</span>`,
-        selectPlaceholder: `Seleziona un livello`,
-        optA2: `A2 (martedì e giovedì, dalle 17:30 alle 19:00)`,
-        optB1: `B1 (lunedì e mercoledì, dalle 17:15 alle 18:45)`,
-        optB2: `B2 (lunedì e mercoledì, dalle 19:00 alle 20:30)`,
-        optC1: `C1 (martedì e giovedì, dalle 15:30 alle 17:00)`,
-        whatsappLabel: `Numero WhatsApp o email per contattarti <span class="required">*</span>`,
-        dudaLabel: `Hai qualche domanda?`,
-        submitBtn: `Invia`,
-        thanksTitle: `Grazie!`,
-        thanksText: `Ti scrivo via email entro 24h per confermare il tuo posto.`
+        lead: `Controlla i dettagli del tuo corso e completa il pagamento in modo sicuro con Stripe.`,
+        a2Level: `Livello A2`,
+        b1Level: `Livello B1`,
+        b2Level: `Livello B2`,
+        c1Level: `Livello C1`,
+        a2Tagline: `La tua cittadinanza, assicurata`,
+        b1Tagline: `Padroneggia le basi senza stress`,
+        b2Tagline: `Il salto decisivo verso la scioltezza`,
+        c1Tagline: `Il dominio assoluto dello spagnolo`,
+        a2Schedule: `Martedì e giovedì, dalle 17:30 alle 19:00 (ora di Madrid)`,
+        b1Schedule: `Lunedì e mercoledì, dalle 17:15 alle 18:45 (ora di Madrid)`,
+        b2Schedule: `Lunedì e mercoledì, dalle 19:00 alle 20:30 (ora di Madrid)`,
+        c1Schedule: `Martedì e giovedì, dalle 15:30 alle 17:00 (ora di Madrid)`,
+        a2Price: `129€/mese`,
+        b1Price: `139€/mese`,
+        b2Price: `149€/mese`,
+        c1Price: `159€/mese`,
+        liClases: `Lezioni da 1h30 (registrate nel caso ne perdessi una)`,
+        liTrucos: `Consigli diretti da un esaminatore`,
+        liGrupos: `Gruppi da 3 a 5 persone`,
+        liOnline: `100% online`,
+        liInicio: `Inizio nella prima settimana di settembre`,
+        payBtn: `Paga con Stripe →`,
+        pickLevel: `Scegli un livello per procedere con il pagamento:`
       }
     };
 
@@ -335,6 +372,13 @@
         var key = el.getAttribute('data-i18n-html');
         if (dict[key] !== undefined) el.innerHTML = dict[key];
       });
+
+      if (currentCourse) {
+        document.getElementById('courseLevel').textContent = dict[currentCourse.levelKey];
+        document.getElementById('courseTagline').textContent = dict[currentCourse.taglineKey];
+        document.getElementById('courseSchedule').textContent = dict[currentCourse.scheduleKey];
+        document.getElementById('coursePrice').textContent = dict[currentCourse.priceKey];
+      }
 
       document.querySelectorAll('.lang-btn').forEach(function (btn) {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
