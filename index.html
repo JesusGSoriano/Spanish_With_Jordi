@@ -100,13 +100,11 @@
     display: inline-block;
     background: var(--terracotta);
     color: #fff;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 3px 10px;
-    border-radius: 999px;
-    margin-bottom: 8px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
   }
 
   .hero h1 {
@@ -297,6 +295,11 @@
     border-radius: 16px;
     padding: 22px 24px;
     border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .exam-card.highlight {
+    border: 2px solid var(--terracotta);
+    box-shadow: 0 8px 20px rgba(217, 130, 46, 0.18);
   }
 
   .exam-card .month {
@@ -669,8 +672,8 @@
         </ul>
       </div>
 
-      <div class="exam-card">
-        <span class="exam-badge" data-i18n="targetBadge">🎯 Objetivo Noviembre</span>
+      <div class="exam-card highlight">
+        <span class="exam-badge" data-i18n="novBadge">Nuestros cursos preparan para esta convocatoria</span>
         <div class="month" data-i18n="novMonth">Noviembre 2026</div>
         <div class="date" data-i18n="novDate">13 y 14 de noviembre</div>
         <ul>
@@ -796,6 +799,7 @@
         octLi1: `<strong>Viernes 16:</strong> B1, B2, C1`,
         octLi2: `<strong>Sábado 17:</strong> A2`,
         octLi3: `Inscripción hasta el 2 de septiembre`,
+        novBadge: `Nuestros cursos preparan para esta convocatoria`,
         novMonth: `Noviembre 2026`,
         novDate: `13 y 14 de noviembre`,
         novLi1: `<strong>Viernes 13:</strong> A2`,
@@ -856,6 +860,7 @@
         octLi1: `<strong>Friday 16:</strong> B1, B2, C1`,
         octLi2: `<strong>Saturday 17:</strong> A2`,
         octLi3: `Registration until September 2`,
+        novBadge: `Our courses prepare you for this exam sitting`,
         novMonth: `November 2026`,
         novDate: `November 13-14`,
         novLi1: `<strong>Friday 13:</strong> A2`,
@@ -916,6 +921,7 @@
         octLi1: `<strong>Vendredi 16 :</strong> B1, B2, C1`,
         octLi2: `<strong>Samedi 17 :</strong> A2`,
         octLi3: `Inscription jusqu'au 2 septembre`,
+        novBadge: `Nos cours préparent à cette session`,
         novMonth: `Novembre 2026`,
         novDate: `13 et 14 novembre`,
         novLi1: `<strong>Vendredi 13 :</strong> A2`,
@@ -976,6 +982,7 @@
         octLi1: `<strong>Venerdì 16:</strong> B1, B2, C1`,
         octLi2: `<strong>Sabato 17:</strong> A2`,
         octLi3: `Iscrizione entro il 2 settembre`,
+        novBadge: `I nostri corsi preparano per questa sessione`,
         novMonth: `Novembre 2026`,
         novDate: `13 e 14 novembre`,
         novLi1: `<strong>Venerdì 13:</strong> A2`,
