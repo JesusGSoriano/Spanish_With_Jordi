@@ -77,6 +77,38 @@
     margin-bottom: 14px;
   }
 
+  .target-badge {
+    display: block;
+    background: var(--olive-dark);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin: 0 auto 18px;
+    width: fit-content;
+  }
+
+  .cursos-subtitle {
+    max-width: 480px;
+    margin: 12px auto 0;
+    font-size: 14px;
+    color: #6b6252;
+  }
+
+  .exam-badge {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+
   .hero h1 {
     font-size: clamp(30px, 6vw, 44px);
     line-height: 1.15;
@@ -524,6 +556,7 @@
   <section class="hero">
     <div class="wrap">
       <span class="eyebrow" data-i18n="heroEyebrow">Preparación oficial DELE</span>
+      <span class="target-badge" data-i18n="targetBadge">🎯 Objetivo Noviembre</span>
       <div class="avatar-frame">
         <img class="avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
       </div>
@@ -537,6 +570,7 @@
     <div class="section-title">
       <h2 data-i18n="cursosTitle">Elige tu nivel</h2>
       <div class="divider"></div>
+      <p class="cursos-subtitle" data-i18n="cursosSubtitle">Estos cursos están diseñados para llegar a punto a la convocatoria de noviembre. Más adelante abriremos nuevos grupos para preparar el DELE de mayo.</p>
     </div>
 
     <div class="courses">
@@ -636,6 +670,7 @@
       </div>
 
       <div class="exam-card">
+        <span class="exam-badge" data-i18n="targetBadge">🎯 Objetivo Noviembre</span>
         <div class="month" data-i18n="novMonth">Noviembre 2026</div>
         <div class="date" data-i18n="novDate">13 y 14 de noviembre</div>
         <ul>
@@ -725,11 +760,13 @@
       es: {
         pageTitle: `Español con Jordi: prepara tu DELE`,
         heroEyebrow: `Preparación oficial DELE`,
+        targetBadge: `🎯 Objetivo Noviembre`,
         avatarAlt: `Jordi, profesor de español`,
         heroH1: `¡Aprueba el DELE a la primera!`,
         heroLead: `Prepárate con un Examinador Oficial y descubre todos los trucos del examen. Clases siempre en directo, grabadas por si faltas, y en grupos reducidos.`,
         heroCta: `Reserva tu plaza`,
         cursosTitle: `Elige tu nivel`,
+        cursosSubtitle: `Estos cursos están diseñados para llegar a punto a la convocatoria de noviembre. Más adelante abriremos nuevos grupos para preparar el DELE de mayo.`,
         a2Level: `Nivel A2`,
         b1Level: `Nivel B1`,
         b2Level: `Nivel B2`,
@@ -783,11 +820,13 @@
       en: {
         pageTitle: `Spanish with Jordi: Prepare for your DELE`,
         heroEyebrow: `Official DELE Exam Prep`,
+        targetBadge: `🎯 Target: November`,
         avatarAlt: `Jordi, Spanish teacher`,
         heroH1: `Pass the DELE on your first try!`,
         heroLead: `Prepare with an Official Examiner and learn all the exam's tricks. Classes are always live (recorded in case you miss one), in small groups.`,
         heroCta: `Reserve your spot`,
         cursosTitle: `Choose your level`,
+        cursosSubtitle: `These courses are designed to get you ready for the November exam sitting. New groups to prepare for the May DELE will open later.`,
         a2Level: `A2 Level`,
         b1Level: `B1 Level`,
         b2Level: `B2 Level`,
@@ -841,11 +880,13 @@
       fr: {
         pageTitle: `Espagnol avec Jordi : préparez votre DELE`,
         heroEyebrow: `Préparation officielle au DELE`,
+        targetBadge: `🎯 Objectif Novembre`,
         avatarAlt: `Jordi, professeur d'espagnol`,
         heroH1: `Réussissez le DELE du premier coup !`,
         heroLead: `Préparez-vous avec un Examinateur Officiel et découvrez toutes les astuces de l'examen. Cours toujours en direct (enregistrés si vous en manquez un), en petits groupes.`,
         heroCta: `Réservez votre place`,
         cursosTitle: `Choisissez votre niveau`,
+        cursosSubtitle: `Ces cours sont conçus pour vous amener à point pour la session de novembre. De nouveaux groupes pour préparer le DELE de mai ouvriront plus tard.`,
         a2Level: `Niveau A2`,
         b1Level: `Niveau B1`,
         b2Level: `Niveau B2`,
@@ -899,11 +940,13 @@
       it: {
         pageTitle: `Spagnolo con Jordi: preparati per il DELE`,
         heroEyebrow: `Preparazione ufficiale DELE`,
+        targetBadge: `🎯 Obiettivo Novembre`,
         avatarAlt: `Jordi, insegnante di spagnolo`,
         heroH1: `Supera il DELE al primo tentativo!`,
         heroLead: `Preparati con un Esaminatore Ufficiale e scopri tutti i trucchi dell'esame. Lezioni sempre dal vivo (registrate nel caso ne perdessi una), in piccoli gruppi.`,
         heroCta: `Prenota il tuo posto`,
         cursosTitle: `Scegli il tuo livello`,
+        cursosSubtitle: `Questi corsi sono pensati per arrivare pronti alla sessione di novembre. Più avanti apriremo nuovi gruppi per prepararsi al DELE di maggio.`,
         a2Level: `Livello A2`,
         b1Level: `Livello B1`,
         b2Level: `Livello B2`,
