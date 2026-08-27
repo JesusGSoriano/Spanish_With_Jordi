@@ -289,7 +289,7 @@
   <div class="wrap">
     <a class="back" href="index.html" data-i18n="backLink">← Volver a los cursos</a>
     <h1 data-i18n="h1">Reserva tu plaza</h1>
-    <span class="target-badge" data-i18n="targetBadge">🎯 Objetivo Noviembre</span>
+    <span class="target-badge" id="courseBadge"></span>
     <p class="lead" data-i18n="lead">Revisa los detalles de tu curso y completa tu inscripción de forma segura.</p>
 
     <div class="course-card" id="courseCard">
@@ -352,11 +352,11 @@
 
   <script>
     var courseData = {
-      A1: { icon: '👔', levelKey: 'a1Level', taglineKey: 'a1Tagline', scheduleKey: 'a1Schedule', priceKey: 'a1Price', clasesKey: 'a1Clases', stripe: 'https://buy.stripe.com/14AaEZc2T11cdse24e3ZK04' },
-      A2: { icon: '🪪', levelKey: 'a2Level', taglineKey: 'a2Tagline', scheduleKey: 'a2Schedule', priceKey: 'a2Price', clasesKey: 'liClases', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' },
-      B1: { icon: '📚', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', clasesKey: 'liClases', stripe: 'https://buy.stripe.com/28E14p8QHcJU87U9wG3ZK01' },
-      B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', clasesKey: 'liClases', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
-      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' }
+      A1: { icon: '👔', levelKey: 'a1Level', taglineKey: 'a1Tagline', scheduleKey: 'a1Schedule', priceKey: 'a1Price', clasesKey: 'a1Clases', badgeKey: 'a1Badge', stripe: 'https://buy.stripe.com/14AaEZc2T11cdse24e3ZK04' },
+      A2: { icon: '🪪', levelKey: 'a2Level', taglineKey: 'a2Tagline', scheduleKey: 'a2Schedule', priceKey: 'a2Price', clasesKey: 'liClases', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' },
+      B1: { icon: '📚', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', clasesKey: 'liClases', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/28E14p8QHcJU87U9wG3ZK01' },
+      B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', clasesKey: 'liClases', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
+      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' }
     };
 
     var params = new URLSearchParams(window.location.search);
@@ -375,6 +375,7 @@
       }
     } else {
       document.getElementById('courseCard').style.display = 'none';
+      document.getElementById('courseBadge').style.display = 'none';
       document.getElementById('levelPicker').style.display = 'block';
     }
 
@@ -411,6 +412,7 @@
         b2Schedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
         c1Schedule: `Martes y jueves, de 15:30 a 17:00 (hora de Madrid)`,
         a1Price: `99€/mes`,
+        a1Badge: `Español general A1`,
         a2Price: `129€/mes`,
         b1Price: `139€/mes`,
         b2Price: `149€/mes`,
@@ -453,6 +455,7 @@
         b2Schedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
         c1Schedule: `Tuesdays and Thursdays, 15:30-17:00 (Madrid time)`,
         a1Price: `99€/month`,
+        a1Badge: `General Spanish A1`,
         a2Price: `129€/month`,
         b1Price: `139€/month`,
         b2Price: `149€/month`,
@@ -495,6 +498,7 @@
         b2Schedule: `Lundi et mercredi, de 19h00 à 20h30 (heure de Madrid)`,
         c1Schedule: `Mardi et jeudi, de 15h30 à 17h00 (heure de Madrid)`,
         a1Price: `99€/mois`,
+        a1Badge: `Espagnol général A1`,
         a2Price: `129€/mois`,
         b1Price: `139€/mois`,
         b2Price: `149€/mois`,
@@ -537,6 +541,7 @@
         b2Schedule: `Lunedì e mercoledì, dalle 19:00 alle 20:30 (ora di Madrid)`,
         c1Schedule: `Martedì e giovedì, dalle 15:30 alle 17:00 (ora di Madrid)`,
         a1Price: `99€/mese`,
+        a1Badge: `Spagnolo generale A1`,
         a2Price: `129€/mese`,
         b1Price: `139€/mese`,
         b2Price: `149€/mese`,
@@ -579,6 +584,7 @@
         document.getElementById('courseSchedule').textContent = dict[currentCourse.scheduleKey];
         document.getElementById('courseClases').textContent = dict[currentCourse.clasesKey];
         document.getElementById('coursePrice').textContent = dict[currentCourse.priceKey];
+        document.getElementById('courseBadge').textContent = dict[currentCourse.badgeKey];
       }
 
       document.querySelectorAll('.lang-btn').forEach(function (btn) {
