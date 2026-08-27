@@ -299,7 +299,7 @@
       <ul>
         <li id="courseSchedule"></li>
         <li id="courseClases"></li>
-        <li data-i18n="liTrucos">Trucos directos de examinador</li>
+        <li id="courseTrucos"></li>
         <li data-i18n="liGrupos">Grupos entre 3 y 5 personas</li>
         <li data-i18n="liOnline">100% online</li>
         <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
@@ -352,11 +352,11 @@
 
   <script>
     var courseData = {
-      A1: { icon: '👔', levelKey: 'a1Level', taglineKey: 'a1Tagline', scheduleKey: 'a1Schedule', priceKey: 'a1Price', clasesKey: 'a1Clases', badgeKey: 'a1Badge', stripe: 'https://buy.stripe.com/14AaEZc2T11cdse24e3ZK04' },
-      A2: { icon: '🪪', levelKey: 'a2Level', taglineKey: 'a2Tagline', scheduleKey: 'a2Schedule', priceKey: 'a2Price', clasesKey: 'liClases', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' },
-      B1: { icon: '📚', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', clasesKey: 'liClases', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/28E14p8QHcJU87U9wG3ZK01' },
-      B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', clasesKey: 'liClases', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
-      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' }
+      A1: { icon: '👔', levelKey: 'a1Level', taglineKey: 'a1Tagline', scheduleKey: 'a1Schedule', priceKey: 'a1Price', clasesKey: 'a1Clases', trucosKey: 'a1Profesor', badgeKey: 'a1Badge', stripe: 'https://buy.stripe.com/14AaEZc2T11cdse24e3ZK04' },
+      A2: { icon: '🪪', levelKey: 'a2Level', taglineKey: 'a2Tagline', scheduleKey: 'a2Schedule', priceKey: 'a2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' },
+      B1: { icon: '📚', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/28E14p8QHcJU87U9wG3ZK01' },
+      B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
+      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' }
     };
 
     var params = new URLSearchParams(window.location.search);
@@ -418,6 +418,7 @@
         b2Price: `149€/mes`,
         c1Price: `159€/mes`,
         a1Clases: `Clases de 1h (se graban por si faltas)`,
+        a1Profesor: `Profesor nativo de España`,
         liClases: `Clases de 1h 30min (se graban por si faltas)`,
         liTrucos: `Trucos directos de examinador`,
         liGrupos: `Grupos entre 3 y 5 personas`,
@@ -461,6 +462,7 @@
         b2Price: `149€/month`,
         c1Price: `159€/month`,
         a1Clases: `1h classes (recorded in case you miss one)`,
+        a1Profesor: `Native teacher from Spain`,
         liClases: `1h30 classes (recorded in case you miss one)`,
         liTrucos: `Direct tips from an examiner`,
         liGrupos: `Groups of 3 to 5 people`,
@@ -504,6 +506,7 @@
         b2Price: `149€/mois`,
         c1Price: `159€/mois`,
         a1Clases: `Cours de 1h (enregistrés si vous en manquez un)`,
+        a1Profesor: `Professeur natif d'Espagne`,
         liClases: `Cours de 1h30 (enregistrés si vous en manquez un)`,
         liTrucos: `Astuces directes d'un examinateur`,
         liGrupos: `Groupes de 3 à 5 personnes`,
@@ -547,6 +550,7 @@
         b2Price: `149€/mese`,
         c1Price: `159€/mese`,
         a1Clases: `Lezioni da 1h (registrate nel caso ne perdessi una)`,
+        a1Profesor: `Insegnante madrelingua dalla Spagna`,
         liClases: `Lezioni da 1h30 (registrate nel caso ne perdessi una)`,
         liTrucos: `Consigli diretti da un esaminatore`,
         liGrupos: `Gruppi da 3 a 5 persone`,
@@ -583,6 +587,7 @@
         document.getElementById('courseTagline').textContent = dict[currentCourse.taglineKey];
         document.getElementById('courseSchedule').textContent = dict[currentCourse.scheduleKey];
         document.getElementById('courseClases').textContent = dict[currentCourse.clasesKey];
+        document.getElementById('courseTrucos').textContent = dict[currentCourse.trucosKey];
         document.getElementById('coursePrice').textContent = dict[currentCourse.priceKey];
         document.getElementById('courseBadge').textContent = dict[currentCourse.badgeKey];
       }
