@@ -302,7 +302,7 @@
         <li id="courseTrucos"></li>
         <li data-i18n="liGrupos">Grupos entre 3 y 5 personas</li>
         <li data-i18n="liOnline">100% online</li>
-        <li data-i18n="liInicio">Inicio primera semana de septiembre</li>
+        <li id="courseDuration"></li>
       </ul>
       <div class="price" id="coursePrice"></div>
       <a href="#" id="stripeBtn" class="pay-btn" data-i18n="payBtn">Quiero inscribirme ahora →</a>
@@ -312,9 +312,7 @@
     <div class="course-card level-picker" id="levelPicker" style="display:none">
       <p data-i18n="pickLevel">Elige un nivel para continuar con el pago:</p>
       <div class="picker-links">
-        <a href="inscripcion.html?nivel=A1">A1</a>
         <a href="inscripcion.html?nivel=A2">A2</a>
-        <a href="inscripcion.html?nivel=B1">B1</a>
         <a href="inscripcion.html?nivel=B2">B2</a>
         <a href="inscripcion.html?nivel=C1">C1</a>
       </div>
@@ -352,11 +350,9 @@
 
   <script>
     var courseData = {
-      A1: { icon: '👔', levelKey: 'a1Level', taglineKey: 'a1Tagline', scheduleKey: 'a1Schedule', priceKey: 'a1Price', clasesKey: 'a1Clases', trucosKey: 'a1Profesor', badgeKey: 'a1Badge', stripe: 'https://buy.stripe.com/14AaEZc2T11cdse24e3ZK04' },
-      A2: { icon: '🪪', levelKey: 'a2Level', taglineKey: 'a2Tagline', scheduleKey: 'a2Schedule', priceKey: 'a2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' },
-      B1: { icon: '📚', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/28E14p8QHcJU87U9wG3ZK01' },
-      B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
-      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' }
+      A2: { icon: '🪪', levelKey: 'a2Level', taglineKey: 'a2Tagline', scheduleKey: 'a2Schedule', priceKey: 'a2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'a2Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' },
+      B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'b2Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
+      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'c1Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' }
     };
 
     var params = new URLSearchParams(window.location.search);
@@ -396,34 +392,25 @@
         h1: `Reserva tu plaza`,
         targetBadge: `🎯 Objetivo: Examen de Noviembre`,
         lead: `Revisa los detalles de tu curso y completa tu inscripción de forma segura.`,
-        a1Level: `Nivel A1`,
         a2Level: `Nivel A2`,
-        b1Level: `Nivel B1`,
         b2Level: `Nivel B2`,
         c1Level: `Nivel C1`,
-        a1Tagline: `Tu primera cita con el español`,
         a2Tagline: `Tu nacionalidad, asegurada`,
-        b1Tagline: `Domina las bases sin agobios`,
         b2Tagline: `El salto definitivo a la fluidez`,
         c1Tagline: `El dominio absoluto del español`,
-        a1Schedule: `Lunes y miércoles, de 15:30 a 16:30 (hora de Madrid)`,
-        a2Schedule: `Martes y jueves, de 17:30 a 19:00 (hora de Madrid)`,
-        b1Schedule: `Lunes y miércoles, de 17:15 a 18:45 (hora de Madrid)`,
+        a2Schedule: `Martes y jueves, de 16:00 a 17:30 (hora de Madrid)`,
         b2Schedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
-        c1Schedule: `Martes y jueves, de 15:30 a 17:00 (hora de Madrid)`,
-        a1Price: `99€/mes`,
-        a1Badge: `Español general A1`,
+        c1Schedule: `Lunes y miércoles, de 17:30 a 19:00 (hora de Madrid)`,
         a2Price: `129€/mes`,
-        b1Price: `139€/mes`,
         b2Price: `149€/mes`,
         c1Price: `159€/mes`,
-        a1Clases: `Clases de 1h (se graban por si faltas)`,
-        a1Profesor: `Profesor nativo de España`,
         liClases: `Clases de 1h 30min (se graban por si faltas)`,
         liTrucos: `Trucos directos de examinador`,
         liGrupos: `Grupos entre 3 y 5 personas`,
         liOnline: `100% online`,
-        liInicio: `Inicio primera semana de septiembre`,
+        a2Duration: `Del 22 de septiembre al 12 de noviembre (2 meses)`,
+        b2Duration: `Del 21 de septiembre al 11 de noviembre (2 meses)`,
+        c1Duration: `Del 21 de septiembre al 11 de noviembre (2 meses)`,
         payBtn: `Quiero inscribirme ahora →`,
         noStripeNote: `Este nivel se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.`,
         pickLevel: `Elige un nivel para continuar con el pago:`,
@@ -440,34 +427,25 @@
         h1: `Reserve your spot`,
         targetBadge: `🎯 Target: November Exam`,
         lead: `Review your course details and complete your enrollment securely.`,
-        a1Level: `A1 Level`,
         a2Level: `A2 Level`,
-        b1Level: `B1 Level`,
         b2Level: `B2 Level`,
         c1Level: `C1 Level`,
-        a1Tagline: `Your first date with Spanish`,
         a2Tagline: `Your citizenship, secured`,
-        b1Tagline: `Master the basics, stress-free`,
         b2Tagline: `The definitive leap to fluency`,
         c1Tagline: `Total mastery of Spanish`,
-        a1Schedule: `Mondays and Wednesdays, 15:30-16:30 (Madrid time)`,
-        a2Schedule: `Tuesdays and Thursdays, 17:30-19:00 (Madrid time)`,
-        b1Schedule: `Mondays and Wednesdays, 17:15-18:45 (Madrid time)`,
+        a2Schedule: `Tuesdays and Thursdays, 16:00-17:30 (Madrid time)`,
         b2Schedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
-        c1Schedule: `Tuesdays and Thursdays, 15:30-17:00 (Madrid time)`,
-        a1Price: `99€/month`,
-        a1Badge: `General Spanish A1`,
+        c1Schedule: `Mondays and Wednesdays, 17:30-19:00 (Madrid time)`,
         a2Price: `129€/month`,
-        b1Price: `139€/month`,
         b2Price: `149€/month`,
         c1Price: `159€/month`,
-        a1Clases: `1h classes (recorded in case you miss one)`,
-        a1Profesor: `Native teacher from Spain`,
         liClases: `1h30 classes (recorded in case you miss one)`,
         liTrucos: `Direct tips from an examiner`,
         liGrupos: `Groups of 3 to 5 people`,
         liOnline: `100% online`,
-        liInicio: `Starts the first week of September`,
+        a2Duration: `September 22 to November 12 (2 months)`,
+        b2Duration: `September 21 to November 11 (2 months)`,
+        c1Duration: `September 21 to November 11 (2 months)`,
         payBtn: `I want to enroll now →`,
         noStripeNote: `This level is confirmed by WhatsApp or email. Message me below to reserve your spot.`,
         pickLevel: `Choose a level to continue with payment:`,
@@ -484,34 +462,25 @@
         h1: `Réservez votre place`,
         targetBadge: `🎯 Objectif : Examen de Novembre`,
         lead: `Vérifiez les détails de votre cours et finalisez votre inscription en toute sécurité.`,
-        a1Level: `Niveau A1`,
         a2Level: `Niveau A2`,
-        b1Level: `Niveau B1`,
         b2Level: `Niveau B2`,
         c1Level: `Niveau C1`,
-        a1Tagline: `Votre premier rendez-vous avec l'espagnol`,
         a2Tagline: `Votre nationalité, assurée`,
-        b1Tagline: `Maîtrisez les bases sans stress`,
         b2Tagline: `Le saut décisif vers l'aisance`,
         c1Tagline: `La maîtrise totale de l'espagnol`,
-        a1Schedule: `Lundi et mercredi, de 15h30 à 16h30 (heure de Madrid)`,
-        a2Schedule: `Mardi et jeudi, de 17h30 à 19h00 (heure de Madrid)`,
-        b1Schedule: `Lundi et mercredi, de 17h15 à 18h45 (heure de Madrid)`,
+        a2Schedule: `Mardi et jeudi, de 16h00 à 17h30 (heure de Madrid)`,
         b2Schedule: `Lundi et mercredi, de 19h00 à 20h30 (heure de Madrid)`,
-        c1Schedule: `Mardi et jeudi, de 15h30 à 17h00 (heure de Madrid)`,
-        a1Price: `99€/mois`,
-        a1Badge: `Espagnol général A1`,
+        c1Schedule: `Lundi et mercredi, de 17h30 à 19h00 (heure de Madrid)`,
         a2Price: `129€/mois`,
-        b1Price: `139€/mois`,
         b2Price: `149€/mois`,
         c1Price: `159€/mois`,
-        a1Clases: `Cours de 1h (enregistrés si vous en manquez un)`,
-        a1Profesor: `Professeur natif d'Espagne`,
         liClases: `Cours de 1h30 (enregistrés si vous en manquez un)`,
         liTrucos: `Astuces directes d'un examinateur`,
         liGrupos: `Groupes de 3 à 5 personnes`,
         liOnline: `100% en ligne`,
-        liInicio: `Début la première semaine de septembre`,
+        a2Duration: `Du 22 septembre au 12 novembre (2 mois)`,
+        b2Duration: `Du 21 septembre au 11 novembre (2 mois)`,
+        c1Duration: `Du 21 septembre au 11 novembre (2 mois)`,
         payBtn: `Je veux m'inscrire maintenant →`,
         noStripeNote: `Ce niveau se confirme par WhatsApp ou email. Écrivez-moi ci-dessous pour réserver votre place.`,
         pickLevel: `Choisissez un niveau pour continuer le paiement :`,
@@ -528,34 +497,25 @@
         h1: `Prenota il tuo posto`,
         targetBadge: `🎯 Obiettivo: Esame di Novembre`,
         lead: `Controlla i dettagli del tuo corso e completa la tua iscrizione in modo sicuro.`,
-        a1Level: `Livello A1`,
         a2Level: `Livello A2`,
-        b1Level: `Livello B1`,
         b2Level: `Livello B2`,
         c1Level: `Livello C1`,
-        a1Tagline: `Il tuo primo appuntamento con lo spagnolo`,
         a2Tagline: `La tua cittadinanza, assicurata`,
-        b1Tagline: `Padroneggia le basi senza stress`,
         b2Tagline: `Il salto decisivo verso la scioltezza`,
         c1Tagline: `Il dominio assoluto dello spagnolo`,
-        a1Schedule: `Lunedì e mercoledì, dalle 15:30 alle 16:30 (ora di Madrid)`,
-        a2Schedule: `Martedì e giovedì, dalle 17:30 alle 19:00 (ora di Madrid)`,
-        b1Schedule: `Lunedì e mercoledì, dalle 17:15 alle 18:45 (ora di Madrid)`,
+        a2Schedule: `Martedì e giovedì, dalle 16:00 alle 17:30 (ora di Madrid)`,
         b2Schedule: `Lunedì e mercoledì, dalle 19:00 alle 20:30 (ora di Madrid)`,
-        c1Schedule: `Martedì e giovedì, dalle 15:30 alle 17:00 (ora di Madrid)`,
-        a1Price: `99€/mese`,
-        a1Badge: `Spagnolo generale A1`,
+        c1Schedule: `Lunedì e mercoledì, dalle 17:30 alle 19:00 (ora di Madrid)`,
         a2Price: `129€/mese`,
-        b1Price: `139€/mese`,
         b2Price: `149€/mese`,
         c1Price: `159€/mese`,
-        a1Clases: `Lezioni da 1h (registrate nel caso ne perdessi una)`,
-        a1Profesor: `Insegnante madrelingua dalla Spagna`,
         liClases: `Lezioni da 1h30 (registrate nel caso ne perdessi una)`,
         liTrucos: `Consigli diretti da un esaminatore`,
         liGrupos: `Gruppi da 3 a 5 persone`,
         liOnline: `100% online`,
-        liInicio: `Inizio nella prima settimana di settembre`,
+        a2Duration: `Dal 22 settembre al 12 novembre (2 mesi)`,
+        b2Duration: `Dal 21 settembre all'11 novembre (2 mesi)`,
+        c1Duration: `Dal 21 settembre all'11 novembre (2 mesi)`,
         payBtn: `Voglio iscrivermi ora →`,
         noStripeNote: `Questo livello si conferma via WhatsApp o email. Scrivimi qui sotto per prenotare il tuo posto.`,
         pickLevel: `Scegli un livello per procedere con il pagamento:`,
@@ -588,6 +548,7 @@
         document.getElementById('courseSchedule').textContent = dict[currentCourse.scheduleKey];
         document.getElementById('courseClases').textContent = dict[currentCourse.clasesKey];
         document.getElementById('courseTrucos').textContent = dict[currentCourse.trucosKey];
+        document.getElementById('courseDuration').textContent = dict[currentCourse.durationKey];
         document.getElementById('coursePrice').textContent = dict[currentCourse.priceKey];
         document.getElementById('courseBadge').textContent = dict[currentCourse.badgeKey];
       }
