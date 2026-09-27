@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlas de sobremesa: español conversacional con Jordi</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --cream: #F7EFDC;
+    --cream-dark: #EFE1BE;
+    --olive: #5C6B3B;
+    --olive-dark: #40492A;
+    --terracotta: #D9822E;
+    --terracotta-dark: #B5691F;
+    --ink: #3A3122;
+  }
+
+  * { box-sizing: border-box; }
+
+  /* SCROLL PROGRESS */
+  .scroll-track {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(90, 63, 40, 0.12);
+    z-index: 9999;
+  }
+  .scroll-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #AA151B 0 25%, #F1BF00 25% 75%, #AA151B 75% 100%);
+    background-size: 100vw 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 64px 24px 48px;
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 6vw, 44px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+  }
+
+  .avatar-frame {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--olive-dark);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.25);
+    margin: 0 auto 22px;
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.15);
+    transform-origin: 50% 32%;
+  }
+
+  .hero p.lead {
+    font-size: 17px;
+    max-width: 480px;
+    margin: 0 auto;
+    color: #5A5340;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 6px 16px rgba(217, 130, 46, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(217, 130, 46, 0.4); }
+
+  /* SECTION LABEL */
+  .section-title {
+    text-align: center;
+    padding: 8px 0 6px;
+  }
+  .section-title h2 {
+    font-size: 26px;
+  }
+  .section-title .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--terracotta);
+    margin: 14px auto 0;
+    border-radius: 2px;
+  }
+
+  /* COURSE CARDS */
+  .courses {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 36px 0 20px;
+  }
+
+  @media (min-width: 640px) {
+    .courses { grid-template-columns: 1fr 1fr; }
+  }
+
+  .card {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 26px 24px;
+    position: relative;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .card .icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .card h3 {
+    font-size: 21px;
+    margin-bottom: 4px;
+  }
+
+  .card .tagline {
+    font-size: 13px;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+  }
+
+  .card li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .card li::before {
+    content: "✓";
+    color: var(--olive);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-box {
+    display: block;
+    background: var(--terracotta);
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  a.price-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(217, 130, 46, 0.35);
+  }
+
+  .price-box .amount {
+    font-size: 22px;
+  }
+
+  .price-box .cta-label {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.95;
+    margin-top: 4px;
+  }
+
+  /* AVAILABILITY NOTE */
+  .note-strip {
+    text-align: center;
+    font-style: italic;
+    color: #6b6252;
+    font-size: 14px;
+    padding: 6px 24px 12px;
+  }
+
+  /* SOBRE JORDI */
+  .about {
+    background: var(--cream-dark);
+    padding: 56px 24px;
+    margin-top: 20px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    .about-grid {
+      grid-template-columns: 160px 1fr;
+      text-align: left;
+    }
+  }
+
+  .about-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--cream);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.2);
+    margin: 0 auto;
+    display: block;
+  }
+
+  .about h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .about p {
+    font-size: 15px;
+    color: #5A5340;
+    margin: 0 0 14px;
+  }
+
+  .about p:last-child { margin-bottom: 0; }
+
+  .about p strong {
+    color: var(--olive-dark);
+  }
+
+  /* CONTACT / FOOTER */
+  .contact {
+    background: var(--olive-dark);
+    color: var(--cream);
+    padding: 48px 24px 40px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .contact h2 {
+    color: var(--cream);
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .contact p {
+    color: #D9D6C4;
+    font-size: 15px;
+    max-width: 420px;
+    margin: 0 auto 24px;
+  }
+
+  .dudas-form {
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 26px 24px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .dudas-form .field {
+    margin-bottom: 14px;
+  }
+
+  .dudas-form label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--olive-dark);
+    margin-bottom: 6px;
+  }
+
+  .dudas-form textarea,
+  .dudas-form input[type=text] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  .dudas-form textarea { resize: vertical; min-height: 70px; }
+
+  .dudas-submit {
+    width: 100%;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .dudas-submit:hover { background: var(--terracotta-dark); }
+
+  .dudas-thanks {
+    display: none;
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 32px 24px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .dudas-thanks h3 {
+    color: var(--olive-dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+  .dudas-thanks p { color: #5A5340; margin: 0; }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .contact-links a {
+    background: transparent;
+    border: 1px solid rgba(247, 239, 220, 0.4);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  footer.legal {
+    text-align: center;
+    font-size: 12px;
+    color: #A99E86;
+    padding: 18px 24px 30px;
+    background: var(--olive-dark);
+  }
+
+  /* LANGUAGE SWITCH */
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 10000;
+    display: flex;
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.2);
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 4px 10px rgba(90, 63, 40, 0.15);
+  }
+
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .lang-btn.active {
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <div class="scroll-track"><div class="scroll-fill" id="scrollFill"></div></div>
+
+  <div class="lang-switch" id="langSwitch">
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="fr">FR</button>
+    <button type="button" class="lang-btn" data-lang="it">IT</button>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <a href="index.html" style="display:inline-block; margin-bottom:14px; font-size:13px; font-weight:700; color:var(--olive-dark); text-decoration:none;" data-i18n="backLink">← Volver al inicio</a><br>
+      <span class="eyebrow" data-i18n="heroEyebrow">Español conversacional</span>
+      <div class="avatar-frame">
+        <img class="avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
+      </div>
+      <h1 data-i18n="heroH1">Charlas de sobremesa</h1>
+      <p class="lead" data-i18n="heroLead">Practica español de forma natural, gana fluidez y pierde el miedo a hablar, en un grupo reducido y cercano.</p>
+      <a href="#grupos" class="cta-btn" data-i18n="heroCta">Ver horarios</a>
+    </div>
+  </section>
+
+  <div class="wrap" id="grupos">
+    <div class="section-title">
+      <h2 data-i18n="gruposTitle">Elige tu grupo</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="courses">
+
+      <div class="card">
+        <div class="icon">🗣️</div>
+        <h3 data-i18n="b1Level">Grupo B1</h3>
+        <div class="tagline" data-i18n="b1Tagline">Suelta la lengua sin perder el hilo</div>
+        <ul>
+          <li data-i18n="b1Schedule">Lunes, 19:00 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1h</li>
+          <li data-i18n="liGrupos">Grupos de 2 a 5 personas</li>
+          <li data-i18n="liOnline">100% online</li>
+          <li data-i18n="liGraba">Se graban por si faltas</li>
+        </ul>
+        <a href="conversacion-inscripcion.html?nivel=B1" class="price-box">
+          <div class="amount" data-i18n="b1Price">119€/mes</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3 data-i18n="b2c1Level">Grupo B2/C1</h3>
+        <div class="tagline" data-i18n="b2c1Tagline">Conversación de nivel avanzado</div>
+        <ul>
+          <li data-i18n="b2c1Schedule">Miércoles, 19:00 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1h</li>
+          <li data-i18n="liGrupos">Grupos de 2 a 5 personas</li>
+          <li data-i18n="liOnline">100% online</li>
+          <li data-i18n="liGraba">Se graban por si faltas</li>
+        </ul>
+        <a href="conversacion-inscripcion.html?nivel=B2C1" class="price-box">
+          <div class="amount" data-i18n="b2c1Price">119€/mes</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
+        </a>
+      </div>
+
+    </div>
+
+    <p class="note-strip" data-i18n="noteStrip">¿Este horario no te viene bien? Escríbeme tu disponibilidad y vemos opciones.</p>
+  </div>
+
+  <section class="about">
+    <div class="wrap about-grid">
+      <img class="about-avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
+      <div>
+        <h2 data-i18n="aboutTitle">¿Quién se sienta contigo a la mesa?</h2>
+        <p data-i18n-html="aboutP1">Soy Jordi, <strong>profe de español para extranjeros</strong> y <strong>examinador oficial del DELE</strong>. Soy de Cuenca, en pleno centro de España, así que vas a practicar con un <strong>acento claro y fácil de entender</strong>. Tengo el Máster en Enseñanza de Español como Lengua Extranjera por la Universidad Internacional de Valencia y antes estudié Traducción y Mediación Interlingüística.</p>
+        <p data-i18n-html="aboutP2">Llevo <strong>3 años dando clase</strong> online y presencial, en academias de prestigio de Valencia y con alumnos de todo tipo. Además del español, hablo a nivel nativo <strong>catalán</strong>, con fluidez <strong>inglés, francés e italiano</strong>, y me defiendo en <strong>portugués</strong>, así que sé perfectamente lo que es quedarse en blanco a mitad de frase o no atreverse a hablar por miedo a equivocarse. Justo eso es lo que quiero que pierdas en este curso.</p>
+        <p data-i18n-html="aboutP3">En mis clases <strong>nadie se ríe de nadie</strong>. Me gusta crear un espacio seguro y cercano, donde equivocarse forma parte del juego y donde cada alumno se siente escuchado. Las sesiones son amenas, con temas que dan de qué hablar y con correcciones que te ayudan sin cortarte el rollo.</p>
+        <p data-i18n-html="aboutP4">Todo esto lo comparto también con <strong>más de 30.000 personas</strong> en mi TikTok e Instagram (@spanish_with_jordi), donde cada día ayudo a estudiantes de todo el mundo a hablar un español más natural. Y lo que más me gusta de mi trabajo es ver cómo alguien que al principio apenas abría la boca acaba <strong>charlando con soltura y sin miedo</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <h2 data-i18n="contactTitle">¿Hablamos?</h2>
+    <p data-i18n="contactLead">Si tienes dudas sobre qué grupo encaja mejor contigo, cuéntamelas aquí abajo y te respondo lo antes posible.</p>
+    <form class="dudas-form" id="dudasForm">
+      <div class="field">
+        <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
+        <textarea id="duda" required></textarea>
+      </div>
+      <div class="field">
+        <label for="dudaContacto" data-i18n="dudaContactoLabel">Número de WhatsApp o email para contactar contigo</label>
+        <input type="text" id="dudaContacto" required>
+      </div>
+      <button type="submit" class="dudas-submit" data-i18n="dudasSubmit">Enviar duda</button>
+    </form>
+
+    <div class="dudas-thanks" id="dudasThanks">
+      <h3 data-i18n="dudasThanksTitle">¡Gracias!</h3>
+      <p data-i18n="dudasThanksText">Te contesto lo antes posible.</p>
+    </div>
+
+    <!-- Envío silencioso al formulario de dudas de Google -->
+    <iframe name="dudas_iframe" id="dudas_iframe" style="display:none;"></iframe>
+    <form id="dudasGform"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScMv5Tm5l31CUkk5w17WnYIB-g1LlPQHKOgNLi4W872bhERLw/formResponse"
+          method="POST" target="dudas_iframe" style="display:none;">
+      <input type="text" name="entry.609687656" id="g-duda">
+      <input type="text" name="entry.174317246" id="g-contacto">
+    </form>
+
+    <div class="contact-links">
+      <a href="https://www.tiktok.com/@spanish_with_jordi" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/spanish_with_jordi" target="_blank" rel="noopener">Instagram</a>
+      <a href="index.html" data-i18n="linkVolver">Volver al inicio</a>
+    </div>
+  </section>
+
+  <footer class="legal">
+    <span data-i18n="footer">© 2026 Spanish with Jordi · Español conversacional</span>
+  </footer>
+
+  <script>
+    var scrollFill = document.getElementById('scrollFill');
+    window.addEventListener('scroll', function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+      scrollFill.style.width = pct + '%';
+    });
+
+    var dudasForm = document.getElementById('dudasForm');
+    dudasForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('g-duda').value = document.getElementById('duda').value;
+      document.getElementById('g-contacto').value = document.getElementById('dudaContacto').value;
+      document.getElementById('dudasGform').submit();
+      dudasForm.style.display = 'none';
+      document.getElementById('dudasThanks').style.display = 'block';
+    });
+
+    var translations = {
+      es: {
+        pageTitle: `Charlas de sobremesa: español conversacional con Jordi`,
+        backLink: `← Volver al inicio`,
+        avatarAlt: `Jordi, profesor de español`,
+        heroEyebrow: `Español conversacional`,
+        heroH1: `Charlas de sobremesa`,
+        heroLead: `Practica español de forma natural, gana fluidez y pierde el miedo a hablar, en un grupo reducido y cercano.`,
+        heroCta: `Ver horarios`,
+        gruposTitle: `Elige tu grupo`,
+        b1Level: `Grupo B1`,
+        b1Tagline: `Suelta la lengua sin perder el hilo`,
+        b1Schedule: `Lunes, 19:00 (hora de Madrid)`,
+        b1Price: `119€/mes`,
+        b2c1Level: `Grupo B2/C1`,
+        b2c1Tagline: `Conversación de nivel avanzado`,
+        b2c1Schedule: `Miércoles, 19:00 (hora de Madrid)`,
+        b2c1Price: `119€/mes`,
+        liClases: `Clases de 1h`,
+        liGrupos: `Grupos de 2 a 5 personas`,
+        liOnline: `100% online`,
+        liGraba: `Se graban por si faltas`,
+        ctaInscribirme: `Inscribirme →`,
+        noteStrip: `¿Este horario no te viene bien? Escríbeme tu disponibilidad y vemos opciones.`,
+        aboutTitle: `¿Quién se sienta contigo a la mesa?`,
+        aboutP1: `Soy Jordi, <strong>profe de español para extranjeros</strong> y <strong>examinador oficial del DELE</strong>. Soy de Cuenca, en pleno centro de España, así que vas a practicar con un <strong>acento claro y fácil de entender</strong>. Tengo el Máster en Enseñanza de Español como Lengua Extranjera por la Universidad Internacional de Valencia y antes estudié Traducción y Mediación Interlingüística.`,
+        aboutP2: `Llevo <strong>3 años dando clase</strong> online y presencial, en academias de prestigio de Valencia y con alumnos de todo tipo. Además del español, hablo a nivel nativo <strong>catalán</strong>, con fluidez <strong>inglés, francés e italiano</strong>, y me defiendo en <strong>portugués</strong>, así que sé perfectamente lo que es quedarse en blanco a mitad de frase o no atreverse a hablar por miedo a equivocarse. Justo eso es lo que quiero que pierdas en este curso.`,
+        aboutP3: `En mis clases <strong>nadie se ríe de nadie</strong>. Me gusta crear un espacio seguro y cercano, donde equivocarse forma parte del juego y donde cada alumno se siente escuchado. Las sesiones son amenas, con temas que dan de qué hablar y con correcciones que te ayudan sin cortarte el rollo.`,
+        aboutP4: `Todo esto lo comparto también con <strong>más de 30.000 personas</strong> en mi TikTok e Instagram (@spanish_with_jordi), donde cada día ayudo a estudiantes de todo el mundo a hablar un español más natural. Y lo que más me gusta de mi trabajo es ver cómo alguien que al principio apenas abría la boca acaba <strong>charlando con soltura y sin miedo</strong>.`,
+        contactTitle: `¿Hablamos?`,
+        contactLead: `Si tienes dudas sobre qué grupo encaja mejor contigo, cuéntamelas aquí abajo y te respondo lo antes posible.`,
+        dudaLabel: `¿Alguna duda?`,
+        dudaContactoLabel: `Número de WhatsApp o email para contactar contigo`,
+        dudasSubmit: `Enviar duda`,
+        dudasThanksTitle: `¡Gracias!`,
+        dudasThanksText: `Te contesto lo antes posible.`,
+        linkVolver: `Volver al inicio`,
+        footer: `© 2026 Spanish with Jordi · Español conversacional`
+      },
+      en: {
+        pageTitle: `Table Talk: conversational Spanish with Jordi`,
+        backLink: `← Back home`,
+        avatarAlt: `Jordi, Spanish teacher`,
+        heroEyebrow: `Conversational Spanish`,
+        heroH1: `Table Talk`,
+        heroLead: `Practice natural Spanish, build fluency and lose the fear of speaking, in a small, close-knit group.`,
+        heroCta: `See schedules`,
+        gruposTitle: `Choose your group`,
+        b1Level: `B1 Group`,
+        b1Tagline: `Loosen your tongue without losing the thread`,
+        b1Schedule: `Mondays, 19:00 (Madrid time)`,
+        b1Price: `€119/month`,
+        b2c1Level: `B2/C1 Group`,
+        b2c1Tagline: `Advanced-level conversation`,
+        b2c1Schedule: `Wednesdays, 19:00 (Madrid time)`,
+        b2c1Price: `€119/month`,
+        liClases: `1h classes`,
+        liGrupos: `Groups of 2 to 5 people`,
+        liOnline: `100% online`,
+        liGraba: `Recorded in case you miss one`,
+        ctaInscribirme: `Enroll →`,
+        noteStrip: `Doesn't this schedule work for you? Message me your availability and we'll find a fit.`,
+        aboutTitle: `Who's sitting at the table with you?`,
+        aboutP1: `I'm Jordi, a <strong>Spanish teacher for foreigners</strong> and an <strong>official DELE examiner</strong>. I'm from Cuenca, right in the middle of Spain, so you'll practice with a <strong>clear, easy-to-understand accent</strong>. I hold a Master's in Teaching Spanish as a Foreign Language from the Universidad Internacional de Valencia, and before that I studied Translation and Interlingual Mediation.`,
+        aboutP2: `I've been <strong>teaching for 3 years</strong>, both online and in person, at prestigious language schools in Valencia and with all kinds of students. Besides Spanish, I speak <strong>Catalan</strong> natively, <strong>English, French and Italian</strong> fluently, and I get by in <strong>Portuguese</strong>, so I know exactly what it feels like to blank out mid-sentence or not dare to speak for fear of making a mistake. That's exactly what I want you to leave behind in this course.`,
+        aboutP3: `In my classes <strong>nobody laughs at anybody</strong>. I like to create a safe, close space where making mistakes is part of the game and every student feels heard. Sessions are lively, with topics worth talking about and corrections that help you without killing the conversation.`,
+        aboutP4: `I share all of this with <strong>over 30,000 people</strong> on my TikTok and Instagram (@spanish_with_jordi), where every day I help students from all over the world speak more natural Spanish. And what I enjoy most about my job is watching someone who barely opened their mouth at first end up <strong>chatting away with ease and no fear</strong>.`,
+        contactTitle: `Let's talk`,
+        contactLead: `If you're not sure which group fits you best, tell me below and I'll get back to you as soon as possible.`,
+        dudaLabel: `Any questions?`,
+        dudaContactoLabel: `WhatsApp number or email to reach you`,
+        dudasSubmit: `Send`,
+        dudasThanksTitle: `Thank you!`,
+        dudasThanksText: `I'll get back to you as soon as possible.`,
+        linkVolver: `Back home`,
+        footer: `© 2026 Spanish with Jordi · Conversational Spanish`
+      },
+      fr: {
+        pageTitle: `Discussions de sobremesa : espagnol conversationnel avec Jordi`,
+        backLink: `← Retour à l'accueil`,
+        avatarAlt: `Jordi, professeur d'espagnol`,
+        heroEyebrow: `Espagnol conversationnel`,
+        heroH1: `Discussions de sobremesa`,
+        heroLead: `Pratiquez un espagnol naturel, gagnez en aisance et perdez la peur de parler, dans un petit groupe convivial.`,
+        heroCta: `Voir les horaires`,
+        gruposTitle: `Choisissez votre groupe`,
+        b1Level: `Groupe B1`,
+        b1Tagline: `Déliez votre langue sans perdre le fil`,
+        b1Schedule: `Lundi, 19h00 (heure de Madrid)`,
+        b1Price: `119€/mois`,
+        b2c1Level: `Groupe B2/C1`,
+        b2c1Tagline: `Conversation de niveau avancé`,
+        b2c1Schedule: `Mercredi, 19h00 (heure de Madrid)`,
+        b2c1Price: `119€/mois`,
+        liClases: `Cours de 1h`,
+        liGrupos: `Groupes de 2 à 5 personnes`,
+        liOnline: `100% en ligne`,
+        liGraba: `Enregistrés si vous en manquez un`,
+        ctaInscribirme: `M'inscrire →`,
+        noteStrip: `Cet horaire ne vous convient pas ? Écrivez-moi vos disponibilités et on trouvera une solution.`,
+        aboutTitle: `Qui s'assoit à table avec vous ?`,
+        aboutP1: `Je suis Jordi, <strong>professeur d'espagnol pour étrangers</strong> et <strong>examinateur officiel du DELE</strong>. Je viens de Cuenca, en plein centre de l'Espagne, vous allez donc pratiquer avec un <strong>accent clair et facile à comprendre</strong>. Je suis titulaire d'un Master en Enseignement de l'espagnol comme langue étrangère de l'Universidad Internacional de Valencia, et avant cela j'ai étudié la Traduction et la Médiation Interlinguistique.`,
+        aboutP2: `Cela fait <strong>3 ans que j'enseigne</strong>, en ligne et en présentiel, dans des écoles de langues prestigieuses de Valence et avec toutes sortes d'élèves. En plus de l'espagnol, je parle <strong>catalan</strong> couramment (langue maternelle), <strong>anglais, français et italien</strong> avec aisance, et je me débrouille en <strong>portugais</strong>, donc je sais parfaitement ce que c'est que de rester bloqué en pleine phrase ou de ne pas oser parler par peur de se tromper. C'est exactement ce que je veux que vous perdiez dans ce cours.`,
+        aboutP3: `Dans mes cours, <strong>personne ne se moque de personne</strong>. J'aime créer un espace sûr et chaleureux, où se tromper fait partie du jeu et où chaque élève se sent écouté. Les séances sont vivantes, avec des sujets qui donnent envie de parler et des corrections qui vous aident sans couper la conversation.`,
+        aboutP4: `Je partage tout cela avec <strong>plus de 30 000 personnes</strong> sur mon TikTok et Instagram (@spanish_with_jordi), où j'aide chaque jour des étudiants du monde entier à parler un espagnol plus naturel. Et ce que je préfère dans mon travail, c'est de voir quelqu'un qui osait à peine ouvrir la bouche au début finir par <strong>discuter avec aisance et sans peur</strong>.`,
+        contactTitle: `On en parle ?`,
+        contactLead: `Si vous ne savez pas quel groupe vous correspond le mieux, écrivez-le moi ci-dessous et je vous répondrai dès que possible.`,
+        dudaLabel: `Une question ?`,
+        dudaContactoLabel: `Numéro WhatsApp ou email pour vous contacter`,
+        dudasSubmit: `Envoyer`,
+        dudasThanksTitle: `Merci !`,
+        dudasThanksText: `Je vous réponds dès que possible.`,
+        linkVolver: `Retour à l'accueil`,
+        footer: `© 2026 Spanish with Jordi · Espagnol conversationnel`
+      },
+      it: {
+        pageTitle: `Chiacchiere da sobremesa: spagnolo conversazionale con Jordi`,
+        backLink: `← Torna alla home`,
+        avatarAlt: `Jordi, insegnante di spagnolo`,
+        heroEyebrow: `Spagnolo conversazionale`,
+        heroH1: `Chiacchiere da sobremesa`,
+        heroLead: `Pratica uno spagnolo naturale, guadagna scioltezza e perdi la paura di parlare, in un gruppo piccolo e vicino.`,
+        heroCta: `Vedi gli orari`,
+        gruposTitle: `Scegli il tuo gruppo`,
+        b1Level: `Gruppo B1`,
+        b1Tagline: `Sciogli la lingua senza perdere il filo`,
+        b1Schedule: `Lunedì, 19:00 (ora di Madrid)`,
+        b1Price: `119€/mese`,
+        b2c1Level: `Gruppo B2/C1`,
+        b2c1Tagline: `Conversazione di livello avanzato`,
+        b2c1Schedule: `Mercoledì, 19:00 (ora di Madrid)`,
+        b2c1Price: `119€/mese`,
+        liClases: `Lezioni da 1h`,
+        liGrupos: `Gruppi da 2 a 5 persone`,
+        liOnline: `100% online`,
+        liGraba: `Registrate nel caso ne perdessi una`,
+        ctaInscribirme: `Iscrivimi →`,
+        noteStrip: `Questo orario non ti va bene? Scrivimi la tua disponibilità e troviamo una soluzione.`,
+        aboutTitle: `Chi si siede a tavola con te?`,
+        aboutP1: `Sono Jordi, <strong>insegnante di spagnolo per stranieri</strong> ed <strong>esaminatore ufficiale del DELE</strong>. Sono di Cuenca, nel pieno centro della Spagna, quindi praticherai con un <strong>accento chiaro e facile da capire</strong>. Ho conseguito il Master in Insegnamento dello Spagnolo come Lingua Straniera presso l'Universidad Internacional de Valencia, e in precedenza ho studiato Traduzione e Mediazione Interlinguistica.`,
+        aboutP2: `Insegno da <strong>3 anni</strong>, online e in presenza, in scuole di lingue prestigiose di Valencia e con alunni di ogni tipo. Oltre allo spagnolo, parlo <strong>catalano</strong> a livello madrelingua, <strong>inglese, francese e italiano</strong> con fluidità, e me la cavo in <strong>portoghese</strong>, quindi so perfettamente cosa significa rimanere in bianco a metà frase o non osare parlare per paura di sbagliare. Proprio questo è ciò che voglio che tu perda in questo corso.`,
+        aboutP3: `Nelle mie lezioni <strong>nessuno ride di nessuno</strong>. Mi piace creare uno spazio sicuro e accogliente, dove sbagliare fa parte del gioco e dove ogni studente si sente ascoltato. Le sessioni sono piacevoli, con argomenti che danno spunto per parlare e correzioni che aiutano senza interrompere la conversazione.`,
+        aboutP4: `Condivido tutto questo anche con <strong>più di 30.000 persone</strong> sul mio TikTok e Instagram (@spanish_with_jordi), dove ogni giorno aiuto studenti di tutto il mondo a parlare uno spagnolo più naturale. E ciò che mi piace di più del mio lavoro è vedere come qualcuno che all'inizio apriva a malapena bocca finisca per <strong>chiacchierare con scioltezza e senza paura</strong>.`,
+        contactTitle: `Parliamone?`,
+        contactLead: `Se non sai quale gruppo si adatta meglio a te, scrivimelo qui sotto e ti risponderò il prima possibile.`,
+        dudaLabel: `Hai qualche domanda?`,
+        dudaContactoLabel: `Numero WhatsApp o email per contattarti`,
+        dudasSubmit: `Invia`,
+        dudasThanksTitle: `Grazie!`,
+        dudasThanksText: `Ti rispondo il prima possibile.`,
+        linkVolver: `Torna alla home`,
+        footer: `© 2026 Spanish with Jordi · Spagnolo conversazionale`
+      }
+    };
+
+    function applyLanguage(lang) {
+      var dict = translations[lang] || translations.es;
+      document.documentElement.lang = lang;
+      document.title = dict.pageTitle;
+
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-attr-alt]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-attr-alt');
+        if (dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      localStorage.setItem('siteLang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    function detectDefaultLang() {
+      var saved = localStorage.getItem('siteLang');
+      if (saved) return saved;
+      var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      var supported = ['en', 'fr', 'it'];
+      for (var i = 0; i < supported.length; i++) {
+        if (browserLang.indexOf(supported[i]) === 0) return supported[i];
+      }
+      return 'es';
+    }
+
+    applyLanguage(detectDefaultLang());
+  </script>
+
+</body>
+</html>

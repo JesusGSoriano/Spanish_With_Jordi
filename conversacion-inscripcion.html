@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserva tu plaza: español conversacional con Jordi</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --cream: #F7EFDC;
+    --cream-dark: #EFE1BE;
+    --olive: #5C6B3B;
+    --olive-dark: #40492A;
+    --terracotta: #D9822E;
+    --terracotta-dark: #B5691F;
+    --ink: #3A3122;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    margin: 0 0 6px;
+    font-size: clamp(24px, 5vw, 32px);
+  }
+
+  .wrap {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  a.back {
+    display: inline-block;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--olive-dark);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  p.lead {
+    color: #5A5340;
+    margin: 0 0 28px;
+  }
+
+  .course-card {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .course-card .icon {
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+
+  .course-card h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    font-size: 24px;
+    margin: 0 0 4px;
+  }
+
+  .course-card .tagline {
+    font-size: 13px;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+
+  .course-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+
+  .course-card li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .course-card li::before {
+    content: "✓";
+    color: var(--olive);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .course-card .price {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--olive-dark);
+    margin: 0 0 20px;
+  }
+
+  .pay-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    background: #635BFF;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 6px 16px rgba(99, 91, 255, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .pay-btn:hover { background: #4b45c6; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(99, 91, 255, 0.4); }
+
+  .no-stripe-note {
+    background: rgba(90, 63, 40, 0.08);
+    border: 1px dashed rgba(90, 63, 40, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #5A5340;
+    text-align: center;
+    margin: 0;
+  }
+
+  .level-picker { text-align: center; }
+
+  .level-picker .picker-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 18px;
+  }
+
+  .level-picker .picker-links a {
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+  }
+  .level-picker .picker-links a:hover { background: var(--terracotta-dark); }
+
+  .dudas-section {
+    margin-top: 32px;
+  }
+
+  .dudas-lead {
+    color: #5A5340;
+    font-size: 14px;
+    margin: 0 0 14px;
+    text-align: center;
+  }
+
+  .dudas-form {
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 26px 24px;
+    text-align: left;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .dudas-form .field {
+    margin-bottom: 14px;
+  }
+
+  .dudas-form label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--olive-dark);
+    margin-bottom: 6px;
+  }
+
+  .dudas-form textarea,
+  .dudas-form input[type=text] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  .dudas-form textarea { resize: vertical; min-height: 70px; }
+
+  .dudas-submit {
+    width: 100%;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .dudas-submit:hover { background: var(--terracotta-dark); }
+
+  .dudas-thanks {
+    display: none;
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+  .dudas-thanks h3 {
+    color: var(--olive-dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+  .dudas-thanks p { color: #5A5340; margin: 0; }
+
+  /* LANGUAGE SWITCH */
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 10000;
+    display: flex;
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.2);
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 4px 10px rgba(90, 63, 40, 0.15);
+  }
+
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .lang-btn.active {
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <div class="lang-switch" id="langSwitch">
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="fr">FR</button>
+    <button type="button" class="lang-btn" data-lang="it">IT</button>
+  </div>
+
+  <div class="wrap">
+    <a class="back" href="conversacion.html" data-i18n="backLink">← Volver a los grupos</a>
+    <h1 data-i18n="h1">Reserva tu plaza</h1>
+    <p class="lead" data-i18n="lead">Revisa los detalles del grupo y completa tu inscripción de forma segura.</p>
+
+    <div class="course-card" id="courseCard">
+      <div class="icon" id="courseIcon"></div>
+      <h2 id="courseLevel"></h2>
+      <div class="tagline" id="courseTagline"></div>
+      <ul>
+        <li id="courseSchedule"></li>
+        <li data-i18n="liClases">Clases de 1h</li>
+        <li data-i18n="liGrupos">Grupos de 2 a 5 personas</li>
+        <li data-i18n="liOnline">100% online</li>
+        <li data-i18n="liGraba">Se graban por si faltas</li>
+      </ul>
+      <div class="price" id="coursePrice"></div>
+      <a href="#" id="stripeBtn" class="pay-btn" data-i18n="payBtn" style="display:none">Quiero inscribirme ahora →</a>
+      <p class="no-stripe-note" id="noStripeNote" style="display:none" data-i18n="noStripeNote">Este grupo se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.</p>
+    </div>
+
+    <div class="course-card level-picker" id="levelPicker" style="display:none">
+      <p data-i18n="pickLevel">Elige un grupo para continuar:</p>
+      <div class="picker-links">
+        <a href="conversacion-inscripcion.html?nivel=B1">B1</a>
+        <a href="conversacion-inscripcion.html?nivel=B2C1">B2/C1</a>
+      </div>
+    </div>
+
+    <div class="dudas-section">
+      <p class="dudas-lead" data-i18n="dudasLead">¿Tienes alguna duda antes de inscribirte? Escríbela aquí y te respondo lo antes posible.</p>
+      <form class="dudas-form" id="dudasForm">
+        <div class="field">
+          <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
+          <textarea id="duda" required></textarea>
+        </div>
+        <div class="field">
+          <label for="dudaContacto" data-i18n="dudaContactoLabel">Número de WhatsApp o email para contactar contigo</label>
+          <input type="text" id="dudaContacto" required>
+        </div>
+        <button type="submit" class="dudas-submit" data-i18n="dudasSubmit">Enviar duda</button>
+      </form>
+
+      <div class="dudas-thanks" id="dudasThanks">
+        <h3 data-i18n="dudasThanksTitle">¡Gracias!</h3>
+        <p data-i18n="dudasThanksText">Te contesto lo antes posible.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Envío silencioso al formulario de dudas de Google -->
+  <iframe name="dudas_iframe" id="dudas_iframe" style="display:none;"></iframe>
+  <form id="dudasGform"
+        action="https://docs.google.com/forms/d/e/1FAIpQLScMv5Tm5l31CUkk5w17WnYIB-g1LlPQHKOgNLi4W872bhERLw/formResponse"
+        method="POST" target="dudas_iframe" style="display:none;">
+    <input type="text" name="entry.609687656" id="g-duda">
+    <input type="text" name="entry.174317246" id="g-contacto">
+  </form>
+
+  <script>
+    var courseData = {
+      B1: { icon: '🗣️', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', stripe: '' },
+      B2C1: { icon: '💬', levelKey: 'b2c1Level', taglineKey: 'b2c1Tagline', scheduleKey: 'b2c1Schedule', priceKey: 'b2c1Price', stripe: '' }
+    };
+
+    var params = new URLSearchParams(window.location.search);
+    var nivelParam = (params.get('nivel') || '').toUpperCase();
+    var currentCourse = courseData[nivelParam] || null;
+
+    if (currentCourse) {
+      document.getElementById('courseIcon').textContent = currentCourse.icon;
+      if (currentCourse.stripe) {
+        document.getElementById('stripeBtn').href = currentCourse.stripe;
+        document.getElementById('stripeBtn').style.display = 'block';
+        document.getElementById('noStripeNote').style.display = 'none';
+      } else {
+        document.getElementById('stripeBtn').style.display = 'none';
+        document.getElementById('noStripeNote').style.display = 'block';
+      }
+    } else {
+      document.getElementById('courseCard').style.display = 'none';
+      document.getElementById('levelPicker').style.display = 'block';
+    }
+
+    var dudasForm = document.getElementById('dudasForm');
+    dudasForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('g-duda').value = document.getElementById('duda').value;
+      document.getElementById('g-contacto').value = document.getElementById('dudaContacto').value;
+      document.getElementById('dudasGform').submit();
+      dudasForm.style.display = 'none';
+      document.getElementById('dudasThanks').style.display = 'block';
+    });
+
+    var translations = {
+      es: {
+        pageTitle: `Reserva tu plaza: español conversacional con Jordi`,
+        backLink: `← Volver a los grupos`,
+        h1: `Reserva tu plaza`,
+        lead: `Revisa los detalles del grupo y completa tu inscripción de forma segura.`,
+        b1Level: `Grupo B1`,
+        b2c1Level: `Grupo B2/C1`,
+        b1Tagline: `Suelta la lengua sin perder el hilo`,
+        b2c1Tagline: `Conversación de nivel avanzado`,
+        b1Schedule: `Lunes, 19:00 (hora de Madrid)`,
+        b2c1Schedule: `Miércoles, 19:00 (hora de Madrid)`,
+        b1Price: `119€/mes`,
+        b2c1Price: `119€/mes`,
+        liClases: `Clases de 1h`,
+        liGrupos: `Grupos de 2 a 5 personas`,
+        liOnline: `100% online`,
+        liGraba: `Se graban por si faltas`,
+        payBtn: `Quiero inscribirme ahora →`,
+        noStripeNote: `Este grupo se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.`,
+        pickLevel: `Elige un grupo para continuar:`,
+        dudasLead: `¿Tienes alguna duda antes de inscribirte? Escríbela aquí y te respondo lo antes posible.`,
+        dudaLabel: `¿Alguna duda?`,
+        dudaContactoLabel: `Número de WhatsApp o email para contactar contigo`,
+        dudasSubmit: `Enviar duda`,
+        dudasThanksTitle: `¡Gracias!`,
+        dudasThanksText: `Te contesto lo antes posible.`
+      },
+      en: {
+        pageTitle: `Reserve your spot: conversational Spanish with Jordi`,
+        backLink: `← Back to groups`,
+        h1: `Reserve your spot`,
+        lead: `Review the group's details and complete your enrollment securely.`,
+        b1Level: `B1 Group`,
+        b2c1Level: `B2/C1 Group`,
+        b1Tagline: `Loosen your tongue without losing the thread`,
+        b2c1Tagline: `Advanced-level conversation`,
+        b1Schedule: `Mondays, 19:00 (Madrid time)`,
+        b2c1Schedule: `Wednesdays, 19:00 (Madrid time)`,
+        b1Price: `€119/month`,
+        b2c1Price: `€119/month`,
+        liClases: `1h classes`,
+        liGrupos: `Groups of 2 to 5 people`,
+        liOnline: `100% online`,
+        liGraba: `Recorded in case you miss one`,
+        payBtn: `I want to enroll now →`,
+        noStripeNote: `This group is confirmed by WhatsApp or email. Message me below to reserve your spot.`,
+        pickLevel: `Choose a group to continue:`,
+        dudasLead: `Have any questions before enrolling? Write them here and I'll get back to you as soon as possible.`,
+        dudaLabel: `Any questions?`,
+        dudaContactoLabel: `WhatsApp number or email to reach you`,
+        dudasSubmit: `Send`,
+        dudasThanksTitle: `Thank you!`,
+        dudasThanksText: `I'll get back to you as soon as possible.`
+      },
+      fr: {
+        pageTitle: `Réservez votre place : espagnol conversationnel avec Jordi`,
+        backLink: `← Retour aux groupes`,
+        h1: `Réservez votre place`,
+        lead: `Vérifiez les détails du groupe et finalisez votre inscription en toute sécurité.`,
+        b1Level: `Groupe B1`,
+        b2c1Level: `Groupe B2/C1`,
+        b1Tagline: `Déliez votre langue sans perdre le fil`,
+        b2c1Tagline: `Conversation de niveau avancé`,
+        b1Schedule: `Lundi, 19h00 (heure de Madrid)`,
+        b2c1Schedule: `Mercredi, 19h00 (heure de Madrid)`,
+        b1Price: `119€/mois`,
+        b2c1Price: `119€/mois`,
+        liClases: `Cours de 1h`,
+        liGrupos: `Groupes de 2 à 5 personnes`,
+        liOnline: `100% en ligne`,
+        liGraba: `Enregistrés si vous en manquez un`,
+        payBtn: `Je veux m'inscrire maintenant →`,
+        noStripeNote: `Ce groupe se confirme par WhatsApp ou email. Écrivez-moi ci-dessous pour réserver votre place.`,
+        pickLevel: `Choisissez un groupe pour continuer :`,
+        dudasLead: `Une question avant de vous inscrire ? Écrivez-la ici, je vous répondrai dès que possible.`,
+        dudaLabel: `Une question ?`,
+        dudaContactoLabel: `Numéro WhatsApp ou email pour vous contacter`,
+        dudasSubmit: `Envoyer`,
+        dudasThanksTitle: `Merci !`,
+        dudasThanksText: `Je vous réponds dès que possible.`
+      },
+      it: {
+        pageTitle: `Prenota il tuo posto: spagnolo conversazionale con Jordi`,
+        backLink: `← Torna ai gruppi`,
+        h1: `Prenota il tuo posto`,
+        lead: `Controlla i dettagli del gruppo e completa la tua iscrizione in modo sicuro.`,
+        b1Level: `Gruppo B1`,
+        b2c1Level: `Gruppo B2/C1`,
+        b1Tagline: `Sciogli la lingua senza perdere il filo`,
+        b2c1Tagline: `Conversazione di livello avanzato`,
+        b1Schedule: `Lunedì, 19:00 (ora di Madrid)`,
+        b2c1Schedule: `Mercoledì, 19:00 (ora di Madrid)`,
+        b1Price: `119€/mese`,
+        b2c1Price: `119€/mese`,
+        liClases: `Lezioni da 1h`,
+        liGrupos: `Gruppi da 2 a 5 persone`,
+        liOnline: `100% online`,
+        liGraba: `Registrate nel caso ne perdessi una`,
+        payBtn: `Voglio iscrivermi ora →`,
+        noStripeNote: `Questo gruppo si conferma via WhatsApp o email. Scrivimi qui sotto per prenotare il tuo posto.`,
+        pickLevel: `Scegli un gruppo per continuare:`,
+        dudasLead: `Hai qualche dubbio prima di iscriverti? Scrivilo qui e ti risponderò il prima possibile.`,
+        dudaLabel: `Hai qualche domanda?`,
+        dudaContactoLabel: `Numero WhatsApp o email per contattarti`,
+        dudasSubmit: `Invia`,
+        dudasThanksTitle: `Grazie!`,
+        dudasThanksText: `Ti rispondo il prima possibile.`
+      }
+    };
+
+    function applyLanguage(lang) {
+      var dict = translations[lang] || translations.es;
+      document.documentElement.lang = lang;
+      document.title = dict.pageTitle;
+
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+
+      if (currentCourse) {
+        document.getElementById('courseLevel').textContent = dict[currentCourse.levelKey];
+        document.getElementById('courseTagline').textContent = dict[currentCourse.taglineKey];
+        document.getElementById('courseSchedule').textContent = dict[currentCourse.scheduleKey];
+        document.getElementById('coursePrice').textContent = dict[currentCourse.priceKey];
+      }
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      localStorage.setItem('siteLang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    function detectDefaultLang() {
+      var saved = localStorage.getItem('siteLang');
+      if (saved) return saved;
+      var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      var supported = ['en', 'fr', 'it'];
+      for (var i = 0; i < supported.length; i++) {
+        if (browserLang.indexOf(supported[i]) === 0) return supported[i];
+      }
+      return 'es';
+    }
+
+    applyLanguage(detectDefaultLang());
+  </script>
+
+</body>
+</html>
