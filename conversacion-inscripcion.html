@@ -303,7 +303,7 @@
         <li id="courseDuration"></li>
       </ul>
       <div class="price">
-        <div class="full-price" data-i18n="fullPrice">119€ el curso completo</div>
+        <div class="full-price" data-i18n="fullPrice">119€ (curso completo)</div>
         <div class="promo-price" data-i18n="promoPrice">99€ para las 4 primeras personas</div>
       </div>
       <a href="#" id="stripeBtn" class="pay-btn" data-i18n="payBtn" style="display:none">Quiero inscribirme ahora →</a>
@@ -350,8 +350,8 @@
 
   <script>
     var courseData = {
-      B1: { icon: '☕', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', durationKey: 'b1Duration', stripe: '' },
-      B2C1: { icon: '🍸', levelKey: 'b2c1Level', taglineKey: 'b2c1Tagline', scheduleKey: 'b2c1Schedule', durationKey: 'b2c1Duration', stripe: '' }
+      B1: { icon: '🍷', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', durationKey: 'b1Duration', stripe: 'https://buy.stripe.com/14A3cx8QH5hsdse4cm3ZK05' },
+      B2C1: { icon: '🍸', levelKey: 'b2c1Level', taglineKey: 'b2c1Tagline', scheduleKey: 'b2c1Schedule', durationKey: 'b2c1Duration', stripe: 'https://buy.stripe.com/8x2fZj1ofdNYbk6bEO3ZK06' }
     };
 
     var params = new URLSearchParams(window.location.search);
@@ -395,13 +395,13 @@
         b2c1Tagline: `HABLA COMO UN NATIVO`,
         b1Schedule: `Lunes, de 19:00 a 20:00 (hora de Madrid)`,
         b2c1Schedule: `Miércoles, de 19:00 a 20:00 (hora de Madrid)`,
-        b1Duration: `12/10 – 14/12 (10 clases)`,
-        b2c1Duration: `14/10 – 16/12 (10 clases)`,
+        b1Duration: `Del 12/10 al 14/12 (10 clases)`,
+        b2c1Duration: `Del 14/10 al 16/12 (10 clases)`,
         liClases: `Clases de 1 hora, cada semana un tema cotidiano nuevo`,
         liNativo: `Practica con un profesor nativo`,
         liGrupos: `Grupos de 3 a 5 personas`,
         liOnline: `100% online`,
-        fullPrice: `119€ el curso completo`,
+        fullPrice: `119€ (curso completo)`,
         promoPrice: `99€ para las 4 primeras personas`,
         payBtn: `Quiero inscribirme ahora →`,
         noStripeNote: `Este grupo se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.`,
@@ -424,13 +424,13 @@
         b2c1Tagline: `SPEAK LIKE A NATIVE`,
         b1Schedule: `Mondays, 19:00-20:00 (Madrid time)`,
         b2c1Schedule: `Wednesdays, 19:00-20:00 (Madrid time)`,
-        b1Duration: `12/10 – 14/12 (10 classes)`,
-        b2c1Duration: `14/10 – 16/12 (10 classes)`,
+        b1Duration: `From 12/10 to 14/12 (10 classes)`,
+        b2c1Duration: `From 14/10 to 16/12 (10 classes)`,
         liClases: `1-hour classes, a new everyday topic each week`,
         liNativo: `Practice with a native teacher`,
         liGrupos: `Groups of 3 to 5 people`,
         liOnline: `100% online`,
-        fullPrice: `€119 for the full course`,
+        fullPrice: `€119 (full course)`,
         promoPrice: `€99 for the first 4 people`,
         payBtn: `I want to enroll now →`,
         noStripeNote: `This group is confirmed by WhatsApp or email. Message me below to reserve your spot.`,
@@ -453,13 +453,13 @@
         b2c1Tagline: `PARLEZ COMME UN NATIF`,
         b1Schedule: `Lundi, de 19h00 à 20h00 (heure de Madrid)`,
         b2c1Schedule: `Mercredi, de 19h00 à 20h00 (heure de Madrid)`,
-        b1Duration: `12/10 – 14/12 (10 cours)`,
-        b2c1Duration: `14/10 – 16/12 (10 cours)`,
+        b1Duration: `Du 12/10 au 14/12 (10 cours)`,
+        b2c1Duration: `Du 14/10 au 16/12 (10 cours)`,
         liClases: `Cours d'1 heure, un nouveau thème du quotidien chaque semaine`,
         liNativo: `Pratiquez avec un professeur natif`,
         liGrupos: `Groupes de 3 à 5 personnes`,
         liOnline: `100% en ligne`,
-        fullPrice: `119€ le cours complet`,
+        fullPrice: `119€ (cours complet)`,
         promoPrice: `99€ pour les 4 premières personnes`,
         payBtn: `Je veux m'inscrire maintenant →`,
         noStripeNote: `Ce groupe se confirme par WhatsApp ou email. Écrivez-moi ci-dessous pour réserver votre place.`,
@@ -482,13 +482,13 @@
         b2c1Tagline: `PARLA COME UN MADRELINGUA`,
         b1Schedule: `Lunedì, dalle 19:00 alle 20:00 (ora di Madrid)`,
         b2c1Schedule: `Mercoledì, dalle 19:00 alle 20:00 (ora di Madrid)`,
-        b1Duration: `12/10 – 14/12 (10 lezioni)`,
-        b2c1Duration: `14/10 – 16/12 (10 lezioni)`,
+        b1Duration: `Dal 12/10 al 14/12 (10 lezioni)`,
+        b2c1Duration: `Dal 14/10 al 16/12 (10 lezioni)`,
         liClases: `Lezioni da 1 ora, ogni settimana un nuovo tema quotidiano`,
         liNativo: `Fai pratica con un insegnante madrelingua`,
         liGrupos: `Gruppi da 3 a 5 persone`,
         liOnline: `100% online`,
-        fullPrice: `119€ il corso completo`,
+        fullPrice: `119€ (corso completo)`,
         promoPrice: `99€ per le prime 4 persone`,
         payBtn: `Voglio iscrivermi ora →`,
         noStripeNote: `Questo gruppo si conferma via WhatsApp o email. Scrivimi qui sotto per prenotare il tuo posto.`,
