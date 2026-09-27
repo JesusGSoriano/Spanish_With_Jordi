@@ -73,7 +73,19 @@
     text-transform: uppercase;
     color: var(--terracotta-dark);
     font-weight: 700;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
+  }
+
+  .date-badge {
+    display: block;
+    background: var(--olive-dark);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin: 0 auto 18px;
+    width: fit-content;
   }
 
   .hero h1 {
@@ -270,6 +282,100 @@
     color: #6b6252;
     font-size: 14px;
     padding: 6px 24px 12px;
+  }
+
+  /* TEMARIO */
+  .topics-section {
+    padding: 40px 0 20px;
+  }
+
+  .topics-subtitle {
+    max-width: 480px;
+    margin: 12px auto 0;
+    font-size: 14px;
+    color: #6b6252;
+    text-align: center;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  @media (min-width: 640px) {
+    .topics-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .topic-item {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 14px 18px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .topic-week {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--terracotta-dark);
+  }
+
+  .topic-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--olive-dark);
+  }
+
+  /* CÓMO ES UNA CLASE */
+  .class-format {
+    padding: 20px 0 40px;
+  }
+
+  .format-text {
+    max-width: 620px;
+    margin: 24px auto 0;
+    font-size: 15px;
+    color: #5A5340;
+    text-align: center;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding: 20px 0 40px;
+  }
+
+  .faq-list {
+    max-width: 640px;
+    margin: 28px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 18px 20px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .faq-q {
+    font-weight: 700;
+    color: var(--olive-dark);
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: #5A5340;
+    margin: 0;
   }
 
   /* SOBRE JORDI */
@@ -485,13 +591,14 @@
   <section class="hero">
     <div class="wrap">
       <a href="index.html" style="display:inline-block; margin-bottom:14px; font-size:13px; font-weight:700; color:var(--olive-dark); text-decoration:none;" data-i18n="backLink">← Volver al inicio</a><br>
-      <span class="eyebrow" data-i18n="heroEyebrow">Español conversacional</span>
+      <span class="eyebrow" data-i18n="heroEyebrow">Charlas de sobremesa 🍷</span>
+      <span class="date-badge" data-i18n="dateRange">Octubre – Diciembre</span>
       <div class="avatar-frame">
         <img class="avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
       </div>
-      <h1 data-i18n="heroH1">Charlas de sobremesa</h1>
-      <p class="lead" data-i18n="heroLead">Practica español de forma natural, gana fluidez y pierde el miedo a hablar, en un grupo reducido y cercano.</p>
-      <a href="#grupos" class="cta-btn" data-i18n="heroCta">Ver horarios</a>
+      <h1 data-i18n="heroH1">¡Suelta la lengua en español!</h1>
+      <p class="lead" data-i18n="heroLead">Habla de temas reales en un grupo pequeño con un profesor nativo. Clases en directo, una vez por semana, para que pierdas el miedo y hables con naturalidad.</p>
+      <a href="#grupos" class="cta-btn" data-i18n="heroCta">Reserva tu plaza</a>
     </div>
   </section>
 
@@ -552,6 +659,65 @@
     </div>
   </div>
 
+  <div class="wrap topics-section" id="temas">
+    <div class="section-title">
+      <h2 data-i18n="topicsTitle">¿De qué vamos a hablar?</h2>
+      <div class="divider"></div>
+      <p class="topics-subtitle" data-i18n="topicsSubtitle">Cada semana, un tema de la vida diaria y el vocabulario que necesitas para hablar de él.</p>
+    </div>
+
+    <div class="topics-grid">
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week1">Semana 1 · 12-14 oct</span>
+        <span class="topic-name" data-i18n="topic1">Contar mi historia</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week2">Semana 2 · 19-21 oct</span>
+        <span class="topic-name" data-i18n="topic2">Choque cultural en España</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week3">Semana 3 · 26-28 oct</span>
+        <span class="topic-name" data-i18n="topic3">Miedos, supersticiones y Todos los Santos</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week4">Semana 4 · 2-4 nov</span>
+        <span class="topic-name" data-i18n="topic4">Comida y sobremesa</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week5">Semana 5 · 9-11 nov</span>
+        <span class="topic-name" data-i18n="topic5">El trabajo y el teletrabajo</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week6">Semana 6 · 16-18 nov</span>
+        <span class="topic-name" data-i18n="topic6">Tecnología y redes sociales</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week7">Semana 7 · 23-25 nov</span>
+        <span class="topic-name" data-i18n="topic7">Consumo y Black Friday</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week8">Semana 8 · 30 nov-2 dic</span>
+        <span class="topic-name" data-i18n="topic8">Amistad, relaciones y citas</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week9">Semana 9 · 7-9 dic</span>
+        <span class="topic-name" data-i18n="topic9">Viajes y escapadas</span>
+      </div>
+      <div class="topic-item">
+        <span class="topic-week" data-i18n="week10">Semana 10 · 14-16 dic</span>
+        <span class="topic-name" data-i18n="topic10">Navidad a la española</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap class-format">
+    <div class="section-title">
+      <h2 data-i18n="formatTitle">¿Cómo es una clase?</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="format-text" data-i18n="formatText">Rompemos el hielo con una pregunta rápida para que todos habléis desde el primer minuto. Luego vemos las palabras y expresiones clave del tema, y el resto de la clase es para lo importante: hablar, debatir y practicar situaciones reales. Sin exámenes, sin deberes obligatorios y sin miedo a equivocarte.</p>
+  </div>
+
   <section class="about">
     <div class="wrap about-grid">
       <img class="about-avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
@@ -565,9 +731,34 @@
     </div>
   </section>
 
+  <div class="wrap faq-section">
+    <div class="section-title">
+      <h2 data-i18n="faqTitle">Preguntas frecuentes</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" data-i18n="faqQ1">¿Qué nivel necesito?</div>
+        <p class="faq-a" data-i18n="faqA1">Tener al menos un B1. Si no sabes cuál es tu nivel, escríbeme y lo vemos juntos.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-i18n="faqQ2">¿Y si falto a una clase?</div>
+        <p class="faq-a" data-i18n="faqA2">Cada clase es un tema distinto, así que puedes seguir con el curso sin problema a la semana siguiente.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-i18n="faqQ3">¿Cómo se paga?</div>
+        <p class="faq-a" data-i18n="faqA3">Con tarjeta a través del enlace que verás arriba :)</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-i18n="faqQ4">¿Y si el grupo no se llena?</div>
+        <p class="faq-a" data-i18n="faqA4">El grupo empieza con un mínimo de 3 personas. Si no se llega, te devuelvo el dinero completo.</p>
+      </div>
+    </div>
+  </div>
+
   <section class="contact" id="contacto">
     <h2 data-i18n="contactTitle">¿Hablamos?</h2>
-    <p data-i18n="contactLead">Si tienes dudas sobre qué grupo encaja mejor contigo, cuéntamelas aquí abajo y te respondo lo antes posible.</p>
+    <p data-i18n="contactLead">Si no lo tienes claro, cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo. También puedes dejarme cualquier otra duda y te respondo enseguida.</p>
     <form class="dudas-form" id="dudasForm">
       <div class="field">
         <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
@@ -629,10 +820,11 @@
         pageTitle: `Charlas de sobremesa: español conversacional con Jordi`,
         backLink: `← Volver al inicio`,
         avatarAlt: `Jordi, profesor de español`,
-        heroEyebrow: `Español conversacional`,
-        heroH1: `Charlas de sobremesa`,
-        heroLead: `Practica español de forma natural, gana fluidez y pierde el miedo a hablar, en un grupo reducido y cercano.`,
-        heroCta: `Ver horarios`,
+        heroEyebrow: `Charlas de sobremesa 🍷`,
+        dateRange: `Octubre – Diciembre`,
+        heroH1: `¡Suelta la lengua en español!`,
+        heroLead: `Habla de temas reales en un grupo pequeño con un profesor nativo. Clases en directo, una vez por semana, para que pierdas el miedo y hables con naturalidad.`,
+        heroCta: `Reserva tu plaza`,
         gruposTitle: `Elige tu grupo`,
         b1Level: `Nivel B1`,
         b1Tagline: `PIERDE EL MIEDO A HABLAR`,
@@ -653,13 +845,46 @@
         friendTitle: `🤝 ¿Te apuntas con un amigo?`,
         friendText: `Si venís juntos, os descontamos 15€ a cada uno. Hablar español es más fácil con alguien conocido al lado.`,
         friendFine: `No acumulable con otras ofertas.`,
+        topicsTitle: `¿De qué vamos a hablar?`,
+        topicsSubtitle: `Cada semana, un tema de la vida diaria y el vocabulario que necesitas para hablar de él.`,
+        week1: `Semana 1 · 12-14 oct`,
+        topic1: `Contar mi historia`,
+        week2: `Semana 2 · 19-21 oct`,
+        topic2: `Choque cultural en España`,
+        week3: `Semana 3 · 26-28 oct`,
+        topic3: `Miedos, supersticiones y Todos los Santos`,
+        week4: `Semana 4 · 2-4 nov`,
+        topic4: `Comida y sobremesa`,
+        week5: `Semana 5 · 9-11 nov`,
+        topic5: `El trabajo y el teletrabajo`,
+        week6: `Semana 6 · 16-18 nov`,
+        topic6: `Tecnología y redes sociales`,
+        week7: `Semana 7 · 23-25 nov`,
+        topic7: `Consumo y Black Friday`,
+        week8: `Semana 8 · 30 nov-2 dic`,
+        topic8: `Amistad, relaciones y citas`,
+        week9: `Semana 9 · 7-9 dic`,
+        topic9: `Viajes y escapadas`,
+        week10: `Semana 10 · 14-16 dic`,
+        topic10: `Navidad a la española`,
+        formatTitle: `¿Cómo es una clase?`,
+        formatText: `Rompemos el hielo con una pregunta rápida para que todos habléis desde el primer minuto. Luego vemos las palabras y expresiones clave del tema, y el resto de la clase es para lo importante: hablar, debatir y practicar situaciones reales. Sin exámenes, sin deberes obligatorios y sin miedo a equivocarte.`,
+        faqTitle: `Preguntas frecuentes`,
+        faqQ1: `¿Qué nivel necesito?`,
+        faqA1: `Tener al menos un B1. Si no sabes cuál es tu nivel, escríbeme y lo vemos juntos.`,
+        faqQ2: `¿Y si falto a una clase?`,
+        faqA2: `Cada clase es un tema distinto, así que puedes seguir con el curso sin problema a la semana siguiente.`,
+        faqQ3: `¿Cómo se paga?`,
+        faqA3: `Con tarjeta a través del enlace que verás arriba :)`,
+        faqQ4: `¿Y si el grupo no se llena?`,
+        faqA4: `El grupo empieza con un mínimo de 3 personas. Si no se llega, te devuelvo el dinero completo.`,
         aboutTitle: `¿Quién se sienta contigo a la mesa?`,
         aboutP1: `Soy Jordi, <strong>profe de español para extranjeros</strong> y <strong>examinador oficial del DELE</strong>. Soy de Cuenca, en pleno centro de España, así que vas a practicar con un <strong>acento claro y fácil de entender</strong>. Tengo el Máster en Enseñanza de Español como Lengua Extranjera por la Universidad Internacional de Valencia y antes estudié Traducción y Mediación Interlingüística.`,
         aboutP2: `Llevo <strong>3 años dando clase</strong> online y presencial, en academias de prestigio de Valencia y con alumnos de todo tipo. Además del español, hablo a nivel nativo <strong>catalán</strong>, con fluidez <strong>inglés, francés e italiano</strong>, y me defiendo en <strong>portugués</strong>, así que sé perfectamente lo que es quedarse en blanco a mitad de frase o no atreverse a hablar por miedo a equivocarse. Justo eso es lo que quiero que pierdas en este curso.`,
         aboutP3: `En mis clases <strong>nadie se ríe de nadie</strong>. Me gusta crear un espacio seguro y cercano, donde equivocarse forma parte del juego y donde cada alumno se siente escuchado. Las sesiones son amenas, con temas que dan de qué hablar y con correcciones que te ayudan sin cortarte el rollo.`,
         aboutP4: `Todo esto lo comparto también con <strong>más de 30.000 personas</strong> en mi TikTok e Instagram (@spanish_with_jordi), donde cada día ayudo a estudiantes de todo el mundo a hablar un español más natural. Y lo que más me gusta de mi trabajo es ver cómo alguien que al principio apenas abría la boca acaba <strong>charlando con soltura y sin miedo</strong>.`,
         contactTitle: `¿Hablamos?`,
-        contactLead: `Si tienes dudas sobre qué grupo encaja mejor contigo, cuéntamelas aquí abajo y te respondo lo antes posible.`,
+        contactLead: `Si no lo tienes claro, cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo. También puedes dejarme cualquier otra duda y te respondo enseguida.`,
         dudaLabel: `¿Alguna duda?`,
         dudaContactoLabel: `Número de WhatsApp o email para contactar contigo`,
         dudasSubmit: `Enviar duda`,
@@ -672,10 +897,11 @@
         pageTitle: `Table Talk: conversational Spanish with Jordi`,
         backLink: `← Back home`,
         avatarAlt: `Jordi, Spanish teacher`,
-        heroEyebrow: `Conversational Spanish`,
-        heroH1: `Table Talk`,
-        heroLead: `Practice natural Spanish, build fluency and lose the fear of speaking, in a small, close-knit group.`,
-        heroCta: `See schedules`,
+        heroEyebrow: `Table Talk 🍷`,
+        dateRange: `October – December`,
+        heroH1: `Loosen your tongue in Spanish!`,
+        heroLead: `Talk about real topics in a small group with a native teacher. Live classes, once a week, to help you lose your fear and speak naturally.`,
+        heroCta: `Reserve your spot`,
         gruposTitle: `Choose your group`,
         b1Level: `B1 Level`,
         b1Tagline: `LOSE YOUR FEAR OF SPEAKING`,
@@ -696,13 +922,46 @@
         friendTitle: `🤝 Signing up with a friend?`,
         friendText: `If you come together, you each get €15 off. Speaking Spanish is easier with someone you know by your side.`,
         friendFine: `Cannot be combined with other offers.`,
+        topicsTitle: `What are we going to talk about?`,
+        topicsSubtitle: `Every week, an everyday topic and the vocabulary you need to talk about it.`,
+        week1: `Week 1 · Oct 12-14`,
+        topic1: `Telling my story`,
+        week2: `Week 2 · Oct 19-21`,
+        topic2: `Culture shock in Spain`,
+        week3: `Week 3 · Oct 26-28`,
+        topic3: `Fears, superstitions and All Saints' Day`,
+        week4: `Week 4 · Nov 2-4`,
+        topic4: `Food and sobremesa`,
+        week5: `Week 5 · Nov 9-11`,
+        topic5: `Work and remote work`,
+        week6: `Week 6 · Nov 16-18`,
+        topic6: `Technology and social media`,
+        week7: `Week 7 · Nov 23-25`,
+        topic7: `Shopping and Black Friday`,
+        week8: `Week 8 · Nov 30-Dec 2`,
+        topic8: `Friendship, relationships and dating`,
+        week9: `Week 9 · Dec 7-9`,
+        topic9: `Travel and getaways`,
+        week10: `Week 10 · Dec 14-16`,
+        topic10: `Christmas the Spanish way`,
+        formatTitle: `What's a class like?`,
+        formatText: `We break the ice with a quick question so everyone's talking from minute one. Then we go over the key words and expressions for the topic, and the rest of the class is for what really matters: talking, debating and practicing real situations. No exams, no mandatory homework, and no fear of getting it wrong.`,
+        faqTitle: `Frequently asked questions`,
+        faqQ1: `What level do I need?`,
+        faqA1: `At least a B1 level. If you're not sure what your level is, message me and we'll figure it out together.`,
+        faqQ2: `What if I miss a class?`,
+        faqA2: `Each class covers a different topic, so you can pick the course back up the following week with no problem.`,
+        faqQ3: `How do I pay?`,
+        faqA3: `By card, through the link you'll see above :)`,
+        faqQ4: `What if the group doesn't fill up?`,
+        faqA4: `The group starts with a minimum of 3 people. If we don't reach that, I'll refund you in full.`,
         aboutTitle: `Who's sitting at the table with you?`,
         aboutP1: `I'm Jordi, a <strong>Spanish teacher for foreigners</strong> and an <strong>official DELE examiner</strong>. I'm from Cuenca, right in the middle of Spain, so you'll practice with a <strong>clear, easy-to-understand accent</strong>. I hold a Master's in Teaching Spanish as a Foreign Language from the Universidad Internacional de Valencia, and before that I studied Translation and Interlingual Mediation.`,
         aboutP2: `I've been <strong>teaching for 3 years</strong>, both online and in person, at prestigious language schools in Valencia and with all kinds of students. Besides Spanish, I speak <strong>Catalan</strong> natively, <strong>English, French and Italian</strong> fluently, and I get by in <strong>Portuguese</strong>, so I know exactly what it feels like to blank out mid-sentence or not dare to speak for fear of making a mistake. That's exactly what I want you to leave behind in this course.`,
         aboutP3: `In my classes <strong>nobody laughs at anybody</strong>. I like to create a safe, close space where making mistakes is part of the game and every student feels heard. Sessions are lively, with topics worth talking about and corrections that help you without killing the conversation.`,
         aboutP4: `I share all of this with <strong>over 30,000 people</strong> on my TikTok and Instagram (@spanish_with_jordi), where every day I help students from all over the world speak more natural Spanish. And what I enjoy most about my job is watching someone who barely opened their mouth at first end up <strong>chatting away with ease and no fear</strong>.`,
         contactTitle: `Let's talk`,
-        contactLead: `If you're not sure which group fits you best, tell me below and I'll get back to you as soon as possible.`,
+        contactLead: `If you're not sure, tell me your level and availability and I'll let you know which group is the best fit. You can also leave me any other question and I'll get back to you right away.`,
         dudaLabel: `Any questions?`,
         dudaContactoLabel: `WhatsApp number or email to reach you`,
         dudasSubmit: `Send`,
@@ -715,10 +974,11 @@
         pageTitle: `Discussions de sobremesa : espagnol conversationnel avec Jordi`,
         backLink: `← Retour à l'accueil`,
         avatarAlt: `Jordi, professeur d'espagnol`,
-        heroEyebrow: `Espagnol conversationnel`,
-        heroH1: `Discussions de sobremesa`,
-        heroLead: `Pratiquez un espagnol naturel, gagnez en aisance et perdez la peur de parler, dans un petit groupe convivial.`,
-        heroCta: `Voir les horaires`,
+        heroEyebrow: `Discussions de sobremesa 🍷`,
+        dateRange: `Octobre – Décembre`,
+        heroH1: `Déliez votre langue en espagnol !`,
+        heroLead: `Parlez de sujets réels dans un petit groupe avec un professeur natif. Cours en direct, une fois par semaine, pour perdre votre peur et parler naturellement.`,
+        heroCta: `Réservez votre place`,
         gruposTitle: `Choisissez votre groupe`,
         b1Level: `Niveau B1`,
         b1Tagline: `PERDEZ VOTRE PEUR DE PARLER`,
@@ -739,13 +999,46 @@
         friendTitle: `🤝 Vous vous inscrivez avec un ami ?`,
         friendText: `Si vous venez ensemble, vous bénéficiez chacun de 15€ de réduction. Parler espagnol est plus facile avec quelqu'un que vous connaissez à vos côtés.`,
         friendFine: `Non cumulable avec d'autres offres.`,
+        topicsTitle: `De quoi allons-nous parler ?`,
+        topicsSubtitle: `Chaque semaine, un thème du quotidien et le vocabulaire dont vous avez besoin pour en parler.`,
+        week1: `Semaine 1 · 12-14 oct`,
+        topic1: `Raconter mon histoire`,
+        week2: `Semaine 2 · 19-21 oct`,
+        topic2: `Choc culturel en Espagne`,
+        week3: `Semaine 3 · 26-28 oct`,
+        topic3: `Peurs, superstitions et la Toussaint`,
+        week4: `Semaine 4 · 2-4 nov`,
+        topic4: `Nourriture et sobremesa`,
+        week5: `Semaine 5 · 9-11 nov`,
+        topic5: `Le travail et le télétravail`,
+        week6: `Semaine 6 · 16-18 nov`,
+        topic6: `Technologie et réseaux sociaux`,
+        week7: `Semaine 7 · 23-25 nov`,
+        topic7: `Consommation et Black Friday`,
+        week8: `Semaine 8 · 30 nov-2 déc`,
+        topic8: `Amitié, relations et rendez-vous`,
+        week9: `Semaine 9 · 7-9 déc`,
+        topic9: `Voyages et escapades`,
+        week10: `Semaine 10 · 14-16 déc`,
+        topic10: `Noël à l'espagnole`,
+        formatTitle: `À quoi ressemble un cours ?`,
+        formatText: `On brise la glace avec une question rapide pour que tout le monde parle dès la première minute. Ensuite, on voit les mots et expressions clés du thème, et le reste du cours est consacré à l'essentiel : parler, débattre et pratiquer des situations réelles. Sans examens, sans devoirs obligatoires et sans peur de se tromper.`,
+        faqTitle: `Questions fréquentes`,
+        faqQ1: `De quel niveau ai-je besoin ?`,
+        faqA1: `Avoir au moins un niveau B1. Si vous ne savez pas quel est votre niveau, écrivez-moi et on le détermine ensemble.`,
+        faqQ2: `Et si je manque un cours ?`,
+        faqA2: `Chaque cours porte sur un thème différent, vous pouvez donc reprendre le cours sans problème la semaine suivante.`,
+        faqQ3: `Comment cela se paie-t-il ?`,
+        faqA3: `Par carte, via le lien que vous verrez ci-dessus :)`,
+        faqQ4: `Et si le groupe ne se remplit pas ?`,
+        faqA4: `Le groupe démarre avec un minimum de 3 personnes. Si ce nombre n'est pas atteint, vous êtes intégralement remboursé.`,
         aboutTitle: `Qui s'assoit à table avec vous ?`,
         aboutP1: `Je suis Jordi, <strong>professeur d'espagnol pour étrangers</strong> et <strong>examinateur officiel du DELE</strong>. Je viens de Cuenca, en plein centre de l'Espagne, vous allez donc pratiquer avec un <strong>accent clair et facile à comprendre</strong>. Je suis titulaire d'un Master en Enseignement de l'espagnol comme langue étrangère de l'Universidad Internacional de Valencia, et avant cela j'ai étudié la Traduction et la Médiation Interlinguistique.`,
         aboutP2: `Cela fait <strong>3 ans que j'enseigne</strong>, en ligne et en présentiel, dans des écoles de langues prestigieuses de Valence et avec toutes sortes d'élèves. En plus de l'espagnol, je parle <strong>catalan</strong> couramment (langue maternelle), <strong>anglais, français et italien</strong> avec aisance, et je me débrouille en <strong>portugais</strong>, donc je sais parfaitement ce que c'est que de rester bloqué en pleine phrase ou de ne pas oser parler par peur de se tromper. C'est exactement ce que je veux que vous perdiez dans ce cours.`,
         aboutP3: `Dans mes cours, <strong>personne ne se moque de personne</strong>. J'aime créer un espace sûr et chaleureux, où se tromper fait partie du jeu et où chaque élève se sent écouté. Les séances sont vivantes, avec des sujets qui donnent envie de parler et des corrections qui vous aident sans couper la conversation.`,
         aboutP4: `Je partage tout cela avec <strong>plus de 30 000 personnes</strong> sur mon TikTok et Instagram (@spanish_with_jordi), où j'aide chaque jour des étudiants du monde entier à parler un espagnol plus naturel. Et ce que je préfère dans mon travail, c'est de voir quelqu'un qui osait à peine ouvrir la bouche au début finir par <strong>discuter avec aisance et sans peur</strong>.`,
         contactTitle: `On en parle ?`,
-        contactLead: `Si vous ne savez pas quel groupe vous correspond le mieux, écrivez-le moi ci-dessous et je vous répondrai dès que possible.`,
+        contactLead: `Si vous ne savez pas, dites-moi votre niveau et votre disponibilité et je vous dirai quel groupe vous correspond le mieux. Vous pouvez aussi me laisser toute autre question, je vous répondrai tout de suite.`,
         dudaLabel: `Une question ?`,
         dudaContactoLabel: `Numéro WhatsApp ou email pour vous contacter`,
         dudasSubmit: `Envoyer`,
@@ -758,10 +1051,11 @@
         pageTitle: `Chiacchiere da sobremesa: spagnolo conversazionale con Jordi`,
         backLink: `← Torna alla home`,
         avatarAlt: `Jordi, insegnante di spagnolo`,
-        heroEyebrow: `Spagnolo conversazionale`,
-        heroH1: `Chiacchiere da sobremesa`,
-        heroLead: `Pratica uno spagnolo naturale, guadagna scioltezza e perdi la paura di parlare, in un gruppo piccolo e vicino.`,
-        heroCta: `Vedi gli orari`,
+        heroEyebrow: `Chiacchiere da sobremesa 🍷`,
+        dateRange: `Ottobre – Dicembre`,
+        heroH1: `Sciogli la lingua in spagnolo!`,
+        heroLead: `Parla di argomenti reali in un piccolo gruppo con un insegnante madrelingua. Lezioni dal vivo, una volta a settimana, per perdere la paura e parlare con naturalezza.`,
+        heroCta: `Prenota il tuo posto`,
         gruposTitle: `Scegli il tuo gruppo`,
         b1Level: `Livello B1`,
         b1Tagline: `PERDI LA PAURA DI PARLARE`,
@@ -782,13 +1076,46 @@
         friendTitle: `🤝 Ti iscrivi con un amico?`,
         friendText: `Se venite insieme, vi scontiamo 15€ a testa. Parlare spagnolo è più facile con qualcuno che conosci al tuo fianco.`,
         friendFine: `Non cumulabile con altre offerte.`,
+        topicsTitle: `Di cosa parleremo?`,
+        topicsSubtitle: `Ogni settimana, un tema della vita quotidiana e il vocabolario di cui hai bisogno per parlarne.`,
+        week1: `Settimana 1 · 12-14 ott`,
+        topic1: `Raccontare la mia storia`,
+        week2: `Settimana 2 · 19-21 ott`,
+        topic2: `Shock culturale in Spagna`,
+        week3: `Settimana 3 · 26-28 ott`,
+        topic3: `Paure, superstizioni e Ognissanti`,
+        week4: `Settimana 4 · 2-4 nov`,
+        topic4: `Cibo e sobremesa`,
+        week5: `Settimana 5 · 9-11 nov`,
+        topic5: `Il lavoro e il telelavoro`,
+        week6: `Settimana 6 · 16-18 nov`,
+        topic6: `Tecnologia e social media`,
+        week7: `Settimana 7 · 23-25 nov`,
+        topic7: `Consumo e Black Friday`,
+        week8: `Settimana 8 · 30 nov-2 dic`,
+        topic8: `Amicizia, relazioni e appuntamenti`,
+        week9: `Settimana 9 · 7-9 dic`,
+        topic9: `Viaggi e fughe`,
+        week10: `Settimana 10 · 14-16 dic`,
+        topic10: `Natale alla spagnola`,
+        formatTitle: `Com'è una lezione?`,
+        formatText: `Rompiamo il ghiaccio con una domanda veloce così tutti parlano fin dal primo minuto. Poi vediamo le parole e le espressioni chiave dell'argomento, e il resto della lezione è dedicato a ciò che conta davvero: parlare, discutere e praticare situazioni reali. Senza esami, senza compiti obbligatori e senza paura di sbagliare.`,
+        faqTitle: `Domande frequenti`,
+        faqQ1: `Che livello mi serve?`,
+        faqA1: `Avere almeno un B1. Se non sai qual è il tuo livello, scrivimi e lo vediamo insieme.`,
+        faqQ2: `E se salto una lezione?`,
+        faqA2: `Ogni lezione tratta un argomento diverso, quindi puoi riprendere il corso senza problemi la settimana successiva.`,
+        faqQ3: `Come si paga?`,
+        faqA3: `Con carta, tramite il link che vedrai qui sopra :)`,
+        faqQ4: `E se il gruppo non si riempie?`,
+        faqA4: `Il gruppo parte con un minimo di 3 persone. Se non si raggiunge, ti rimborso l'intero importo.`,
         aboutTitle: `Chi si siede a tavola con te?`,
         aboutP1: `Sono Jordi, <strong>insegnante di spagnolo per stranieri</strong> ed <strong>esaminatore ufficiale del DELE</strong>. Sono di Cuenca, nel pieno centro della Spagna, quindi praticherai con un <strong>accento chiaro e facile da capire</strong>. Ho conseguito il Master in Insegnamento dello Spagnolo come Lingua Straniera presso l'Universidad Internacional de Valencia, e in precedenza ho studiato Traduzione e Mediazione Interlinguistica.`,
         aboutP2: `Insegno da <strong>3 anni</strong>, online e in presenza, in scuole di lingue prestigiose di Valencia e con alunni di ogni tipo. Oltre allo spagnolo, parlo <strong>catalano</strong> a livello madrelingua, <strong>inglese, francese e italiano</strong> con fluidità, e me la cavo in <strong>portoghese</strong>, quindi so perfettamente cosa significa rimanere in bianco a metà frase o non osare parlare per paura di sbagliare. Proprio questo è ciò che voglio che tu perda in questo corso.`,
         aboutP3: `Nelle mie lezioni <strong>nessuno ride di nessuno</strong>. Mi piace creare uno spazio sicuro e accogliente, dove sbagliare fa parte del gioco e dove ogni studente si sente ascoltato. Le sessioni sono piacevoli, con argomenti che danno spunto per parlare e correzioni che aiutano senza interrompere la conversazione.`,
         aboutP4: `Condivido tutto questo anche con <strong>più di 30.000 persone</strong> sul mio TikTok e Instagram (@spanish_with_jordi), dove ogni giorno aiuto studenti di tutto il mondo a parlare uno spagnolo più naturale. E ciò che mi piace di più del mio lavoro è vedere come qualcuno che all'inizio apriva a malapena bocca finisca per <strong>chiacchierare con scioltezza e senza paura</strong>.`,
         contactTitle: `Parliamone?`,
-        contactLead: `Se non sai quale gruppo si adatta meglio a te, scrivimelo qui sotto e ti risponderò il prima possibile.`,
+        contactLead: `Se non sai cosa scegliere, dimmi il tuo livello e la tua disponibilità e ti dirò quale gruppo si adatta meglio a te. Puoi anche lasciarmi qualsiasi altra domanda, ti risponderò subito.`,
         dudaLabel: `Hai qualche domanda?`,
         dudaContactoLabel: `Numero WhatsApp o email per contattarti`,
         dudasSubmit: `Invia`,
