@@ -217,14 +217,50 @@
   }
 
   .price-box .amount {
+    font-size: 20px;
+    text-decoration: line-through;
+    opacity: 0.75;
+  }
+
+  .price-box .promo {
     font-size: 22px;
+    margin-top: 2px;
   }
 
   .price-box .cta-label {
     font-size: 13px;
     font-weight: 700;
     opacity: 0.95;
-    margin-top: 4px;
+    margin-top: 8px;
+  }
+
+  /* FRIEND PROMO */
+  .friend-promo {
+    background: var(--cream-dark);
+    border: 2px dashed var(--terracotta);
+    border-radius: 16px;
+    padding: 22px 24px;
+    text-align: center;
+    max-width: 560px;
+    margin: 24px auto 0;
+  }
+
+  .friend-promo h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .friend-promo p {
+    font-size: 14px;
+    color: #5A5340;
+    margin: 0 0 6px;
+  }
+
+  .friend-promo .fine-print {
+    font-size: 12px;
+    font-style: italic;
+    color: #8a8065;
+    margin-bottom: 0;
   }
 
   /* AVAILABILITY NOTE */
@@ -468,37 +504,39 @@
     <div class="courses">
 
       <div class="card">
-        <div class="icon">🗣️</div>
-        <h3 data-i18n="b1Level">Grupo B1</h3>
-        <div class="tagline" data-i18n="b1Tagline">Suelta la lengua sin perder el hilo</div>
+        <div class="icon">☕</div>
+        <h3 data-i18n="b1Level">Nivel B1</h3>
+        <div class="tagline" data-i18n="b1Tagline">PIERDE EL MIEDO A HABLAR</div>
         <ul>
-          <li data-i18n="b1Schedule">Lunes, 19:00 (hora de Madrid)</li>
-          <li data-i18n="liClases">Clases de 1h</li>
-          <li data-i18n="liGrupos">Grupos de 2 a 5 personas</li>
+          <li data-i18n="b1Schedule">Lunes, de 19:00 a 20:00 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1 hora, cada semana un tema cotidiano nuevo</li>
+          <li data-i18n="liNativo">Practica con un profesor nativo</li>
+          <li data-i18n="liGrupos">Grupos de 3 a 5 personas</li>
           <li data-i18n="liOnline">100% online</li>
-          <li data-i18n="liGraba">Se graban por si faltas</li>
-          <li data-i18n="liSesiones">10 sesiones en total</li>
+          <li data-i18n="b1Duration">Del 12 de octubre al 14 de diciembre (10 clases)</li>
         </ul>
         <a href="conversacion-inscripcion.html?nivel=B1" class="price-box">
-          <div class="amount" data-i18n="b1Price">119€/mes</div>
+          <div class="amount" data-i18n="fullPrice">119€ el curso completo</div>
+          <div class="promo" data-i18n="promoPrice">99€ para las 4 primeras personas</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
 
       <div class="card">
-        <div class="icon">💬</div>
-        <h3 data-i18n="b2c1Level">Grupo B2/C1</h3>
-        <div class="tagline" data-i18n="b2c1Tagline">Conversación de nivel avanzado</div>
+        <div class="icon">☕</div>
+        <h3 data-i18n="b2c1Level">Nivel B2-C1</h3>
+        <div class="tagline" data-i18n="b2c1Tagline">HABLA CON NATURALIDAD, COMO UN NATIVO</div>
         <ul>
-          <li data-i18n="b2c1Schedule">Miércoles, 19:00 (hora de Madrid)</li>
-          <li data-i18n="liClases">Clases de 1h</li>
-          <li data-i18n="liGrupos">Grupos de 2 a 5 personas</li>
+          <li data-i18n="b2c1Schedule">Miércoles, de 19:00 a 20:00 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1 hora, cada semana un tema cotidiano nuevo</li>
+          <li data-i18n="liNativo">Practica con un profesor nativo</li>
+          <li data-i18n="liGrupos">Grupos de 3 a 5 personas</li>
           <li data-i18n="liOnline">100% online</li>
-          <li data-i18n="liGraba">Se graban por si faltas</li>
-          <li data-i18n="liSesiones">10 sesiones en total</li>
+          <li data-i18n="b2c1Duration">Del 14 de octubre al 16 de diciembre (10 clases)</li>
         </ul>
         <a href="conversacion-inscripcion.html?nivel=B2C1" class="price-box">
-          <div class="amount" data-i18n="b2c1Price">119€/mes</div>
+          <div class="amount" data-i18n="fullPrice">119€ el curso completo</div>
+          <div class="promo" data-i18n="promoPrice">99€ para las 4 primeras personas</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
       </div>
@@ -506,6 +544,12 @@
     </div>
 
     <p class="note-strip" data-i18n="noteStrip">¿Este horario no te viene bien? Escríbeme tu disponibilidad y vemos opciones.</p>
+
+    <div class="friend-promo">
+      <h3 data-i18n="friendTitle">🤝 ¿Te apuntas con un amigo?</h3>
+      <p data-i18n="friendText">Si venís juntos, os descontamos 15€ a cada uno. Hablar español es más fácil con alguien conocido al lado.</p>
+      <p class="fine-print" data-i18n="friendFine">No acumulable con otras ofertas.</p>
+    </div>
   </div>
 
   <section class="about">
@@ -590,21 +634,25 @@
         heroLead: `Practica español de forma natural, gana fluidez y pierde el miedo a hablar, en un grupo reducido y cercano.`,
         heroCta: `Ver horarios`,
         gruposTitle: `Elige tu grupo`,
-        b1Level: `Grupo B1`,
-        b1Tagline: `Suelta la lengua sin perder el hilo`,
-        b1Schedule: `Lunes, 19:00 (hora de Madrid)`,
-        b1Price: `119€/mes`,
-        b2c1Level: `Grupo B2/C1`,
-        b2c1Tagline: `Conversación de nivel avanzado`,
-        b2c1Schedule: `Miércoles, 19:00 (hora de Madrid)`,
-        b2c1Price: `119€/mes`,
-        liClases: `Clases de 1h`,
-        liGrupos: `Grupos de 2 a 5 personas`,
+        b1Level: `Nivel B1`,
+        b1Tagline: `PIERDE EL MIEDO A HABLAR`,
+        b1Schedule: `Lunes, de 19:00 a 20:00 (hora de Madrid)`,
+        b1Duration: `Del 12 de octubre al 14 de diciembre (10 clases)`,
+        b2c1Level: `Nivel B2-C1`,
+        b2c1Tagline: `HABLA CON NATURALIDAD, COMO UN NATIVO`,
+        b2c1Schedule: `Miércoles, de 19:00 a 20:00 (hora de Madrid)`,
+        b2c1Duration: `Del 14 de octubre al 16 de diciembre (10 clases)`,
+        liClases: `Clases de 1 hora, cada semana un tema cotidiano nuevo`,
+        liNativo: `Practica con un profesor nativo`,
+        liGrupos: `Grupos de 3 a 5 personas`,
         liOnline: `100% online`,
-        liGraba: `Se graban por si faltas`,
-        liSesiones: `10 sesiones en total`,
+        fullPrice: `119€ el curso completo`,
+        promoPrice: `99€ para las 4 primeras personas`,
         ctaInscribirme: `Inscribirme →`,
         noteStrip: `¿Este horario no te viene bien? Escríbeme tu disponibilidad y vemos opciones.`,
+        friendTitle: `🤝 ¿Te apuntas con un amigo?`,
+        friendText: `Si venís juntos, os descontamos 15€ a cada uno. Hablar español es más fácil con alguien conocido al lado.`,
+        friendFine: `No acumulable con otras ofertas.`,
         aboutTitle: `¿Quién se sienta contigo a la mesa?`,
         aboutP1: `Soy Jordi, <strong>profe de español para extranjeros</strong> y <strong>examinador oficial del DELE</strong>. Soy de Cuenca, en pleno centro de España, así que vas a practicar con un <strong>acento claro y fácil de entender</strong>. Tengo el Máster en Enseñanza de Español como Lengua Extranjera por la Universidad Internacional de Valencia y antes estudié Traducción y Mediación Interlingüística.`,
         aboutP2: `Llevo <strong>3 años dando clase</strong> online y presencial, en academias de prestigio de Valencia y con alumnos de todo tipo. Además del español, hablo a nivel nativo <strong>catalán</strong>, con fluidez <strong>inglés, francés e italiano</strong>, y me defiendo en <strong>portugués</strong>, así que sé perfectamente lo que es quedarse en blanco a mitad de frase o no atreverse a hablar por miedo a equivocarse. Justo eso es lo que quiero que pierdas en este curso.`,
@@ -629,21 +677,25 @@
         heroLead: `Practice natural Spanish, build fluency and lose the fear of speaking, in a small, close-knit group.`,
         heroCta: `See schedules`,
         gruposTitle: `Choose your group`,
-        b1Level: `B1 Group`,
-        b1Tagline: `Loosen your tongue without losing the thread`,
-        b1Schedule: `Mondays, 19:00 (Madrid time)`,
-        b1Price: `€119/month`,
-        b2c1Level: `B2/C1 Group`,
-        b2c1Tagline: `Advanced-level conversation`,
-        b2c1Schedule: `Wednesdays, 19:00 (Madrid time)`,
-        b2c1Price: `€119/month`,
-        liClases: `1h classes`,
-        liGrupos: `Groups of 2 to 5 people`,
+        b1Level: `B1 Level`,
+        b1Tagline: `LOSE YOUR FEAR OF SPEAKING`,
+        b1Schedule: `Mondays, 19:00-20:00 (Madrid time)`,
+        b1Duration: `October 12 to December 14 (10 classes)`,
+        b2c1Level: `B2-C1 Level`,
+        b2c1Tagline: `SPEAK NATURALLY, LIKE A NATIVE`,
+        b2c1Schedule: `Wednesdays, 19:00-20:00 (Madrid time)`,
+        b2c1Duration: `October 14 to December 16 (10 classes)`,
+        liClases: `1-hour classes, a new everyday topic each week`,
+        liNativo: `Practice with a native teacher`,
+        liGrupos: `Groups of 3 to 5 people`,
         liOnline: `100% online`,
-        liGraba: `Recorded in case you miss one`,
-        liSesiones: `10 sessions in total`,
+        fullPrice: `€119 for the full course`,
+        promoPrice: `€99 for the first 4 people`,
         ctaInscribirme: `Enroll →`,
         noteStrip: `Doesn't this schedule work for you? Message me your availability and we'll find a fit.`,
+        friendTitle: `🤝 Signing up with a friend?`,
+        friendText: `If you come together, you each get €15 off. Speaking Spanish is easier with someone you know by your side.`,
+        friendFine: `Cannot be combined with other offers.`,
         aboutTitle: `Who's sitting at the table with you?`,
         aboutP1: `I'm Jordi, a <strong>Spanish teacher for foreigners</strong> and an <strong>official DELE examiner</strong>. I'm from Cuenca, right in the middle of Spain, so you'll practice with a <strong>clear, easy-to-understand accent</strong>. I hold a Master's in Teaching Spanish as a Foreign Language from the Universidad Internacional de Valencia, and before that I studied Translation and Interlingual Mediation.`,
         aboutP2: `I've been <strong>teaching for 3 years</strong>, both online and in person, at prestigious language schools in Valencia and with all kinds of students. Besides Spanish, I speak <strong>Catalan</strong> natively, <strong>English, French and Italian</strong> fluently, and I get by in <strong>Portuguese</strong>, so I know exactly what it feels like to blank out mid-sentence or not dare to speak for fear of making a mistake. That's exactly what I want you to leave behind in this course.`,
@@ -668,21 +720,25 @@
         heroLead: `Pratiquez un espagnol naturel, gagnez en aisance et perdez la peur de parler, dans un petit groupe convivial.`,
         heroCta: `Voir les horaires`,
         gruposTitle: `Choisissez votre groupe`,
-        b1Level: `Groupe B1`,
-        b1Tagline: `Déliez votre langue sans perdre le fil`,
-        b1Schedule: `Lundi, 19h00 (heure de Madrid)`,
-        b1Price: `119€/mois`,
-        b2c1Level: `Groupe B2/C1`,
-        b2c1Tagline: `Conversation de niveau avancé`,
-        b2c1Schedule: `Mercredi, 19h00 (heure de Madrid)`,
-        b2c1Price: `119€/mois`,
-        liClases: `Cours de 1h`,
-        liGrupos: `Groupes de 2 à 5 personnes`,
+        b1Level: `Niveau B1`,
+        b1Tagline: `PERDEZ VOTRE PEUR DE PARLER`,
+        b1Schedule: `Lundi, de 19h00 à 20h00 (heure de Madrid)`,
+        b1Duration: `Du 12 octobre au 14 décembre (10 cours)`,
+        b2c1Level: `Niveau B2-C1`,
+        b2c1Tagline: `PARLEZ NATURELLEMENT, COMME UN NATIF`,
+        b2c1Schedule: `Mercredi, de 19h00 à 20h00 (heure de Madrid)`,
+        b2c1Duration: `Du 14 octobre au 16 décembre (10 cours)`,
+        liClases: `Cours d'1 heure, un nouveau thème du quotidien chaque semaine`,
+        liNativo: `Pratiquez avec un professeur natif`,
+        liGrupos: `Groupes de 3 à 5 personnes`,
         liOnline: `100% en ligne`,
-        liGraba: `Enregistrés si vous en manquez un`,
-        liSesiones: `10 séances au total`,
+        fullPrice: `119€ le cours complet`,
+        promoPrice: `99€ pour les 4 premières personnes`,
         ctaInscribirme: `M'inscrire →`,
         noteStrip: `Cet horaire ne vous convient pas ? Écrivez-moi vos disponibilités et on trouvera une solution.`,
+        friendTitle: `🤝 Vous vous inscrivez avec un ami ?`,
+        friendText: `Si vous venez ensemble, vous bénéficiez chacun de 15€ de réduction. Parler espagnol est plus facile avec quelqu'un que vous connaissez à vos côtés.`,
+        friendFine: `Non cumulable avec d'autres offres.`,
         aboutTitle: `Qui s'assoit à table avec vous ?`,
         aboutP1: `Je suis Jordi, <strong>professeur d'espagnol pour étrangers</strong> et <strong>examinateur officiel du DELE</strong>. Je viens de Cuenca, en plein centre de l'Espagne, vous allez donc pratiquer avec un <strong>accent clair et facile à comprendre</strong>. Je suis titulaire d'un Master en Enseignement de l'espagnol comme langue étrangère de l'Universidad Internacional de Valencia, et avant cela j'ai étudié la Traduction et la Médiation Interlinguistique.`,
         aboutP2: `Cela fait <strong>3 ans que j'enseigne</strong>, en ligne et en présentiel, dans des écoles de langues prestigieuses de Valence et avec toutes sortes d'élèves. En plus de l'espagnol, je parle <strong>catalan</strong> couramment (langue maternelle), <strong>anglais, français et italien</strong> avec aisance, et je me débrouille en <strong>portugais</strong>, donc je sais parfaitement ce que c'est que de rester bloqué en pleine phrase ou de ne pas oser parler par peur de se tromper. C'est exactement ce que je veux que vous perdiez dans ce cours.`,
@@ -707,21 +763,25 @@
         heroLead: `Pratica uno spagnolo naturale, guadagna scioltezza e perdi la paura di parlare, in un gruppo piccolo e vicino.`,
         heroCta: `Vedi gli orari`,
         gruposTitle: `Scegli il tuo gruppo`,
-        b1Level: `Gruppo B1`,
-        b1Tagline: `Sciogli la lingua senza perdere il filo`,
-        b1Schedule: `Lunedì, 19:00 (ora di Madrid)`,
-        b1Price: `119€/mese`,
-        b2c1Level: `Gruppo B2/C1`,
-        b2c1Tagline: `Conversazione di livello avanzato`,
-        b2c1Schedule: `Mercoledì, 19:00 (ora di Madrid)`,
-        b2c1Price: `119€/mese`,
-        liClases: `Lezioni da 1h`,
-        liGrupos: `Gruppi da 2 a 5 persone`,
+        b1Level: `Livello B1`,
+        b1Tagline: `PERDI LA PAURA DI PARLARE`,
+        b1Schedule: `Lunedì, dalle 19:00 alle 20:00 (ora di Madrid)`,
+        b1Duration: `Dal 12 ottobre al 14 dicembre (10 lezioni)`,
+        b2c1Level: `Livello B2-C1`,
+        b2c1Tagline: `PARLA CON NATURALEZZA, COME UN MADRELINGUA`,
+        b2c1Schedule: `Mercoledì, dalle 19:00 alle 20:00 (ora di Madrid)`,
+        b2c1Duration: `Dal 14 ottobre al 16 dicembre (10 lezioni)`,
+        liClases: `Lezioni da 1 ora, ogni settimana un nuovo tema quotidiano`,
+        liNativo: `Fai pratica con un insegnante madrelingua`,
+        liGrupos: `Gruppi da 3 a 5 persone`,
         liOnline: `100% online`,
-        liGraba: `Registrate nel caso ne perdessi una`,
-        liSesiones: `10 sessioni in totale`,
+        fullPrice: `119€ il corso completo`,
+        promoPrice: `99€ per le prime 4 persone`,
         ctaInscribirme: `Iscrivimi →`,
         noteStrip: `Questo orario non ti va bene? Scrivimi la tua disponibilità e troviamo una soluzione.`,
+        friendTitle: `🤝 Ti iscrivi con un amico?`,
+        friendText: `Se venite insieme, vi scontiamo 15€ a testa. Parlare spagnolo è più facile con qualcuno che conosci al tuo fianco.`,
+        friendFine: `Non cumulabile con altre offerte.`,
         aboutTitle: `Chi si siede a tavola con te?`,
         aboutP1: `Sono Jordi, <strong>insegnante di spagnolo per stranieri</strong> ed <strong>esaminatore ufficiale del DELE</strong>. Sono di Cuenca, nel pieno centro della Spagna, quindi praticherai con un <strong>accento chiaro e facile da capire</strong>. Ho conseguito il Master in Insegnamento dello Spagnolo come Lingua Straniera presso l'Universidad Internacional de Valencia, e in precedenza ho studiato Traduzione e Mediazione Interlinguistica.`,
         aboutP2: `Insegno da <strong>3 anni</strong>, online e in presenza, in scuole di lingue prestigiose di Valencia e con alunni di ogni tipo. Oltre allo spagnolo, parlo <strong>catalano</strong> a livello madrelingua, <strong>inglese, francese e italiano</strong> con fluidità, e me la cavo in <strong>portoghese</strong>, quindi so perfettamente cosa significa rimanere in bianco a metà frase o non osare parlare per paura di sbagliare. Proprio questo è ciò che voglio che tu perda in questo corso.`,

@@ -104,10 +104,20 @@
   }
 
   .course-card .price {
+    margin: 0 0 20px;
+  }
+
+  .course-card .price .full-price {
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: line-through;
+    color: #8a8065;
+  }
+
+  .course-card .price .promo-price {
     font-size: 26px;
     font-weight: 700;
     color: var(--olive-dark);
-    margin: 0 0 20px;
   }
 
   .pay-btn {
@@ -286,13 +296,16 @@
       <div class="tagline" id="courseTagline"></div>
       <ul>
         <li id="courseSchedule"></li>
-        <li data-i18n="liClases">Clases de 1h</li>
-        <li data-i18n="liGrupos">Grupos de 2 a 5 personas</li>
+        <li data-i18n="liClases">Clases de 1 hora, cada semana un tema cotidiano nuevo</li>
+        <li data-i18n="liNativo">Practica con un profesor nativo</li>
+        <li data-i18n="liGrupos">Grupos de 3 a 5 personas</li>
         <li data-i18n="liOnline">100% online</li>
-        <li data-i18n="liGraba">Se graban por si faltas</li>
-        <li data-i18n="liSesiones">10 sesiones en total</li>
+        <li id="courseDuration"></li>
       </ul>
-      <div class="price" id="coursePrice"></div>
+      <div class="price">
+        <div class="full-price" data-i18n="fullPrice">119€ el curso completo</div>
+        <div class="promo-price" data-i18n="promoPrice">99€ para las 4 primeras personas</div>
+      </div>
       <a href="#" id="stripeBtn" class="pay-btn" data-i18n="payBtn" style="display:none">Quiero inscribirme ahora →</a>
       <p class="no-stripe-note" id="noStripeNote" style="display:none" data-i18n="noStripeNote">Este grupo se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.</p>
     </div>
@@ -337,8 +350,8 @@
 
   <script>
     var courseData = {
-      B1: { icon: '🗣️', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', stripe: '' },
-      B2C1: { icon: '💬', levelKey: 'b2c1Level', taglineKey: 'b2c1Tagline', scheduleKey: 'b2c1Schedule', priceKey: 'b2c1Price', stripe: '' }
+      B1: { icon: '☕', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', durationKey: 'b1Duration', stripe: '' },
+      B2C1: { icon: '☕', levelKey: 'b2c1Level', taglineKey: 'b2c1Tagline', scheduleKey: 'b2c1Schedule', durationKey: 'b2c1Duration', stripe: '' }
     };
 
     var params = new URLSearchParams(window.location.search);
@@ -376,19 +389,20 @@
         backLink: `← Volver a los grupos`,
         h1: `Reserva tu plaza`,
         lead: `Revisa los detalles del grupo y completa tu inscripción de forma segura.`,
-        b1Level: `Grupo B1`,
-        b2c1Level: `Grupo B2/C1`,
-        b1Tagline: `Suelta la lengua sin perder el hilo`,
-        b2c1Tagline: `Conversación de nivel avanzado`,
-        b1Schedule: `Lunes, 19:00 (hora de Madrid)`,
-        b2c1Schedule: `Miércoles, 19:00 (hora de Madrid)`,
-        b1Price: `119€/mes`,
-        b2c1Price: `119€/mes`,
-        liClases: `Clases de 1h`,
-        liGrupos: `Grupos de 2 a 5 personas`,
+        b1Level: `Nivel B1`,
+        b2c1Level: `Nivel B2-C1`,
+        b1Tagline: `PIERDE EL MIEDO A HABLAR`,
+        b2c1Tagline: `HABLA CON NATURALIDAD, COMO UN NATIVO`,
+        b1Schedule: `Lunes, de 19:00 a 20:00 (hora de Madrid)`,
+        b2c1Schedule: `Miércoles, de 19:00 a 20:00 (hora de Madrid)`,
+        b1Duration: `Del 12 de octubre al 14 de diciembre (10 clases)`,
+        b2c1Duration: `Del 14 de octubre al 16 de diciembre (10 clases)`,
+        liClases: `Clases de 1 hora, cada semana un tema cotidiano nuevo`,
+        liNativo: `Practica con un profesor nativo`,
+        liGrupos: `Grupos de 3 a 5 personas`,
         liOnline: `100% online`,
-        liGraba: `Se graban por si faltas`,
-        liSesiones: `10 sesiones en total`,
+        fullPrice: `119€ el curso completo`,
+        promoPrice: `99€ para las 4 primeras personas`,
         payBtn: `Quiero inscribirme ahora →`,
         noStripeNote: `Este grupo se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.`,
         pickLevel: `Elige un grupo para continuar:`,
@@ -404,19 +418,20 @@
         backLink: `← Back to groups`,
         h1: `Reserve your spot`,
         lead: `Review the group's details and complete your enrollment securely.`,
-        b1Level: `B1 Group`,
-        b2c1Level: `B2/C1 Group`,
-        b1Tagline: `Loosen your tongue without losing the thread`,
-        b2c1Tagline: `Advanced-level conversation`,
-        b1Schedule: `Mondays, 19:00 (Madrid time)`,
-        b2c1Schedule: `Wednesdays, 19:00 (Madrid time)`,
-        b1Price: `€119/month`,
-        b2c1Price: `€119/month`,
-        liClases: `1h classes`,
-        liGrupos: `Groups of 2 to 5 people`,
+        b1Level: `B1 Level`,
+        b2c1Level: `B2-C1 Level`,
+        b1Tagline: `LOSE YOUR FEAR OF SPEAKING`,
+        b2c1Tagline: `SPEAK NATURALLY, LIKE A NATIVE`,
+        b1Schedule: `Mondays, 19:00-20:00 (Madrid time)`,
+        b2c1Schedule: `Wednesdays, 19:00-20:00 (Madrid time)`,
+        b1Duration: `October 12 to December 14 (10 classes)`,
+        b2c1Duration: `October 14 to December 16 (10 classes)`,
+        liClases: `1-hour classes, a new everyday topic each week`,
+        liNativo: `Practice with a native teacher`,
+        liGrupos: `Groups of 3 to 5 people`,
         liOnline: `100% online`,
-        liGraba: `Recorded in case you miss one`,
-        liSesiones: `10 sessions in total`,
+        fullPrice: `€119 for the full course`,
+        promoPrice: `€99 for the first 4 people`,
         payBtn: `I want to enroll now →`,
         noStripeNote: `This group is confirmed by WhatsApp or email. Message me below to reserve your spot.`,
         pickLevel: `Choose a group to continue:`,
@@ -432,19 +447,20 @@
         backLink: `← Retour aux groupes`,
         h1: `Réservez votre place`,
         lead: `Vérifiez les détails du groupe et finalisez votre inscription en toute sécurité.`,
-        b1Level: `Groupe B1`,
-        b2c1Level: `Groupe B2/C1`,
-        b1Tagline: `Déliez votre langue sans perdre le fil`,
-        b2c1Tagline: `Conversation de niveau avancé`,
-        b1Schedule: `Lundi, 19h00 (heure de Madrid)`,
-        b2c1Schedule: `Mercredi, 19h00 (heure de Madrid)`,
-        b1Price: `119€/mois`,
-        b2c1Price: `119€/mois`,
-        liClases: `Cours de 1h`,
-        liGrupos: `Groupes de 2 à 5 personnes`,
+        b1Level: `Niveau B1`,
+        b2c1Level: `Niveau B2-C1`,
+        b1Tagline: `PERDEZ VOTRE PEUR DE PARLER`,
+        b2c1Tagline: `PARLEZ NATURELLEMENT, COMME UN NATIF`,
+        b1Schedule: `Lundi, de 19h00 à 20h00 (heure de Madrid)`,
+        b2c1Schedule: `Mercredi, de 19h00 à 20h00 (heure de Madrid)`,
+        b1Duration: `Du 12 octobre au 14 décembre (10 cours)`,
+        b2c1Duration: `Du 14 octobre au 16 décembre (10 cours)`,
+        liClases: `Cours d'1 heure, un nouveau thème du quotidien chaque semaine`,
+        liNativo: `Pratiquez avec un professeur natif`,
+        liGrupos: `Groupes de 3 à 5 personnes`,
         liOnline: `100% en ligne`,
-        liGraba: `Enregistrés si vous en manquez un`,
-        liSesiones: `10 séances au total`,
+        fullPrice: `119€ le cours complet`,
+        promoPrice: `99€ pour les 4 premières personnes`,
         payBtn: `Je veux m'inscrire maintenant →`,
         noStripeNote: `Ce groupe se confirme par WhatsApp ou email. Écrivez-moi ci-dessous pour réserver votre place.`,
         pickLevel: `Choisissez un groupe pour continuer :`,
@@ -460,19 +476,20 @@
         backLink: `← Torna ai gruppi`,
         h1: `Prenota il tuo posto`,
         lead: `Controlla i dettagli del gruppo e completa la tua iscrizione in modo sicuro.`,
-        b1Level: `Gruppo B1`,
-        b2c1Level: `Gruppo B2/C1`,
-        b1Tagline: `Sciogli la lingua senza perdere il filo`,
-        b2c1Tagline: `Conversazione di livello avanzato`,
-        b1Schedule: `Lunedì, 19:00 (ora di Madrid)`,
-        b2c1Schedule: `Mercoledì, 19:00 (ora di Madrid)`,
-        b1Price: `119€/mese`,
-        b2c1Price: `119€/mese`,
-        liClases: `Lezioni da 1h`,
-        liGrupos: `Gruppi da 2 a 5 persone`,
+        b1Level: `Livello B1`,
+        b2c1Level: `Livello B2-C1`,
+        b1Tagline: `PERDI LA PAURA DI PARLARE`,
+        b2c1Tagline: `PARLA CON NATURALEZZA, COME UN MADRELINGUA`,
+        b1Schedule: `Lunedì, dalle 19:00 alle 20:00 (ora di Madrid)`,
+        b2c1Schedule: `Mercoledì, dalle 19:00 alle 20:00 (ora di Madrid)`,
+        b1Duration: `Dal 12 ottobre al 14 dicembre (10 lezioni)`,
+        b2c1Duration: `Dal 14 ottobre al 16 dicembre (10 lezioni)`,
+        liClases: `Lezioni da 1 ora, ogni settimana un nuovo tema quotidiano`,
+        liNativo: `Fai pratica con un insegnante madrelingua`,
+        liGrupos: `Gruppi da 3 a 5 persone`,
         liOnline: `100% online`,
-        liGraba: `Registrate nel caso ne perdessi una`,
-        liSesiones: `10 sessioni in totale`,
+        fullPrice: `119€ il corso completo`,
+        promoPrice: `99€ per le prime 4 persone`,
         payBtn: `Voglio iscrivermi ora →`,
         noStripeNote: `Questo gruppo si conferma via WhatsApp o email. Scrivimi qui sotto per prenotare il tuo posto.`,
         pickLevel: `Scegli un gruppo per continuare:`,
@@ -499,7 +516,7 @@
         document.getElementById('courseLevel').textContent = dict[currentCourse.levelKey];
         document.getElementById('courseTagline').textContent = dict[currentCourse.taglineKey];
         document.getElementById('courseSchedule').textContent = dict[currentCourse.scheduleKey];
-        document.getElementById('coursePrice').textContent = dict[currentCourse.priceKey];
+        document.getElementById('courseDuration').textContent = dict[currentCourse.durationKey];
       }
 
       document.querySelectorAll('.lang-btn').forEach(function (btn) {
