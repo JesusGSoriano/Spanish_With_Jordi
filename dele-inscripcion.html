@@ -316,6 +316,7 @@
         <a href="dele-inscripcion.html?nivel=B1">B1</a>
         <a href="dele-inscripcion.html?nivel=B2">B2</a>
         <a href="dele-inscripcion.html?nivel=C1">C1</a>
+        <a href="dele-inscripcion.html?nivel=A2F">A2 Exprés</a>
       </div>
     </div>
 
@@ -354,7 +355,8 @@
       A2: { icon: '🪪', levelKey: 'a2Level', taglineKey: 'a2Tagline', scheduleKey: 'a2Schedule', priceKey: 'a2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'a2Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' },
       B1: { icon: '📚', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'b1Inicio', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/28E14p8QHcJU87U9wG3ZK01' },
       B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'b2Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
-      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'c1Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' }
+      C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'c1Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' },
+      A2F: { icon: '🚀', levelKey: 'a2fLevel', taglineKey: 'a2fTagline', scheduleKey: 'a2fSchedule', priceKey: 'a2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'a2fDuration', badgeKey: 'a2fBadge', stripe: '' }
     };
 
     var params = new URLSearchParams(window.location.search);
@@ -418,6 +420,11 @@
         a2Duration: `Empieza el 2 de febrero`,
         b2Duration: `Empieza el 1 de febrero`,
         c1Duration: `Empieza el 2 de febrero`,
+        a2fBadge: `🎯 Objetivo: Examen de Febrero`,
+        a2fLevel: `A2 Exprés`,
+        a2fTagline: `Prepárate a tiempo para el examen de febrero`,
+        a2fSchedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
+        a2fDuration: `Del 2 de noviembre al 10 de febrero (pausa en Navidad)`,
         payBtn: `Quiero inscribirme ahora →`,
         noStripeNote: `Este nivel se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.`,
         pickLevel: `Elige un nivel para continuar con el pago:`,
@@ -458,6 +465,11 @@
         a2Duration: `Starts February 2`,
         b2Duration: `Starts February 1`,
         c1Duration: `Starts February 2`,
+        a2fBadge: `🎯 Target: February Exam`,
+        a2fLevel: `A2 Express`,
+        a2fTagline: `Get ready in time for the February exam`,
+        a2fSchedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
+        a2fDuration: `November 2 to February 10 (Christmas break)`,
         payBtn: `I want to enroll now →`,
         noStripeNote: `This level is confirmed by WhatsApp or email. Message me below to reserve your spot.`,
         pickLevel: `Choose a level to continue with payment:`,
@@ -498,6 +510,11 @@
         a2Duration: `Commence le 2 février`,
         b2Duration: `Commence le 1er février`,
         c1Duration: `Commence le 2 février`,
+        a2fBadge: `🎯 Objectif : Examen de Février`,
+        a2fLevel: `A2 Express`,
+        a2fTagline: `Préparez-vous à temps pour l'examen de février`,
+        a2fSchedule: `Lundi et mercredi, de 19h00 à 20h30 (heure de Madrid)`,
+        a2fDuration: `Du 2 novembre au 10 février (pause de Noël)`,
         payBtn: `Je veux m'inscrire maintenant →`,
         noStripeNote: `Ce niveau se confirme par WhatsApp ou email. Écrivez-moi ci-dessous pour réserver votre place.`,
         pickLevel: `Choisissez un niveau pour continuer le paiement :`,
@@ -538,6 +555,11 @@
         a2Duration: `Inizia il 2 febbraio`,
         b2Duration: `Inizia il 1° febbraio`,
         c1Duration: `Inizia il 2 febbraio`,
+        a2fBadge: `🎯 Obiettivo: Esame di Febbraio`,
+        a2fLevel: `A2 Express`,
+        a2fTagline: `Preparati in tempo per l'esame di febbraio`,
+        a2fSchedule: `Lunedì e mercoledì, dalle 19:00 alle 20:30 (ora di Madrid)`,
+        a2fDuration: `Dal 2 novembre al 10 febbraio (pausa natalizia)`,
         payBtn: `Voglio iscrivermi ora →`,
         noStripeNote: `Questo livello si conferma via WhatsApp o email. Scrivimi qui sotto per prenotare il tuo posto.`,
         pickLevel: `Scegli un livello per procedere con il pagamento:`,
