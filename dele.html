@@ -300,6 +300,15 @@
     }
   }
 
+  @media (min-width: 860px) {
+    .exam-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .exam-grid .exam-card:last-child:nth-child(odd) {
+      grid-column: auto;
+      max-width: none;
+      margin: 0;
+    }
+  }
+
   .exam-card {
     background: var(--cream-dark);
     border-radius: 16px;
