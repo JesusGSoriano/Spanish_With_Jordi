@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clases particulares de español con Jordi</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --cream: #F7EFDC;
+    --cream-dark: #EFE1BE;
+    --olive: #5C6B3B;
+    --olive-dark: #40492A;
+    --terracotta: #D9822E;
+    --terracotta-dark: #B5691F;
+    --ink: #3A3122;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  h1, h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    margin: 0;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 56px 24px 48px;
+  }
+
+  a.back {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--olive-dark);
+    text-decoration: none;
+  }
+
+  .hero { text-align: center; }
+
+  .avatar-frame {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--olive-dark);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.25);
+    margin: 0 auto 20px;
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.15);
+    transform-origin: 50% 32%;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 6vw, 40px);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .hero p.lead {
+    font-size: 16px;
+    color: #5A5340;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    margin: 44px 0 20px;
+  }
+  .section-title h2 { font-size: 24px; }
+  .section-title .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--terracotta);
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
+
+  /* PRECIOS */
+  .price-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding: 14px 14px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .price-table thead th {
+    background: var(--olive-dark);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .price-table tbody th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--olive-dark);
+  }
+
+  .price-table tbody tr + tr th,
+  .price-table tbody tr + tr td {
+    border-top: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .price-table .amount {
+    display: block;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .price-table .save {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--terracotta-dark);
+  }
+
+  /* CONDICIONES */
+  .conditions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .conditions li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .conditions li::before {
+    content: "✓";
+    color: var(--olive);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* BOTÓN WHATSAPP */
+  .cta {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 999px;
+    font-size: 17px;
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4); }
+  .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
+
+  footer.legal {
+    text-align: center;
+    font-size: 12px;
+    color: #A99E86;
+    padding: 24px 24px 30px;
+  }
+
+  /* NEWSLETTER */
+  .newsletter {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--olive-dark);
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.15);
+    padding: 8px 16px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  /* WHATSAPP */
+  .wa-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9998;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  /* LANGUAGE SWITCH */
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 10000;
+    display: flex;
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.2);
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 4px 10px rgba(90, 63, 40, 0.15);
+  }
+
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .lang-btn.active {
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <div class="lang-switch" id="langSwitch">
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="fr">FR</button>
+    <button type="button" class="lang-btn" data-lang="it">IT</button>
+  </div>
+
+  <div class="wrap">
+    <div class="hero">
+      <a class="back" href="index.html" data-i18n="backLink">← Volver al inicio</a>
+      <div class="avatar-frame">
+        <img class="avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
+      </div>
+      <h1 data-i18n="h1">Clases particulares, a tu ritmo</h1>
+      <p class="lead" data-i18n="lead">Clases 1 a 1 por videollamada, adaptadas a lo que necesitas: preparar el DELE de cualquier nivel o mejorar tu español en general. Tú eliges cuándo empezar y avanzamos a tu ritmo.</p>
+    </div>
+
+    <div class="section-title">
+      <h2 data-i18n="pricesTitle">Precios (clases de 1 hora)</h2>
+      <div class="divider"></div>
+    </div>
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th data-i18n="colGeneral">Español general</th>
+          <th>DELE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th data-i18n="rowSingle">Clase suelta</th>
+          <td><span class="amount">20 €</span></td>
+          <td><span class="amount">25 €</span></td>
+        </tr>
+        <tr>
+          <th data-i18n="rowPack">Bono 5 clases</th>
+          <td><span class="amount">90 €</span><span class="save"><span data-i18n="save">ahorras</span> 10&nbsp;€</span></td>
+          <td><span class="amount">110 €</span><span class="save"><span data-i18n="save">ahorras</span> 15&nbsp;€</span></td>
+        </tr>
+        <tr>
+          <th data-i18n="rowDuo">Clase para dos (por persona)</th>
+          <td><span class="amount">15 €</span></td>
+          <td><span class="amount">18 €</span></td>
+        </tr>
+        <tr>
+          <th data-i18n="rowDuoPack">Bono 5 clases para dos (por persona)</th>
+          <td><span class="amount">65 €</span><span class="save"><span data-i18n="save">ahorras</span> 10&nbsp;€</span></td>
+          <td><span class="amount">80 €</span><span class="save"><span data-i18n="save">ahorras</span> 10&nbsp;€</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">
+      <h2 data-i18n="condTitle">Condiciones</h2>
+      <div class="divider"></div>
+    </div>
+
+    <ul class="conditions">
+      <li data-i18n="cond1">Pago por adelantado.</li>
+      <li data-i18n="cond2">El bono caduca a los 2 meses.</li>
+      <li data-i18n="cond3">Horario a convenir según disponibilidad.</li>
+      <li data-i18n="cond4">Cancelación con 24 h de antelación; si no, la clase cuenta como hecha.</li>
+      <li data-i18n="cond5">Clase para dos: amigos, pareja o familia que vienen juntos a la misma clase.</li>
+    </ul>
+
+    <div class="cta">
+      <a class="wa-btn" href="https://wa.me/34656679262?text=Hola%20Jordi%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20clases%20%3A%29" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="waBtn">Escríbeme por WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="legal">
+    <div class="newsletter" data-i18n="newsletter">📬 Newsletter: muy pronto</div><br>
+    <span data-i18n="footer">© 2026 Spanish with Jordi · Clases particulares online</span>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/34656679262?text=Hola%20Jordi%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20clases%20%3A%29" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    var translations = {
+      es: {
+        pageTitle: `Clases particulares de español con Jordi`,
+        backLink: `← Volver al inicio`,
+        avatarAlt: `Jordi, profesor de español`,
+        h1: `Clases particulares, a tu ritmo`,
+        lead: `Clases 1 a 1 por videollamada, adaptadas a lo que necesitas: preparar el DELE de cualquier nivel o mejorar tu español en general. Tú eliges cuándo empezar y avanzamos a tu ritmo.`,
+        pricesTitle: `Precios (clases de 1 hora)`,
+        colGeneral: `Español general`,
+        rowSingle: `Clase suelta`,
+        rowPack: `Bono 5 clases`,
+        rowDuo: `Clase para dos (por persona)`,
+        rowDuoPack: `Bono 5 clases para dos (por persona)`,
+        save: `ahorras`,
+        condTitle: `Condiciones`,
+        cond1: `Pago por adelantado.`,
+        cond2: `El bono caduca a los 2 meses.`,
+        cond3: `Horario a convenir según disponibilidad.`,
+        cond4: `Cancelación con 24 h de antelación; si no, la clase cuenta como hecha.`,
+        cond5: `Clase para dos: amigos, pareja o familia que vienen juntos a la misma clase.`,
+        waBtn: `Escríbeme por WhatsApp`,
+        newsletter: `📬 Newsletter: muy pronto`,
+        footer: `© 2026 Spanish with Jordi · Clases particulares online`
+      },
+      en: {
+        pageTitle: `Private Spanish lessons with Jordi`,
+        backLink: `← Back home`,
+        avatarAlt: `Jordi, Spanish teacher`,
+        h1: `Private lessons, at your own pace`,
+        lead: `One-to-one video lessons tailored to what you need: preparing for the DELE at any level or improving your Spanish in general. You choose when to start and we move forward at your pace.`,
+        pricesTitle: `Prices (1-hour lessons)`,
+        colGeneral: `General Spanish`,
+        rowSingle: `Single lesson`,
+        rowPack: `5-lesson pack`,
+        rowDuo: `Lesson for two (per person)`,
+        rowDuoPack: `5-lesson pack for two (per person)`,
+        save: `you save`,
+        condTitle: `Terms`,
+        cond1: `Payment in advance.`,
+        cond2: `The pack expires after 2 months.`,
+        cond3: `Schedule agreed according to availability.`,
+        cond4: `Cancel at least 24 hours in advance; otherwise the lesson counts as taken.`,
+        cond5: `Lesson for two: friends, partners or family who join the same lesson together.`,
+        waBtn: `Message me on WhatsApp`,
+        newsletter: `📬 Newsletter: coming soon`,
+        footer: `© 2026 Spanish with Jordi · Online private lessons`
+      },
+      fr: {
+        pageTitle: `Cours particuliers d'espagnol avec Jordi`,
+        backLink: `← Retour à l'accueil`,
+        avatarAlt: `Jordi, professeur d'espagnol`,
+        h1: `Cours particuliers, à votre rythme`,
+        lead: `Cours individuels en visio, adaptés à vos besoins : préparer le DELE de n'importe quel niveau ou améliorer votre espagnol en général. Vous choisissez quand commencer et on avance à votre rythme.`,
+        pricesTitle: `Tarifs (cours d'une heure)`,
+        colGeneral: `Espagnol général`,
+        rowSingle: `Cours à l'unité`,
+        rowPack: `Forfait 5 cours`,
+        rowDuo: `Cours à deux (par personne)`,
+        rowDuoPack: `Forfait 5 cours à deux (par personne)`,
+        save: `vous économisez`,
+        condTitle: `Conditions`,
+        cond1: `Paiement à l'avance.`,
+        cond2: `Le forfait expire au bout de 2 mois.`,
+        cond3: `Horaires à convenir selon les disponibilités.`,
+        cond4: `Annulation 24 h à l'avance ; sinon, le cours est considéré comme effectué.`,
+        cond5: `Cours à deux : amis, couple ou famille qui viennent ensemble au même cours.`,
+        waBtn: `Écrivez-moi sur WhatsApp`,
+        newsletter: `📬 Newsletter : bientôt disponible`,
+        footer: `© 2026 Spanish with Jordi · Cours particuliers en ligne`
+      },
+      it: {
+        pageTitle: `Lezioni private di spagnolo con Jordi`,
+        backLink: `← Torna alla home`,
+        avatarAlt: `Jordi, insegnante di spagnolo`,
+        h1: `Lezioni private, al tuo ritmo`,
+        lead: `Lezioni individuali in videochiamata, adattate a ciò di cui hai bisogno: preparare il DELE di qualsiasi livello o migliorare il tuo spagnolo in generale. Scegli tu quando iniziare e andiamo avanti al tuo ritmo.`,
+        pricesTitle: `Prezzi (lezioni da 1 ora)`,
+        colGeneral: `Spagnolo generale`,
+        rowSingle: `Lezione singola`,
+        rowPack: `Pacchetto 5 lezioni`,
+        rowDuo: `Lezione in due (a persona)`,
+        rowDuoPack: `Pacchetto 5 lezioni in due (a persona)`,
+        save: `risparmi`,
+        condTitle: `Condizioni`,
+        cond1: `Pagamento anticipato.`,
+        cond2: `Il pacchetto scade dopo 2 mesi.`,
+        cond3: `Orario da concordare in base alla disponibilità.`,
+        cond4: `Cancellazione con 24 ore di anticipo; altrimenti la lezione si considera svolta.`,
+        cond5: `Lezione in due: amici, coppia o famiglia che vengono insieme alla stessa lezione.`,
+        waBtn: `Scrivimi su WhatsApp`,
+        newsletter: `📬 Newsletter: in arrivo`,
+        footer: `© 2026 Spanish with Jordi · Lezioni private online`
+      }
+    };
+
+    function applyLanguage(lang) {
+      var dict = translations[lang] || translations.es;
+      document.documentElement.lang = lang;
+      document.title = dict.pageTitle;
+
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-attr-alt]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-attr-alt');
+        if (dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      localStorage.setItem('siteLang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    function detectDefaultLang() {
+      var saved = localStorage.getItem('siteLang');
+      if (saved) return saved;
+      var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      var supported = ['en', 'fr', 'it'];
+      for (var i = 0; i < supported.length; i++) {
+        if (browserLang.indexOf(supported[i]) === 0) return supported[i];
+      }
+      return 'es';
+    }
+
+    applyLanguage(detectDefaultLang());
+  </script>
+
+</body>
+</html>

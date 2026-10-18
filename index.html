@@ -27,7 +27,7 @@
   }
 
   .wrap {
-    max-width: 720px;
+    max-width: 980px;
     margin: 0 auto;
     padding: 64px 24px 48px;
     text-align: center;
@@ -72,14 +72,14 @@
     gap: 22px;
   }
 
-  @media (min-width: 640px) {
-    .paths { grid-template-columns: 1fr 1fr; }
+  @media (min-width: 860px) {
+    .paths { grid-template-columns: 1fr 1fr 1fr; }
   }
 
   .path-card {
     background: var(--cream-dark);
     border-radius: 16px;
-    padding: 32px 26px;
+    padding: 30px 24px;
     border: 1px solid rgba(90, 63, 40, 0.12);
     text-align: left;
     display: flex;
@@ -95,7 +95,19 @@
     font-family: Georgia, 'Times New Roman', serif;
     color: var(--olive-dark);
     font-size: 22px;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
+  }
+
+  .start-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--olive-dark);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
   }
 
   .path-card p {
@@ -120,12 +132,66 @@
   }
   .path-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(217, 130, 46, 0.4); }
 
+  /* PRUEBA DE NIVEL */
+  .level-test {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 16px;
+    margin: 32px auto 0;
+    max-width: 640px;
+    padding: 18px 22px;
+    background: #fff;
+    border: 2px dashed var(--terracotta);
+    border-radius: 14px;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .level-test:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(217, 130, 46, 0.2); }
+  .level-test .go { color: var(--terracotta-dark); }
+
   footer.legal {
     text-align: center;
     font-size: 12px;
     color: #A99E86;
     padding: 24px 24px 30px;
   }
+
+  /* NEWSLETTER */
+  .newsletter {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--olive-dark);
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.15);
+    padding: 8px 16px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  /* WHATSAPP */
+  .wa-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9998;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
 
   /* LANGUAGE SWITCH */
   .lang-switch {
@@ -178,24 +244,44 @@
 
     <div class="paths">
       <div class="path-card">
-        <div class="icon">🖋️</div>
-        <h2 data-i18n="deleTitle">Preparación DELE</h2>
-        <p data-i18n="deleText">Aprueba tu examen oficial con un examinador acreditado. Grupos reducidos, clases en directo y trucos directos de examinador.</p>
-        <a href="dele.html" class="path-btn" data-i18n="deleBtn">Empezar</a>
+        <div class="icon">🚀</div>
+        <h2 data-i18n="febTitle">DELE Febrero (A2)</h2>
+        <span class="start-badge" data-i18n="febStart">Empiezan las clases el 2 de noviembre</span>
+        <p data-i18n="febText">Curso intensivo A2 Exprés para el examen del 12 de febrero de 2027. Ideal si necesitas el A2 para la nacionalidad.</p>
+        <a href="dele-febrero.html" class="path-btn" data-i18n="cardBtn">Ver curso</a>
       </div>
 
       <div class="path-card">
-        <div class="icon">☕</div>
-        <h2 data-i18n="convTitle">Español conversacional</h2>
-        <p data-i18n="convText">Gana fluidez y pierde el miedo a hablar, en un grupo reducido y cercano. Charlas de sobremesa entre semana.</p>
-        <a href="conversacion.html" class="path-btn" data-i18n="convBtn">Empezar</a>
+        <div class="icon">🖋️</div>
+        <h2 data-i18n="mayTitle">DELE Mayo (A2 a C1)</h2>
+        <span class="start-badge" data-i18n="mayStart">Empiezan las clases el 1 de febrero</span>
+        <p data-i18n="mayText">Cursos de A2, B1, B2 y C1 para el examen del 22 de mayo de 2027. Grupos reducidos y clases en directo.</p>
+        <a href="dele.html" class="path-btn" data-i18n="cardBtn">Ver curso</a>
+      </div>
+
+      <div class="path-card">
+        <div class="icon">👤</div>
+        <h2 data-i18n="privTitle">Clases particulares</h2>
+        <span class="start-badge" data-i18n="privStart">Empieza cuando quieras</span>
+        <p data-i18n="privText">Clases 1 a 1 por videollamada, para preparar el DELE o mejorar tu español, a tu ritmo.</p>
+        <a href="clases-particulares.html" class="path-btn" data-i18n="privBtn">Ver precios</a>
       </div>
     </div>
+
+    <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
+      <span data-i18n="levelTest">¿No sabes tu nivel? Haz la prueba gratis</span>
+      <span class="go">→</span>
+    </a>
   </div>
 
   <footer class="legal">
+    <div class="newsletter" data-i18n="newsletter">📬 Newsletter: muy pronto</div><br>
     <span data-i18n="footer">© 2026 Spanish with Jordi</span>
   </footer>
+
+  <a class="wa-float" href="https://wa.me/34656679262?text=Hola%20Jordi%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20clases%20%3A%29" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
   <script>
     var translations = {
@@ -204,12 +290,19 @@
         avatarAlt: `Jordi, profesor de español`,
         h1: `¿Qué quieres conseguir con tu español?`,
         lead: `Elige tu camino y te preparo un plan a medida.`,
-        deleTitle: `Preparación DELE`,
-        deleText: `Aprueba tu examen oficial con un examinador acreditado. Grupos reducidos, clases en directo y trucos directos de examinador.`,
-        deleBtn: `Empezar`,
-        convTitle: `Español conversacional`,
-        convText: `Gana fluidez y pierde el miedo a hablar, en un grupo reducido y cercano. Charlas de sobremesa entre semana.`,
-        convBtn: `Empezar`,
+        febTitle: `DELE Febrero (A2)`,
+        febStart: `Empiezan las clases el 2 de noviembre`,
+        febText: `Curso intensivo A2 Exprés para el examen del 12 de febrero de 2027. Ideal si necesitas el A2 para la nacionalidad.`,
+        mayTitle: `DELE Mayo (A2 a C1)`,
+        mayStart: `Empiezan las clases el 1 de febrero`,
+        mayText: `Cursos de A2, B1, B2 y C1 para el examen del 22 de mayo de 2027. Grupos reducidos y clases en directo.`,
+        privTitle: `Clases particulares`,
+        privStart: `Empieza cuando quieras`,
+        privText: `Clases 1 a 1 por videollamada, para preparar el DELE o mejorar tu español, a tu ritmo.`,
+        cardBtn: `Ver curso`,
+        privBtn: `Ver precios`,
+        levelTest: `¿No sabes tu nivel? Haz la prueba gratis`,
+        newsletter: `📬 Newsletter: muy pronto`,
         footer: `© 2026 Spanish with Jordi`
       },
       en: {
@@ -217,12 +310,19 @@
         avatarAlt: `Jordi, Spanish teacher`,
         h1: `What do you want to achieve with your Spanish?`,
         lead: `Choose your path and I'll set you up with a tailored plan.`,
-        deleTitle: `DELE Exam Prep`,
-        deleText: `Pass your official exam with an accredited examiner. Small groups, live classes and direct tips from an examiner.`,
-        deleBtn: `Get started`,
-        convTitle: `Conversational Spanish`,
-        convText: `Build fluency and lose the fear of speaking, in a small, close-knit group. Weekday table talk sessions.`,
-        convBtn: `Get started`,
+        febTitle: `DELE February (A2)`,
+        febStart: `Classes start on November 2`,
+        febText: `Intensive A2 Express course for the February 12, 2027 exam. Ideal if you need A2 for Spanish citizenship.`,
+        mayTitle: `DELE May (A2 to C1)`,
+        mayStart: `Classes start on February 1`,
+        mayText: `A2, B1, B2 and C1 courses for the May 22, 2027 exam. Small groups and live classes.`,
+        privTitle: `Private lessons`,
+        privStart: `Start whenever you want`,
+        privText: `One-to-one video lessons to prepare for the DELE or improve your Spanish, at your own pace.`,
+        cardBtn: `See course`,
+        privBtn: `See prices`,
+        levelTest: `Not sure about your level? Take the free test`,
+        newsletter: `📬 Newsletter: coming soon`,
         footer: `© 2026 Spanish with Jordi`
       },
       fr: {
@@ -230,12 +330,19 @@
         avatarAlt: `Jordi, professeur d'espagnol`,
         h1: `Que voulez-vous accomplir avec votre espagnol ?`,
         lead: `Choisissez votre parcours et je vous prépare un plan sur mesure.`,
-        deleTitle: `Préparation au DELE`,
-        deleText: `Réussissez votre examen officiel avec un examinateur accrédité. Petits groupes, cours en direct et astuces directes d'un examinateur.`,
-        deleBtn: `Commencer`,
-        convTitle: `Espagnol conversationnel`,
-        convText: `Gagnez en aisance et perdez la peur de parler, dans un petit groupe convivial. Discussions de fin de repas en semaine.`,
-        convBtn: `Commencer`,
+        febTitle: `DELE Février (A2)`,
+        febStart: `Début des cours le 2 novembre`,
+        febText: `Cours intensif A2 Express pour l'examen du 12 février 2027. Idéal si vous avez besoin du A2 pour la nationalité espagnole.`,
+        mayTitle: `DELE Mai (A2 à C1)`,
+        mayStart: `Début des cours le 1er février`,
+        mayText: `Cours A2, B1, B2 et C1 pour l'examen du 22 mai 2027. Petits groupes et cours en direct.`,
+        privTitle: `Cours particuliers`,
+        privStart: `Commencez quand vous voulez`,
+        privText: `Cours individuels en visio pour préparer le DELE ou améliorer votre espagnol, à votre rythme.`,
+        cardBtn: `Voir le cours`,
+        privBtn: `Voir les tarifs`,
+        levelTest: `Vous ne connaissez pas votre niveau ? Faites le test gratuit`,
+        newsletter: `📬 Newsletter : bientôt disponible`,
         footer: `© 2026 Spanish with Jordi`
       },
       it: {
@@ -243,12 +350,19 @@
         avatarAlt: `Jordi, insegnante di spagnolo`,
         h1: `Cosa vuoi ottenere con il tuo spagnolo?`,
         lead: `Scegli il tuo percorso e ti preparo un piano su misura.`,
-        deleTitle: `Preparazione DELE`,
-        deleText: `Supera il tuo esame ufficiale con un esaminatore accreditato. Gruppi ridotti, lezioni dal vivo e consigli diretti da un esaminatore.`,
-        deleBtn: `Inizia`,
-        convTitle: `Spagnolo conversazionale`,
-        convText: `Guadagna scioltezza e perdi la paura di parlare, in un gruppo piccolo e vicino. Chiacchierate da sobremesa infrasettimanali.`,
-        convBtn: `Inizia`,
+        febTitle: `DELE Febbraio (A2)`,
+        febStart: `Le lezioni iniziano il 2 novembre`,
+        febText: `Corso intensivo A2 Express per l'esame del 12 febbraio 2027. Ideale se ti serve l'A2 per la cittadinanza spagnola.`,
+        mayTitle: `DELE Maggio (da A2 a C1)`,
+        mayStart: `Le lezioni iniziano il 1° febbraio`,
+        mayText: `Corsi A2, B1, B2 e C1 per l'esame del 22 maggio 2027. Gruppi ridotti e lezioni dal vivo.`,
+        privTitle: `Lezioni private`,
+        privStart: `Inizia quando vuoi`,
+        privText: `Lezioni individuali in videochiamata per preparare il DELE o migliorare il tuo spagnolo, al tuo ritmo.`,
+        cardBtn: `Vedi il corso`,
+        privBtn: `Vedi i prezzi`,
+        levelTest: `Non conosci il tuo livello? Fai il test gratuito`,
+        newsletter: `📬 Newsletter: in arrivo`,
         footer: `© 2026 Spanish with Jordi`
       }
     };

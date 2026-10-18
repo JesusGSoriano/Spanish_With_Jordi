@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Español con Jordi: DELE A2 en febrero</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --cream: #F7EFDC;
+    --cream-dark: #EFE1BE;
+    --olive: #5C6B3B;
+    --olive-dark: #40492A;
+    --terracotta: #D9822E;
+    --terracotta-dark: #B5691F;
+    --brown: #5A3F28;
+    --ink: #3A3122;
+  }
+
+  * { box-sizing: border-box; }
+
+  /* SCROLL PROGRESS: se rellena con la bandera de España al hacer scroll */
+  .scroll-track {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(90, 63, 40, 0.12);
+    z-index: 9999;
+  }
+  .scroll-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #AA151B 0 25%, #F1BF00 25% 75%, #AA151B 75% 100%);
+    background-size: 100vw 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 64px 24px 48px;
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .target-badge {
+    display: block;
+    background: var(--olive-dark);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin: 0 auto 18px;
+    width: fit-content;
+  }
+
+  .cursos-subtitle {
+    max-width: 480px;
+    margin: 12px auto 0;
+    font-size: 14px;
+    color: #6b6252;
+  }
+
+  .exam-badge {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 6vw, 44px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+  }
+
+  .avatar-frame {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--olive-dark);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.25);
+    margin: 0 auto 22px;
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.15);
+    transform-origin: 50% 32%;
+  }
+
+  .hero p.lead {
+    font-size: 17px;
+    max-width: 480px;
+    margin: 0 auto;
+    color: #5A5340;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 6px 16px rgba(217, 130, 46, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(217, 130, 46, 0.4); }
+
+  /* SECTION LABEL */
+  .section-title {
+    text-align: center;
+    padding: 8px 0 6px;
+  }
+  .section-title h2 {
+    font-size: 26px;
+  }
+  .section-title .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--terracotta);
+    margin: 14px auto 0;
+    border-radius: 2px;
+  }
+
+  /* COURSE CARDS */
+  .courses {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 36px 0 20px;
+  }
+
+  @media (min-width: 640px) {
+    .courses { grid-template-columns: 1fr 1fr; }
+  }
+
+  .courses.single,
+  .exam-grid.single {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 26px 24px;
+    position: relative;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .card .icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .card h3 {
+    font-size: 21px;
+    margin-bottom: 4px;
+  }
+
+  .card .tagline {
+    font-size: 13px;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+  }
+
+  .card li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .card li::before {
+    content: "✓";
+    color: var(--olive);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-box {
+    display: block;
+    background: var(--terracotta);
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  a.price-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(217, 130, 46, 0.35);
+  }
+
+  .price-box .amount {
+    font-size: 22px;
+  }
+
+  .price-box .note {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  .price-box .cta-label {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.95;
+    margin-top: 4px;
+  }
+
+  /* AVAILABILITY NOTE */
+  .note-strip {
+    text-align: center;
+    font-style: italic;
+    color: #6b6252;
+    font-size: 14px;
+    padding: 6px 24px 12px;
+  }
+
+  /* PRUEBA DE NIVEL */
+  .level-test {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 16px;
+    margin: 10px auto 24px;
+    max-width: 640px;
+    padding: 18px 22px;
+    background: #fff;
+    border: 2px dashed var(--terracotta);
+    border-radius: 14px;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .level-test:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(217, 130, 46, 0.2); }
+  .level-test .go { color: var(--terracotta-dark); }
+
+  /* CONVOCATORIAS DELE */
+  .exam-dates {
+    padding: 16px 0 10px;
+  }
+
+  .exam-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  @media (min-width: 640px) {
+    .exam-grid { grid-template-columns: 1fr 1fr; }
+    .exam-grid .exam-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: calc(50% - 9px);
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 860px) {
+    .exam-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .exam-grid .exam-card:last-child:nth-child(odd) {
+      grid-column: auto;
+      max-width: none;
+      margin: 0;
+    }
+  }
+
+  .exam-card {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 22px 24px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .exam-card.highlight {
+    border: 2px solid var(--terracotta);
+    box-shadow: 0 8px 20px rgba(217, 130, 46, 0.18);
+  }
+
+  .exam-card .month {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--terracotta-dark);
+    margin-bottom: 6px;
+  }
+
+  .exam-card .date {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: var(--olive-dark);
+    margin-bottom: 10px;
+  }
+
+  .exam-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .exam-card li {
+    margin-bottom: 4px;
+  }
+
+  .exam-card li strong {
+    color: var(--olive-dark);
+  }
+
+  .exam-source {
+    text-align: center;
+    font-size: 13px;
+    color: #6b6252;
+    margin-top: 22px;
+  }
+
+  .exam-source a {
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* SOBRE JORDI */
+  .about {
+    background: var(--cream-dark);
+    padding: 56px 24px;
+    margin-top: 20px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    .about-grid {
+      grid-template-columns: 160px 1fr;
+      text-align: left;
+    }
+  }
+
+  .about-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--cream);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.2);
+    margin: 0 auto;
+    display: block;
+  }
+
+  .about h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .about p {
+    font-size: 15px;
+    color: #5A5340;
+    margin: 0 0 14px;
+  }
+
+  .about p:last-child { margin-bottom: 0; }
+
+  .about p strong {
+    color: var(--olive-dark);
+  }
+
+  /* CONTACT / FOOTER */
+  .contact {
+    background: var(--olive-dark);
+    color: var(--cream);
+    padding: 48px 24px 40px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .contact h2 {
+    color: var(--cream);
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .contact p {
+    color: #D9D6C4;
+    font-size: 15px;
+    max-width: 420px;
+    margin: 0 auto 24px;
+  }
+
+  .dudas-form {
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 26px 24px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .dudas-form .field {
+    margin-bottom: 14px;
+  }
+
+  .dudas-form label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--olive-dark);
+    margin-bottom: 6px;
+  }
+
+  .dudas-form textarea,
+  .dudas-form input[type=text] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  .dudas-form textarea { resize: vertical; min-height: 70px; }
+
+  .dudas-submit {
+    width: 100%;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .dudas-submit:hover { background: var(--terracotta-dark); }
+
+  .dudas-thanks {
+    display: none;
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 32px 24px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .dudas-thanks h3 {
+    color: var(--olive-dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+  .dudas-thanks p { color: #5A5340; margin: 0; }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .contact-links a {
+    background: transparent;
+    border: 1px solid rgba(247, 239, 220, 0.4);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  footer.legal {
+    text-align: center;
+    font-size: 12px;
+    color: #A99E86;
+    padding: 18px 24px 30px;
+    background: var(--olive-dark);
+  }
+
+  /* NEWSLETTER */
+  .newsletter {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cream);
+    border: 1px solid rgba(247, 239, 220, 0.35);
+    padding: 8px 16px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  /* WHATSAPP */
+  .wa-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9998;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  /* LANGUAGE SWITCH */
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 10000;
+    display: flex;
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.2);
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 4px 10px rgba(90, 63, 40, 0.15);
+  }
+
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .lang-btn.active {
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <div class="scroll-track"><div class="scroll-fill" id="scrollFill"></div></div>
+
+  <div class="lang-switch" id="langSwitch">
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="fr">FR</button>
+    <button type="button" class="lang-btn" data-lang="it">IT</button>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <a href="index.html" style="display:inline-block; margin-bottom:14px; font-size:13px; font-weight:700; color:var(--olive-dark); text-decoration:none;" data-i18n="backLink">← Volver al inicio</a><br>
+      <span class="eyebrow" data-i18n="heroEyebrow">Preparación oficial DELE</span>
+      <span class="target-badge" data-i18n="targetBadge">🎯 Objetivo: Examen de Febrero</span>
+      <div class="avatar-frame">
+        <img class="avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
+      </div>
+      <h1 data-i18n="heroH1">¡Aprueba el DELE A2 en febrero!</h1>
+      <p class="lead" data-i18n="heroLead">Curso intensivo para llegar a punto al examen del 12 de febrero. Ideal si necesitas el A2 para la nacionalidad. Clases siempre en directo, grabadas por si faltas, y en grupos reducidos.</p>
+      <a href="#cursos" class="cta-btn" data-i18n="heroCta">Reserva tu plaza</a>
+    </div>
+  </section>
+
+  <div class="wrap" id="cursos">
+    <div class="section-title">
+      <h2 data-i18n="cursosTitle">Tu curso</h2>
+      <div class="divider"></div>
+      <p class="cursos-subtitle" data-i18n="cursosSubtitle">Del 2 de noviembre al 10 de febrero, justo antes del examen.</p>
+    </div>
+
+    <div class="courses single">
+
+      <div class="card">
+        <div class="icon">🚀</div>
+        <h3 data-i18n="a2fLevel">A2 Exprés</h3>
+        <div class="tagline" data-i18n="a2fTagline">Prepárate a tiempo para el examen de febrero</div>
+        <ul>
+          <li data-i18n="a2fSchedule">Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
+          <li data-i18n="liTrucos">Trucos directos de examinador</li>
+          <li data-i18n="liGrupos">Grupos de 3 a 5 personas</li>
+          <li data-i18n="liOnline">100% online</li>
+          <li data-i18n="a2fDuration">Del 2 de noviembre al 10 de febrero</li>
+        </ul>
+        <a href="dele-inscripcion.html?nivel=A2F" class="price-box">
+          <div class="amount" data-i18n="a2Price">129€/mes</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
+        </a>
+      </div>
+
+    </div>
+
+    <p class="note-strip" data-i18n-html="noteStrip">¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.</p>
+
+    <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
+      <span data-i18n="levelTest">¿No sabes tu nivel? Haz la prueba gratis</span>
+      <span class="go">→</span>
+    </a>
+  </div>
+
+  <div class="wrap exam-dates">
+    <div class="section-title">
+      <h2 data-i18n="examTitle">Convocatoria de febrero</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="exam-grid single">
+      <div class="exam-card highlight">
+        <div class="month" data-i18n="febMonth">Febrero 2027</div>
+        <div class="date" data-i18n="febDate">12 de febrero</div>
+        <ul>
+          <li data-i18n="febLi1">Generales: A2</li>
+          <li data-i18n="febLi2">Inscripción al examen hasta el 7 de enero</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="exam-source" data-i18n-html="examSource">Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.</p>
+  </div>
+
+  <section class="about">
+    <div class="wrap about-grid">
+      <img class="about-avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
+      <div>
+        <h2 data-i18n="aboutTitle">¿Quién te va a preparar?</h2>
+        <p data-i18n-html="aboutP1">Soy Jordi, <strong>preparador DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.</p>
+        <p data-i18n-html="aboutP2">Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como preparador DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.</p>
+        <p data-i18n-html="aboutP3">Esa misma pasión por enseñar la comparto cada día en mi <strong>cuenta de TikTok e Instagram</strong> (@spanish_with_jordi), donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.</p>
+        <p data-i18n-html="aboutP4">Cada curso está pensado para que llegues al examen <strong>con seguridad</strong>, no solo con gramática memorizada. Ver a mis alumnos <strong>aprobar el DELE</strong> tras semanas de trabajo conjunto es la parte del oficio que más me llena.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <h2 data-i18n="contactTitle">¿Hablamos?</h2>
+    <p data-i18n="contactLead">Si no lo tienes claro, aquí abajo cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo. También puedes dejarme cualquier otra duda y no tardaré en responderte.</p>
+    <form class="dudas-form" id="dudasForm">
+      <div class="field">
+        <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
+        <textarea id="duda" required></textarea>
+      </div>
+      <div class="field">
+        <label for="dudaContacto" data-i18n="dudaContactoLabel">Número de WhatsApp o email para contactar contigo</label>
+        <input type="text" id="dudaContacto" required>
+      </div>
+      <button type="submit" class="dudas-submit" data-i18n="dudasSubmit">Enviar duda</button>
+    </form>
+
+    <div class="dudas-thanks" id="dudasThanks">
+      <h3 data-i18n="dudasThanksTitle">¡Gracias!</h3>
+      <p data-i18n="dudasThanksText">Te contesto lo antes posible.</p>
+    </div>
+
+    <!-- Envío silencioso al formulario de dudas de Google -->
+    <iframe name="dudas_iframe" id="dudas_iframe" style="display:none;"></iframe>
+    <form id="dudasGform"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScMv5Tm5l31CUkk5w17WnYIB-g1LlPQHKOgNLi4W872bhERLw/formResponse"
+          method="POST" target="dudas_iframe" style="display:none;">
+      <input type="text" name="entry.609687656" id="g-duda">
+      <input type="text" name="entry.174317246" id="g-contacto">
+    </form>
+
+    <div class="contact-links">
+      <a href="https://www.tiktok.com/@spanish_with_jordi" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/spanish_with_jordi" target="_blank" rel="noopener">Instagram</a>
+      <a href="#cursos" data-i18n="linkInscribirme">Inscribirme</a>
+      <a href="index.html" data-i18n="linkVolver">Volver al inicio</a>
+    </div>
+  </section>
+
+  <footer class="legal">
+    <div class="newsletter" data-i18n="newsletter">📬 Newsletter: muy pronto</div><br>
+    <span data-i18n="footer">© 2026 Spanish with Jordi · Preparación DELE online</span>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/34656679262?text=Hola%20Jordi%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20clases%20%3A%29" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    var scrollFill = document.getElementById('scrollFill');
+    window.addEventListener('scroll', function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+      scrollFill.style.width = pct + '%';
+    });
+
+    var dudasForm = document.getElementById('dudasForm');
+    dudasForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('g-duda').value = document.getElementById('duda').value;
+      document.getElementById('g-contacto').value = document.getElementById('dudaContacto').value;
+      document.getElementById('dudasGform').submit();
+      dudasForm.style.display = 'none';
+      document.getElementById('dudasThanks').style.display = 'block';
+    });
+
+    var translations = {
+      es: {
+        pageTitle: `Español con Jordi: DELE A2 en febrero`,
+        backLink: `← Volver al inicio`,
+        heroEyebrow: `Preparación oficial DELE`,
+        targetBadge: `🎯 Objetivo: Examen de Febrero`,
+        avatarAlt: `Jordi, profesor de español`,
+        heroH1: `¡Aprueba el DELE A2 en febrero!`,
+        heroLead: `Curso intensivo para llegar a punto al examen del 12 de febrero. Ideal si necesitas el A2 para la nacionalidad. Clases siempre en directo, grabadas por si faltas, y en grupos reducidos.`,
+        heroCta: `Reserva tu plaza`,
+        cursosTitle: `Tu curso`,
+        cursosSubtitle: `Del 2 de noviembre al 10 de febrero, justo antes del examen.`,
+        a2Price: `129€/mes`,
+        a2fLevel: `A2 Exprés`,
+        a2fTagline: `Prepárate a tiempo para el examen de febrero`,
+        a2fSchedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
+        a2fDuration: `Del 2 de noviembre al 10 de febrero`,
+        liClases: `Clases de 1h 30min (se graban por si faltas)`,
+        liTrucos: `Trucos directos de examinador`,
+        liGrupos: `Grupos de 3 a 5 personas`,
+        liOnline: `100% online`,
+        ctaInscribirme: `Inscribirme →`,
+        noteStrip: `¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.`,
+        levelTest: `¿No sabes tu nivel? Haz la prueba gratis`,
+        examTitle: `Convocatoria de febrero`,
+        febMonth: `Febrero 2027`,
+        febDate: `12 de febrero`,
+        febLi1: `Generales: A2`,
+        febLi2: `Inscripción al examen hasta el 7 de enero`,
+        examSource: `Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.`,
+        aboutTitle: `¿Quién te va a preparar?`,
+        aboutP1: `Soy Jordi, <strong>preparador DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.`,
+        aboutP2: `Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como preparador DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.`,
+        aboutP3: `Esa misma pasión por enseñar la comparto cada día en mi <strong>cuenta de TikTok e Instagram</strong> (@spanish_with_jordi), donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.`,
+        aboutP4: `Cada curso está pensado para que llegues al examen <strong>con seguridad</strong>, no solo con gramática memorizada. Ver a mis alumnos <strong>aprobar el DELE</strong> tras semanas de trabajo conjunto es la parte del oficio que más me llena.`,
+        contactTitle: `¿Hablamos?`,
+        contactLead: `Si no lo tienes claro, aquí abajo cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo. También puedes dejarme cualquier otra duda y no tardaré en responderte.`,
+        dudaLabel: `¿Alguna duda?`,
+        dudaContactoLabel: `Número de WhatsApp o email para contactar contigo`,
+        dudasSubmit: `Enviar duda`,
+        dudasThanksTitle: `¡Gracias!`,
+        dudasThanksText: `Te contesto lo antes posible.`,
+        linkInscribirme: `Inscribirme`,
+        linkVolver: `Volver al inicio`,
+        newsletter: `📬 Newsletter: muy pronto`,
+        footer: `© 2026 Spanish with Jordi · Preparación DELE online`
+      },
+      en: {
+        pageTitle: `Spanish with Jordi: DELE A2 in February`,
+        backLink: `← Back home`,
+        heroEyebrow: `Official DELE Exam Prep`,
+        targetBadge: `🎯 Target: February Exam`,
+        avatarAlt: `Jordi, Spanish teacher`,
+        heroH1: `Pass the DELE A2 in February!`,
+        heroLead: `An intensive course to get you ready for the February 12 exam. Ideal if you need A2 for Spanish citizenship. Classes are always live (recorded in case you miss one), in small groups.`,
+        heroCta: `Reserve your spot`,
+        cursosTitle: `Your course`,
+        cursosSubtitle: `From November 2 to February 10, right before the exam.`,
+        a2Price: `129€/month`,
+        a2fLevel: `A2 Express`,
+        a2fTagline: `Get ready in time for the February exam`,
+        a2fSchedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
+        a2fDuration: `November 2 to February 10`,
+        liClases: `1h30 classes (recorded in case you miss one)`,
+        liTrucos: `Direct tips from an examiner`,
+        liGrupos: `Groups of 3 to 5 people`,
+        liOnline: `100% online`,
+        ctaInscribirme: `Enroll →`,
+        noteStrip: `Doesn't this schedule work for you?<br>Message me your availability and we'll find a fit.`,
+        levelTest: `Not sure about your level? Take the free test`,
+        examTitle: `February exam sitting`,
+        febMonth: `February 2027`,
+        febDate: `February 12`,
+        febLi1: `General exams: A2`,
+        febLi2: `Exam registration until January 7`,
+        examSource: `Dates and deadlines according to the official <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a> calendar.`,
+        aboutTitle: `Who will be preparing you?`,
+        aboutP1: `I'm Jordi, a <strong>DELE exam trainer</strong> and a lifelong language enthusiast. I hold a <strong>Master's in Teaching Spanish as a Foreign Language</strong> from the Universidad Internacional de Valencia, and before that I studied Translation and Interlingual Mediation. I've spent years surrounded by languages: besides Spanish, I speak <strong>French, Catalan, Italian, English and Portuguese</strong>.`,
+        aboutP2: `That means I don't just know the language inside out, I also know what it feels like to prepare for an official exam, because I've been through it myself in several of those languages. I've worked at <strong>prestigious language schools in Valencia</strong>, and as a DELE trainer I know firsthand <strong>what the examining board is really looking for in each task</strong>.`,
+        aboutP3: `I share that same passion for teaching every day on my <strong>TikTok and Instagram</strong> (@spanish_with_jordi), where I help <strong>students from all over the world</strong> improve their Spanish and prepare for the DELE.`,
+        aboutP4: `Every course is designed to help you walk into the exam <strong>with confidence</strong>, not just memorized grammar. Seeing my students <strong>pass the DELE</strong> after weeks of working together is the part of the job I find most rewarding.`,
+        contactTitle: `Let's talk`,
+        contactLead: `If you're not sure, tell me your level and availability below and I'll let you know which group is the best fit. You can also leave me any other question and I'll get back to you soon.`,
+        dudaLabel: `Any questions?`,
+        dudaContactoLabel: `WhatsApp number or email to reach you`,
+        dudasSubmit: `Send`,
+        dudasThanksTitle: `Thank you!`,
+        dudasThanksText: `I'll get back to you as soon as possible.`,
+        linkInscribirme: `Enroll`,
+        linkVolver: `Back home`,
+        newsletter: `📬 Newsletter: coming soon`,
+        footer: `© 2026 Spanish with Jordi · Online DELE exam prep`
+      },
+      fr: {
+        pageTitle: `Espagnol avec Jordi : DELE A2 en février`,
+        backLink: `← Retour à l'accueil`,
+        heroEyebrow: `Préparation officielle au DELE`,
+        targetBadge: `🎯 Objectif : Examen de Février`,
+        avatarAlt: `Jordi, professeur d'espagnol`,
+        heroH1: `Réussissez le DELE A2 en février !`,
+        heroLead: `Un cours intensif pour être prêt pour l'examen du 12 février. Idéal si vous avez besoin du A2 pour la nationalité espagnole. Cours toujours en direct (enregistrés si vous en manquez un), en petits groupes.`,
+        heroCta: `Réservez votre place`,
+        cursosTitle: `Votre cours`,
+        cursosSubtitle: `Du 2 novembre au 10 février, juste avant l'examen.`,
+        a2Price: `129€/mois`,
+        a2fLevel: `A2 Express`,
+        a2fTagline: `Préparez-vous à temps pour l'examen de février`,
+        a2fSchedule: `Lundi et mercredi, de 19h00 à 20h30 (heure de Madrid)`,
+        a2fDuration: `Du 2 novembre au 10 février`,
+        liClases: `Cours de 1h30 (enregistrés si vous en manquez un)`,
+        liTrucos: `Astuces directes d'un examinateur`,
+        liGrupos: `Groupes de 3 à 5 personnes`,
+        liOnline: `100% en ligne`,
+        ctaInscribirme: `M'inscrire →`,
+        noteStrip: `Cet horaire ne vous convient pas ?<br>Écrivez-moi vos disponibilités et on trouvera une solution.`,
+        levelTest: `Vous ne connaissez pas votre niveau ? Faites le test gratuit`,
+        examTitle: `Session de février`,
+        febMonth: `Février 2027`,
+        febDate: `12 février`,
+        febLi1: `Sessions générales : A2`,
+        febLi2: `Inscription à l'examen jusqu'au 7 janvier`,
+        examSource: `Dates et délais selon le calendrier officiel de l'<a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.`,
+        aboutTitle: `Qui va vous préparer ?`,
+        aboutP1: `Je suis Jordi, <strong>préparateur DELE</strong> et passionné de langues depuis toujours. Je suis titulaire d'un <strong>Master en Enseignement de l'espagnol comme langue étrangère</strong> de l'Universidad Internacional de Valencia, et j'ai auparavant étudié la Traduction et la Médiation Interlinguistique. Je baigne depuis des années dans les langues : en plus de l'espagnol, je parle <strong>français, catalan, italien, anglais et portugais</strong>.`,
+        aboutP2: `Cela veut dire que je ne connais pas seulement la langue de l'intérieur, je sais aussi ce que l'on ressent en préparant un examen officiel, car je l'ai moi-même vécu dans plusieurs de ces langues. J'ai fait partie d'<strong>écoles de langues prestigieuses à Valence</strong>, et en tant que préparateur DELE, je sais de première main <strong>ce que recherche vraiment le jury dans chaque épreuve</strong>.`,
+        aboutP3: `Je partage cette même passion pour l'enseignement chaque jour sur mon <strong>compte TikTok et Instagram</strong> (@spanish_with_jordi), où j'aide des <strong>étudiants du monde entier</strong> à améliorer leur espagnol et à se préparer au DELE.`,
+        aboutP4: `Chaque cours est pensé pour que vous arriviez à l'examen <strong>en confiance</strong>, pas seulement avec de la grammaire apprise par cœur. Voir mes élèves <strong>réussir le DELE</strong> après des semaines de travail commun, c'est la partie du métier qui me comble le plus.`,
+        contactTitle: `On en parle ?`,
+        contactLead: `Si vous n'êtes pas sûr, indiquez ici votre niveau et vos disponibilités et je vous dirai quel groupe vous correspond le mieux. Vous pouvez aussi me laisser toute autre question, je vous répondrai rapidement.`,
+        dudaLabel: `Une question ?`,
+        dudaContactoLabel: `Numéro WhatsApp ou email pour vous contacter`,
+        dudasSubmit: `Envoyer`,
+        dudasThanksTitle: `Merci !`,
+        dudasThanksText: `Je vous réponds dès que possible.`,
+        linkInscribirme: `M'inscrire`,
+        linkVolver: `Retour à l'accueil`,
+        newsletter: `📬 Newsletter : bientôt disponible`,
+        footer: `© 2026 Spanish with Jordi · Préparation DELE en ligne`
+      },
+      it: {
+        pageTitle: `Spagnolo con Jordi: DELE A2 a febbraio`,
+        backLink: `← Torna alla home`,
+        heroEyebrow: `Preparazione ufficiale DELE`,
+        targetBadge: `🎯 Obiettivo: Esame di Febbraio`,
+        avatarAlt: `Jordi, insegnante di spagnolo`,
+        heroH1: `Supera il DELE A2 a febbraio!`,
+        heroLead: `Un corso intensivo per arrivare pronto all'esame del 12 febbraio. Ideale se ti serve l'A2 per la cittadinanza spagnola. Lezioni sempre dal vivo (registrate nel caso ne perdessi una), in piccoli gruppi.`,
+        heroCta: `Prenota il tuo posto`,
+        cursosTitle: `Il tuo corso`,
+        cursosSubtitle: `Dal 2 novembre al 10 febbraio, subito prima dell'esame.`,
+        a2Price: `129€/mese`,
+        a2fLevel: `A2 Express`,
+        a2fTagline: `Preparati in tempo per l'esame di febbraio`,
+        a2fSchedule: `Lunedì e mercoledì, dalle 19:00 alle 20:30 (ora di Madrid)`,
+        a2fDuration: `Dal 2 novembre al 10 febbraio`,
+        liClases: `Lezioni da 1h30 (registrate nel caso ne perdessi una)`,
+        liTrucos: `Consigli diretti da un esaminatore`,
+        liGrupos: `Gruppi da 3 a 5 persone`,
+        liOnline: `100% online`,
+        ctaInscribirme: `Iscrivimi →`,
+        noteStrip: `Questo orario non ti va bene?<br>Scrivimi la tua disponibilità e troviamo una soluzione.`,
+        levelTest: `Non conosci il tuo livello? Fai il test gratuito`,
+        examTitle: `Sessione di febbraio`,
+        febMonth: `Febbraio 2027`,
+        febDate: `12 febbraio`,
+        febLi1: `Sessioni generali: A2`,
+        febLi2: `Iscrizione all'esame entro il 7 gennaio`,
+        examSource: `Date e scadenze secondo il calendario ufficiale dell'<a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.`,
+        aboutTitle: `Chi ti preparerà?`,
+        aboutP1: `Sono Jordi, <strong>preparatore DELE</strong> e un appassionato di lingue da sempre. Ho conseguito il <strong>Master in Insegnamento dello Spagnolo come Lingua Straniera</strong> presso l'Universidad Internacional de Valencia, e in precedenza ho studiato Traduzione e Mediazione Interlinguistica. Sono circondato dalle lingue da anni: oltre allo spagnolo, parlo <strong>francese, catalano, italiano, inglese e portoghese</strong>.`,
+        aboutP2: `Questo significa che non conosco la lingua solo dall'esterno, so anche cosa si prova a prepararsi per un esame ufficiale, perché io stesso l'ho vissuto in diverse di queste lingue. Ho fatto parte di <strong>scuole di lingue prestigiose a Valencia</strong>, e come preparatore DELE conosco in prima persona <strong>cosa cerca davvero la commissione in ogni prova</strong>.`,
+        aboutP3: `Condivido questa stessa passione per l'insegnamento ogni giorno sul mio <strong>account TikTok e Instagram</strong> (@spanish_with_jordi), dove aiuto <strong>studenti di tutto il mondo</strong> a migliorare il loro spagnolo e a prepararsi per il DELE.`,
+        aboutP4: `Ogni corso è pensato per farti arrivare all'esame <strong>con sicurezza</strong>, non solo con la grammatica imparata a memoria. Vedere i miei studenti <strong>superare il DELE</strong> dopo settimane di lavoro insieme è la parte del mestiere che mi soddisfa di più.`,
+        contactTitle: `Parliamone?`,
+        contactLead: `Se non hai le idee chiare, scrivimi qui sotto il tuo livello e la tua disponibilità e ti dirò quale gruppo si adatta meglio a te. Puoi anche lasciarmi qualsiasi altra domanda, ti risponderò presto.`,
+        dudaLabel: `Hai qualche domanda?`,
+        dudaContactoLabel: `Numero WhatsApp o email per contattarti`,
+        dudasSubmit: `Invia`,
+        dudasThanksTitle: `Grazie!`,
+        dudasThanksText: `Ti rispondo il prima possibile.`,
+        linkInscribirme: `Iscrivimi`,
+        linkVolver: `Torna alla home`,
+        newsletter: `📬 Newsletter: in arrivo`,
+        footer: `© 2026 Spanish with Jordi · Preparazione DELE online`
+      }
+    };
+
+    function applyLanguage(lang) {
+      var dict = translations[lang] || translations.es;
+      document.documentElement.lang = lang;
+      document.title = dict.pageTitle;
+
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-attr-alt]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-attr-alt');
+        if (dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      localStorage.setItem('siteLang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    function detectDefaultLang() {
+      var saved = localStorage.getItem('siteLang');
+      if (saved) return saved;
+      var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      var supported = ['en', 'fr', 'it'];
+      for (var i = 0; i < supported.length; i++) {
+        if (browserLang.indexOf(supported[i]) === 0) return supported[i];
+      }
+      return 'es';
+    }
+
+    applyLanguage(detectDefaultLang());
+  </script>
+
+</body>
+</html>

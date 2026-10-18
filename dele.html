@@ -180,11 +180,6 @@
 
   @media (min-width: 640px) {
     .courses { grid-template-columns: 1fr 1fr; }
-    .courses .card:first-child {
-      grid-column: 1 / -1;
-      max-width: calc(50% - 11px);
-      margin: 0 auto;
-    }
   }
 
   .card {
@@ -278,6 +273,29 @@
     font-size: 14px;
     padding: 6px 24px 12px;
   }
+
+  /* PRUEBA DE NIVEL */
+  .level-test {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 16px;
+    margin: 10px auto 24px;
+    max-width: 640px;
+    padding: 18px 22px;
+    background: #fff;
+    border: 2px dashed var(--terracotta);
+    border-radius: 14px;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .level-test:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(217, 130, 46, 0.2); }
+  .level-test .go { color: var(--terracotta-dark); }
 
   /* CONVOCATORIAS DELE */
   .exam-dates {
@@ -531,6 +549,37 @@
     background: var(--olive-dark);
   }
 
+  /* NEWSLETTER */
+  .newsletter {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cream);
+    border: 1px solid rgba(247, 239, 220, 0.35);
+    padding: 8px 16px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  /* WHATSAPP */
+  .wa-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9998;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
   /* LANGUAGE SWITCH */
   .lang-switch {
     position: fixed;
@@ -597,25 +646,6 @@
     </div>
 
     <div class="courses">
-
-      <div class="card">
-        <span class="exam-badge" data-i18n="a2fBadge">🎯 Objetivo: Examen de Febrero</span>
-        <div class="icon">🚀</div>
-        <h3 data-i18n="a2fLevel">A2 Exprés</h3>
-        <div class="tagline" data-i18n="a2fTagline">Prepárate a tiempo para el examen de febrero</div>
-        <ul>
-          <li data-i18n="a2fSchedule">Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)</li>
-          <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
-          <li data-i18n="liTrucos">Trucos directos de examinador</li>
-          <li data-i18n="liGrupos">Grupos de 3 a 5 personas</li>
-          <li data-i18n="liOnline">100% online</li>
-          <li data-i18n="a2fDuration">Del 2 de noviembre al 10 de febrero</li>
-        </ul>
-        <a href="dele-inscripcion.html?nivel=A2F" class="price-box">
-          <div class="amount" data-i18n="a2Price">129€/mes</div>
-          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
-        </a>
-      </div>
 
       <div class="card">
         <div class="icon">🪪</div>
@@ -692,6 +722,11 @@
     </div>
 
     <p class="note-strip" data-i18n-html="noteStrip">¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.</p>
+
+    <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
+      <span data-i18n="levelTest">¿No sabes tu nivel? Haz la prueba gratis</span>
+      <span class="go">→</span>
+    </a>
   </div>
 
   <div class="wrap exam-dates">
@@ -701,8 +736,7 @@
     </div>
 
     <div class="exam-grid">
-      <div class="exam-card highlight">
-        <span class="exam-badge" data-i18n="febBadge">El A2 Exprés te prepara para esta convocatoria</span>
+      <div class="exam-card">
         <div class="month" data-i18n="febMonth">Febrero 2027</div>
         <div class="date" data-i18n="febDate">12 de febrero</div>
         <ul>
@@ -739,8 +773,8 @@
       <img class="about-avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
       <div>
         <h2 data-i18n="aboutTitle">¿Quién te va a preparar?</h2>
-        <p data-i18n-html="aboutP1">Soy Jordi, <strong>corrector oficial de exámenes DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.</p>
-        <p data-i18n-html="aboutP2">Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como corrector DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.</p>
+        <p data-i18n-html="aboutP1">Soy Jordi, <strong>preparador DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.</p>
+        <p data-i18n-html="aboutP2">Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como preparador DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.</p>
         <p data-i18n-html="aboutP3">Esa misma pasión por enseñar la comparto cada día en mi <strong>cuenta de TikTok e Instagram</strong> (@spanish_with_jordi), donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.</p>
         <p data-i18n-html="aboutP4">Cada curso está pensado para que llegues al examen <strong>con seguridad</strong>, no solo con gramática memorizada. Ver a mis alumnos <strong>aprobar el DELE</strong> tras semanas de trabajo conjunto es la parte del oficio que más me llena.</p>
       </div>
@@ -785,8 +819,13 @@
   </section>
 
   <footer class="legal">
+    <div class="newsletter" data-i18n="newsletter">📬 Newsletter: muy pronto</div><br>
     <span data-i18n="footer">© 2026 Spanish with Jordi · Preparación DELE online</span>
   </footer>
+
+  <a class="wa-float" href="https://wa.me/34656679262?text=Hola%20Jordi%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20clases%20%3A%29" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
   <script>
     var scrollFill = document.getElementById('scrollFill');
@@ -843,15 +882,10 @@
         a2Duration: `Del 2 de febrero al 20 de mayo`,
         b2Duration: `Del 1 de febrero al 19 de mayo`,
         c1Duration: `Del 2 de febrero al 20 de mayo`,
-        a2fBadge: `🎯 Objetivo: Examen de Febrero`,
-        a2fLevel: `A2 Exprés`,
-        a2fTagline: `Prepárate a tiempo para el examen de febrero`,
-        a2fSchedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
-        a2fDuration: `Del 2 de noviembre al 10 de febrero`,
         ctaInscribirme: `Inscribirme →`,
         noteStrip: `¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.`,
+        levelTest: `¿No sabes tu nivel? Haz la prueba gratis`,
         examTitle: `Próximas convocatorias oficiales del DELE`,
-        febBadge: `El A2 Exprés te prepara para esta convocatoria`,
         febMonth: `Febrero 2027`,
         febDate: `12 de febrero`,
         febLi1: `Generales: A2`,
@@ -867,8 +901,8 @@
         mayLi2: `Inscripción hasta el 7 de abril`,
         examSource: `Fechas y plazos según el calendario oficial del <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.`,
         aboutTitle: `¿Quién te va a preparar?`,
-        aboutP1: `Soy Jordi, <strong>corrector oficial de exámenes DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.`,
-        aboutP2: `Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como corrector DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.`,
+        aboutP1: `Soy Jordi, <strong>preparador DELE</strong> y un apasionado de los idiomas desde siempre. Tengo el <strong>Máster en Enseñanza de Español como Lengua Extranjera</strong> por la Universidad Internacional de Valencia, y antes estudié Traducción y Mediación Interlingüística. Llevo años rodeado de lenguas: además del español, hablo <strong>francés, catalán, italiano, inglés y portugués</strong>.`,
+        aboutP2: `Eso significa que no solo conozco el idioma por dentro, también sé lo que se siente al prepararse para un examen oficial, porque yo mismo lo he vivido en varias de esas lenguas. He formado parte de <strong>academias de prestigio en Valencia</strong>, y como preparador DELE conozco de primera mano <strong>qué busca el tribunal en cada prueba</strong>.`,
         aboutP3: `Esa misma pasión por enseñar la comparto cada día en mi <strong>cuenta de TikTok e Instagram</strong> (@spanish_with_jordi), donde ayudo a <strong>estudiantes de todo el mundo</strong> a mejorar su español y a prepararse para el DELE.`,
         aboutP4: `Cada curso está pensado para que llegues al examen <strong>con seguridad</strong>, no solo con gramática memorizada. Ver a mis alumnos <strong>aprobar el DELE</strong> tras semanas de trabajo conjunto es la parte del oficio que más me llena.`,
         contactTitle: `¿Hablamos?`,
@@ -880,6 +914,7 @@
         dudasThanksText: `Te contesto lo antes posible.`,
         linkInscribirme: `Inscribirme`,
         linkVolver: `Volver al inicio`,
+        newsletter: `📬 Newsletter: muy pronto`,
         footer: `© 2026 Spanish with Jordi · Preparación DELE online`
       },
       en: {
@@ -917,15 +952,10 @@
         a2Duration: `February 2 to May 20`,
         b2Duration: `February 1 to May 19`,
         c1Duration: `February 2 to May 20`,
-        a2fBadge: `🎯 Target: February Exam`,
-        a2fLevel: `A2 Express`,
-        a2fTagline: `Get ready in time for the February exam`,
-        a2fSchedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
-        a2fDuration: `November 2 to February 10`,
         ctaInscribirme: `Enroll →`,
         noteStrip: `Doesn't this schedule work for you?<br>Message me your availability and we'll find a fit.`,
+        levelTest: `Not sure about your level? Take the free test`,
         examTitle: `Upcoming official DELE exam dates`,
-        febBadge: `Our A2 Exprés course prepares you for this exam sitting`,
         febMonth: `February 2027`,
         febDate: `February 12`,
         febLi1: `General exams: A2`,
@@ -941,8 +971,8 @@
         mayLi2: `Registration until April 7`,
         examSource: `Dates and deadlines according to the official <a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a> calendar.`,
         aboutTitle: `Who will be preparing you?`,
-        aboutP1: `I'm Jordi, an <strong>official DELE exam corrector</strong> and a lifelong language enthusiast. I hold a <strong>Master's in Teaching Spanish as a Foreign Language</strong> from the Universidad Internacional de Valencia, and before that I studied Translation and Interlingual Mediation. I've spent years surrounded by languages: besides Spanish, I speak <strong>French, Catalan, Italian, English and Portuguese</strong>.`,
-        aboutP2: `That means I don't just know the language inside out, I also know what it feels like to prepare for an official exam, because I've been through it myself in several of those languages. I've worked at <strong>prestigious language schools in Valencia</strong>, and as a DELE corrector I know firsthand <strong>what the examining board is really looking for in each task</strong>.`,
+        aboutP1: `I'm Jordi, a <strong>DELE exam trainer</strong> and a lifelong language enthusiast. I hold a <strong>Master's in Teaching Spanish as a Foreign Language</strong> from the Universidad Internacional de Valencia, and before that I studied Translation and Interlingual Mediation. I've spent years surrounded by languages: besides Spanish, I speak <strong>French, Catalan, Italian, English and Portuguese</strong>.`,
+        aboutP2: `That means I don't just know the language inside out, I also know what it feels like to prepare for an official exam, because I've been through it myself in several of those languages. I've worked at <strong>prestigious language schools in Valencia</strong>, and as a DELE trainer I know firsthand <strong>what the examining board is really looking for in each task</strong>.`,
         aboutP3: `I share that same passion for teaching every day on my <strong>TikTok and Instagram</strong> (@spanish_with_jordi), where I help <strong>students from all over the world</strong> improve their Spanish and prepare for the DELE.`,
         aboutP4: `Every course is designed to help you walk into the exam <strong>with confidence</strong>, not just memorized grammar. Seeing my students <strong>pass the DELE</strong> after weeks of working together is the part of the job I find most rewarding.`,
         contactTitle: `Let's talk`,
@@ -954,6 +984,7 @@
         dudasThanksText: `I'll get back to you as soon as possible.`,
         linkInscribirme: `Enroll`,
         linkVolver: `Back home`,
+        newsletter: `📬 Newsletter: coming soon`,
         footer: `© 2026 Spanish with Jordi · Online DELE exam prep`
       },
       fr: {
@@ -991,15 +1022,10 @@
         a2Duration: `Du 2 février au 20 mai`,
         b2Duration: `Du 1er février au 19 mai`,
         c1Duration: `Du 2 février au 20 mai`,
-        a2fBadge: `🎯 Objectif : Examen de Février`,
-        a2fLevel: `A2 Express`,
-        a2fTagline: `Préparez-vous à temps pour l'examen de février`,
-        a2fSchedule: `Lundi et mercredi, de 19h00 à 20h30 (heure de Madrid)`,
-        a2fDuration: `Du 2 novembre au 10 février`,
         ctaInscribirme: `M'inscrire →`,
         noteStrip: `Cet horaire ne vous convient pas ?<br>Écrivez-moi vos disponibilités et on trouvera une solution.`,
+        levelTest: `Vous ne connaissez pas votre niveau ? Faites le test gratuit`,
         examTitle: `Prochaines sessions officielles du DELE`,
-        febBadge: `Notre cours A2 Exprés vous prépare à cette session`,
         febMonth: `Février 2027`,
         febDate: `12 février`,
         febLi1: `Sessions générales : A2`,
@@ -1015,8 +1041,8 @@
         mayLi2: `Inscription jusqu'au 7 avril`,
         examSource: `Dates et délais selon le calendrier officiel de l'<a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.`,
         aboutTitle: `Qui va vous préparer ?`,
-        aboutP1: `Je suis Jordi, <strong>correcteur officiel des examens DELE</strong> et passionné de langues depuis toujours. Je suis titulaire d'un <strong>Master en Enseignement de l'espagnol comme langue étrangère</strong> de l'Universidad Internacional de Valencia, et j'ai auparavant étudié la Traduction et la Médiation Interlinguistique. Je baigne depuis des années dans les langues : en plus de l'espagnol, je parle <strong>français, catalan, italien, anglais et portugais</strong>.`,
-        aboutP2: `Cela veut dire que je ne connais pas seulement la langue de l'intérieur, je sais aussi ce que l'on ressent en préparant un examen officiel, car je l'ai moi-même vécu dans plusieurs de ces langues. J'ai fait partie d'<strong>écoles de langues prestigieuses à Valence</strong>, et en tant que correcteur DELE, je sais de première main <strong>ce que recherche vraiment le jury dans chaque épreuve</strong>.`,
+        aboutP1: `Je suis Jordi, <strong>préparateur DELE</strong> et passionné de langues depuis toujours. Je suis titulaire d'un <strong>Master en Enseignement de l'espagnol comme langue étrangère</strong> de l'Universidad Internacional de Valencia, et j'ai auparavant étudié la Traduction et la Médiation Interlinguistique. Je baigne depuis des années dans les langues : en plus de l'espagnol, je parle <strong>français, catalan, italien, anglais et portugais</strong>.`,
+        aboutP2: `Cela veut dire que je ne connais pas seulement la langue de l'intérieur, je sais aussi ce que l'on ressent en préparant un examen officiel, car je l'ai moi-même vécu dans plusieurs de ces langues. J'ai fait partie d'<strong>écoles de langues prestigieuses à Valence</strong>, et en tant que préparateur DELE, je sais de première main <strong>ce que recherche vraiment le jury dans chaque épreuve</strong>.`,
         aboutP3: `Je partage cette même passion pour l'enseignement chaque jour sur mon <strong>compte TikTok et Instagram</strong> (@spanish_with_jordi), où j'aide des <strong>étudiants du monde entier</strong> à améliorer leur espagnol et à se préparer au DELE.`,
         aboutP4: `Chaque cours est pensé pour que vous arriviez à l'examen <strong>en confiance</strong>, pas seulement avec de la grammaire apprise par cœur. Voir mes élèves <strong>réussir le DELE</strong> après des semaines de travail commun, c'est la partie du métier qui me comble le plus.`,
         contactTitle: `On en parle ?`,
@@ -1028,6 +1054,7 @@
         dudasThanksText: `Je vous réponds dès que possible.`,
         linkInscribirme: `M'inscrire`,
         linkVolver: `Retour à l'accueil`,
+        newsletter: `📬 Newsletter : bientôt disponible`,
         footer: `© 2026 Spanish with Jordi · Préparation DELE en ligne`
       },
       it: {
@@ -1065,15 +1092,10 @@
         a2Duration: `Dal 2 febbraio al 20 maggio`,
         b2Duration: `Dal 1° febbraio al 19 maggio`,
         c1Duration: `Dal 2 febbraio al 20 maggio`,
-        a2fBadge: `🎯 Obiettivo: Esame di Febbraio`,
-        a2fLevel: `A2 Express`,
-        a2fTagline: `Preparati in tempo per l'esame di febbraio`,
-        a2fSchedule: `Lunedì e mercoledì, dalle 19:00 alle 20:30 (ora di Madrid)`,
-        a2fDuration: `Dal 2 novembre al 10 febbraio`,
         ctaInscribirme: `Iscrivimi →`,
         noteStrip: `Questo orario non ti va bene?<br>Scrivimi la tua disponibilità e troviamo una soluzione.`,
+        levelTest: `Non conosci il tuo livello? Fai il test gratuito`,
         examTitle: `Prossime convocazioni ufficiali del DELE`,
-        febBadge: `Il nostro corso A2 Exprés ti prepara per questa sessione`,
         febMonth: `Febbraio 2027`,
         febDate: `12 febbraio`,
         febLi1: `Sessioni generali: A2`,
@@ -1089,8 +1111,8 @@
         mayLi2: `Iscrizione entro il 7 aprile`,
         examSource: `Date e scadenze secondo il calendario ufficiale dell'<a href="https://examenes.cervantes.es/es/dele/cuando" target="_blank" rel="noopener">Instituto Cervantes</a>.`,
         aboutTitle: `Chi ti preparerà?`,
-        aboutP1: `Sono Jordi, <strong>correttore ufficiale degli esami DELE</strong> e un appassionato di lingue da sempre. Ho conseguito il <strong>Master in Insegnamento dello Spagnolo come Lingua Straniera</strong> presso l'Universidad Internacional de Valencia, e in precedenza ho studiato Traduzione e Mediazione Interlinguistica. Sono circondato dalle lingue da anni: oltre allo spagnolo, parlo <strong>francese, catalano, italiano, inglese e portoghese</strong>.`,
-        aboutP2: `Questo significa che non conosco la lingua solo dall'esterno, so anche cosa si prova a prepararsi per un esame ufficiale, perché io stesso l'ho vissuto in diverse di queste lingue. Ho fatto parte di <strong>scuole di lingue prestigiose a Valencia</strong>, e come correttore DELE conosco in prima persona <strong>cosa cerca davvero la commissione in ogni prova</strong>.`,
+        aboutP1: `Sono Jordi, <strong>preparatore DELE</strong> e un appassionato di lingue da sempre. Ho conseguito il <strong>Master in Insegnamento dello Spagnolo come Lingua Straniera</strong> presso l'Universidad Internacional de Valencia, e in precedenza ho studiato Traduzione e Mediazione Interlinguistica. Sono circondato dalle lingue da anni: oltre allo spagnolo, parlo <strong>francese, catalano, italiano, inglese e portoghese</strong>.`,
+        aboutP2: `Questo significa che non conosco la lingua solo dall'esterno, so anche cosa si prova a prepararsi per un esame ufficiale, perché io stesso l'ho vissuto in diverse di queste lingue. Ho fatto parte di <strong>scuole di lingue prestigiose a Valencia</strong>, e come preparatore DELE conosco in prima persona <strong>cosa cerca davvero la commissione in ogni prova</strong>.`,
         aboutP3: `Condivido questa stessa passione per l'insegnamento ogni giorno sul mio <strong>account TikTok e Instagram</strong> (@spanish_with_jordi), dove aiuto <strong>studenti di tutto il mondo</strong> a migliorare il loro spagnolo e a prepararsi per il DELE.`,
         aboutP4: `Ogni corso è pensato per farti arrivare all'esame <strong>con sicurezza</strong>, non solo con la grammatica imparata a memoria. Vedere i miei studenti <strong>superare il DELE</strong> dopo settimane di lavoro insieme è la parte del mestiere che mi soddisfa di più.`,
         contactTitle: `Parliamone?`,
@@ -1102,6 +1124,7 @@
         dudasThanksText: `Ti rispondo il prima possibile.`,
         linkInscribirme: `Iscrivimi`,
         linkVolver: `Torna alla home`,
+        newsletter: `📬 Newsletter: in arrivo`,
         footer: `© 2026 Spanish with Jordi · Preparazione DELE online`
       }
     };
