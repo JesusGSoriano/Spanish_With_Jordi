@@ -265,8 +265,8 @@
     margin-top: 4px;
   }
 
-  /* DESCUENTO AMIGOS */
-  .friend-promo {
+  /* AVISOS: DESCUENTO AMIGOS Y HORARIO */
+  .extras {
     max-width: 640px;
     margin: 4px auto 18px;
     padding: 14px 20px;
@@ -274,19 +274,11 @@
     border-left: 4px solid var(--olive);
     border-radius: 10px;
     font-size: 15px;
-    text-align: center;
     color: var(--ink);
   }
-  .friend-promo strong { color: var(--olive-dark); }
-
-  /* AVAILABILITY NOTE */
-  .note-strip {
-    text-align: center;
-    font-style: italic;
-    color: #6b6252;
-    font-size: 14px;
-    padding: 6px 24px 12px;
-  }
+  .extras p { margin: 0; }
+  .extras p + p { margin-top: 8px; }
+  .extras strong { color: var(--olive-dark); }
 
   /* PRUEBA DE NIVEL */
   .level-test {
@@ -756,9 +748,10 @@
 
     </div>
 
-    <p class="friend-promo" data-i18n-html="friendPromo">👫 <strong>¿Te apuntas con un amigo?</strong> Los dos tenéis <strong>15 € de descuento</strong> en el primer mes. Escríbeme y te envío el código de descuento.</p>
-
-    <p class="note-strip" data-i18n-html="noteStrip">¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.</p>
+    <div class="extras">
+      <p data-i18n-html="friendPromo">👫 <strong>¿Te apuntas con un amigo?</strong> 15 € de descuento para cada uno en el primer mes. Pídeme el código.</p>
+      <p data-i18n-html="noteStrip">🕒 <strong>¿No te va el horario?</strong> Cuéntame tu disponibilidad y buscamos opciones.</p>
+    </div>
 
     <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
       <span data-i18n="levelTest">¿No sabes tu nivel? Haz la prueba gratis aquí</span>
@@ -925,8 +918,8 @@
         b2Duration: `Del 1 de febrero al 19 de mayo`,
         c1Duration: `Del 2 de febrero al 20 de mayo`,
         ctaInscribirme: `Inscribirme →`,
-        friendPromo: `👫 <strong>¿Te apuntas con un amigo?</strong> Los dos tenéis <strong>15 € de descuento</strong> en el primer mes. Escríbeme y te envío el código de descuento.`,
-        noteStrip: `¿Este horario no te viene bien?<br>Escríbeme tu disponibilidad y vemos opciones.`,
+        friendPromo: `👫 <strong>¿Te apuntas con un amigo?</strong> 15 € de descuento para cada uno en el primer mes. Pídeme el código.`,
+        noteStrip: `🕒 <strong>¿No te va el horario?</strong> Cuéntame tu disponibilidad y buscamos opciones.`,
         levelTest: `¿No sabes tu nivel? Haz la prueba gratis aquí`,
         examTitle: `Próximas convocatorias oficiales del DELE`,
         febMonth: `Febrero 2027`,
@@ -997,8 +990,8 @@
         b2Duration: `February 1 to May 19`,
         c1Duration: `February 2 to May 20`,
         ctaInscribirme: `Enroll →`,
-        friendPromo: `👫 <strong>Signing up with a friend?</strong> You both get <strong>15 € off</strong> your first month. Message me and I'll send you the discount code.`,
-        noteStrip: `Doesn't this schedule work for you?<br>Message me your availability and we'll find a fit.`,
+        friendPromo: `👫 <strong>Signing up with a friend?</strong> 15 € off for each of you on the first month. Ask me for the code.`,
+        noteStrip: `🕒 <strong>Schedule doesn't work for you?</strong> Tell me your availability and we'll find options.`,
         levelTest: `Not sure about your level? Take the free test here`,
         examTitle: `Upcoming official DELE exam dates`,
         febMonth: `February 2027`,
@@ -1069,8 +1062,8 @@
         b2Duration: `Du 1er février au 19 mai`,
         c1Duration: `Du 2 février au 20 mai`,
         ctaInscribirme: `M'inscrire →`,
-        friendPromo: `👫 <strong>Vous vous inscrivez avec un ami ?</strong> Vous avez tous les deux <strong>15 € de réduction</strong> sur le premier mois. Écrivez-moi et je vous envoie le code de réduction.`,
-        noteStrip: `Cet horaire ne vous convient pas ?<br>Écrivez-moi vos disponibilités et on trouvera une solution.`,
+        friendPromo: `👫 <strong>Vous vous inscrivez avec un ami ?</strong> 15 € de réduction chacun sur le premier mois. Demandez-moi le code.`,
+        noteStrip: `🕒 <strong>Cet horaire ne vous convient pas ?</strong> Dites-moi vos disponibilités et on trouvera une solution.`,
         levelTest: `Vous ne connaissez pas votre niveau ? Faites le test gratuit ici`,
         examTitle: `Prochaines sessions officielles du DELE`,
         febMonth: `Février 2027`,
@@ -1141,8 +1134,8 @@
         b2Duration: `Dal 1° febbraio al 19 maggio`,
         c1Duration: `Dal 2 febbraio al 20 maggio`,
         ctaInscribirme: `Iscrivimi →`,
-        friendPromo: `👫 <strong>Ti iscrivi con un amico?</strong> Avete entrambi <strong>15 € di sconto</strong> sul primo mese. Scrivimi e ti invio il codice sconto.`,
-        noteStrip: `Questo orario non ti va bene?<br>Scrivimi la tua disponibilità e troviamo una soluzione.`,
+        friendPromo: `👫 <strong>Ti iscrivi con un amico?</strong> 15 € di sconto a testa sul primo mese. Chiedimi il codice.`,
+        noteStrip: `🕒 <strong>L'orario non ti va bene?</strong> Dimmi la tua disponibilità e troviamo una soluzione.`,
         levelTest: `Non conosci il tuo livello? Fai il test gratuito qui`,
         examTitle: `Prossime convocazioni ufficiali del DELE`,
         febMonth: `Febbraio 2027`,
