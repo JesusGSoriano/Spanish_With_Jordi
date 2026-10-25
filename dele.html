@@ -265,37 +265,31 @@
     margin-top: 4px;
   }
 
-  /* AVISOS: DESCUENTO AMIGOS Y HORARIO */
-  .extras {
-    max-width: 640px;
-    margin: 4px auto 18px;
-    padding: 14px 20px;
-    background: #fff;
-    border-left: 4px solid var(--olive);
-    border-radius: 10px;
-    font-size: 15px;
-    color: var(--ink);
+  /* DESCUENTO AMIGOS (dentro de cada tarjeta) */
+  .card-promo {
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: #5A5340;
+    text-align: center;
   }
-  .extras p { margin: 0; }
-  .extras p + p { margin-top: 8px; }
-  .extras strong { color: var(--olive-dark); }
+  .card-promo strong { color: var(--olive-dark); }
 
   /* PRUEBA DE NIVEL */
   .level-test {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 10px 16px;
-    margin: 10px auto 24px;
+    margin: 16px auto 0;
     max-width: 640px;
-    padding: 18px 22px;
+    padding: 10px 18px;
     background: #fff;
     border: 2px dashed var(--terracotta);
     border-radius: 14px;
     color: var(--olive-dark);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
     text-align: center;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -674,6 +668,9 @@
       <h2 data-i18n="cursosTitle">Elige tu nivel</h2>
       <div class="divider"></div>
       <p class="cursos-subtitle" data-i18n="cursosSubtitle">Estos cursos están diseñados para llegar a punto a la convocatoria de mayo.</p>
+      <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
+        <span data-i18n="levelTest">Si no sabes tu nivel, haz la prueba gratis aquí</span>
+      </a>
     </div>
 
     <div class="courses">
@@ -694,6 +691,7 @@
           <div class="amount" data-i18n="a2Price">129€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo? 15 € menos el primer mes cada uno. <strong>Pídeme el código.</strong></p>
       </div>
 
       <div class="card">
@@ -712,6 +710,7 @@
           <div class="amount" data-i18n="b1Price">139€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo? 15 € menos el primer mes cada uno. <strong>Pídeme el código.</strong></p>
       </div>
 
       <div class="card">
@@ -730,6 +729,7 @@
           <div class="amount" data-i18n="b2Price">149€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo? 15 € menos el primer mes cada uno. <strong>Pídeme el código.</strong></p>
       </div>
 
       <div class="card">
@@ -748,18 +748,11 @@
           <div class="amount" data-i18n="c1Price">159€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo? 15 € menos el primer mes cada uno. <strong>Pídeme el código.</strong></p>
       </div>
 
     </div>
 
-    <div class="extras">
-      <p data-i18n-html="friendPromo">👫 <strong>¿Te apuntas con un amigo?</strong> 15 € de descuento para cada uno en el primer mes. Pídeme el código.</p>
-      <p data-i18n-html="noteStrip">🕒 <strong>¿No te va bien el horario?</strong> Cuéntame tu disponibilidad y buscamos opciones.</p>
-    </div>
-
-    <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
-      <span data-i18n="levelTest">Y si no sabes tu nivel, haz la prueba gratis aquí</span>
-    </a>
   </div>
 
   <div class="wrap exam-dates">
@@ -817,6 +810,7 @@
   <section class="contact" id="contacto">
     <h2 data-i18n="contactTitle">¿Hablamos?</h2>
     <p data-i18n="contactLead">Si no lo tienes claro, aquí abajo cuéntame tu nivel y tu disponibilidad y te digo qué grupo encaja mejor contigo. También puedes dejarme cualquier otra duda y no tardaré en responderte.</p>
+    <p data-i18n="noteStrip">🕒 ¿No te va bien el horario? Cuéntamelo y buscamos opciones.</p>
     <div class="wa-cta">
       <a class="wa-btn" href="https://wa.me/34656679262?text=Hola%20Jordi%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20clases%20%3A%29" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -922,9 +916,9 @@
         b2Duration: `Del 1 de febrero al 19 de mayo`,
         c1Duration: `Del 2 de febrero al 20 de mayo`,
         ctaInscribirme: `Inscribirme →`,
-        friendPromo: `👫 <strong>¿Te apuntas con un amigo?</strong> 15 € de descuento para cada uno en el primer mes. Pídeme el código.`,
-        noteStrip: `🕒 <strong>¿No te va bien el horario?</strong> Cuéntame tu disponibilidad y buscamos opciones.`,
-        levelTest: `Y si no sabes tu nivel, haz la prueba gratis aquí`,
+        friendPromo: `👫 ¿Vienes con un amigo? 15 € menos el primer mes cada uno. <strong>Pídeme el código.</strong>`,
+        noteStrip: `🕒 ¿No te va bien el horario? Cuéntamelo y buscamos opciones.`,
+        levelTest: `Si no sabes tu nivel, haz la prueba gratis aquí`,
         examTitle: `Próximas convocatorias oficiales del DELE`,
         febMonth: `Febrero 2027`,
         febDate: `12 de febrero`,
@@ -994,8 +988,8 @@
         b2Duration: `February 1 to May 19`,
         c1Duration: `February 2 to May 20`,
         ctaInscribirme: `Enroll →`,
-        friendPromo: `👫 <strong>Signing up with a friend?</strong> 15 € off for each of you on the first month. Ask me for the code.`,
-        noteStrip: `🕒 <strong>Schedule doesn't work for you?</strong> Tell me your availability and we'll find options.`,
+        friendPromo: `👫 Coming with a friend? 15 € off the first month for each of you. <strong>Ask me for the code.</strong>`,
+        noteStrip: `🕒 Schedule doesn't work for you? Let me know and we'll find options.`,
         levelTest: `Don't know your level? Take the free test here`,
         examTitle: `Upcoming official DELE exam dates`,
         febMonth: `February 2027`,
@@ -1066,9 +1060,9 @@
         b2Duration: `Du 1er février au 19 mai`,
         c1Duration: `Du 2 février au 20 mai`,
         ctaInscribirme: `M'inscrire →`,
-        friendPromo: `👫 <strong>Vous vous inscrivez avec un ami ?</strong> 15 € de réduction chacun sur le premier mois. Demandez-moi le code.`,
-        noteStrip: `🕒 <strong>Cet horaire ne vous convient pas ?</strong> Dites-moi vos disponibilités et on trouvera une solution.`,
-        levelTest: `Et si vous ne connaissez pas votre niveau, faites le test gratuit ici`,
+        friendPromo: `👫 Vous venez avec un ami ? 15 € de moins sur le premier mois pour chacun. <strong>Demandez-moi le code.</strong>`,
+        noteStrip: `🕒 Cet horaire ne vous convient pas ? Dites-le-moi et on trouvera une solution.`,
+        levelTest: `Si vous ne connaissez pas votre niveau, faites le test gratuit ici`,
         examTitle: `Prochaines sessions officielles du DELE`,
         febMonth: `Février 2027`,
         febDate: `12 février`,
@@ -1138,9 +1132,9 @@
         b2Duration: `Dal 1° febbraio al 19 maggio`,
         c1Duration: `Dal 2 febbraio al 20 maggio`,
         ctaInscribirme: `Iscrivimi →`,
-        friendPromo: `👫 <strong>Ti iscrivi con un amico?</strong> 15 € di sconto a testa sul primo mese. Chiedimi il codice.`,
-        noteStrip: `🕒 <strong>L'orario non ti va bene?</strong> Dimmi la tua disponibilità e troviamo una soluzione.`,
-        levelTest: `E se non conosci il tuo livello, fai il test gratuito qui`,
+        friendPromo: `👫 Vieni con un amico? 15 € in meno sul primo mese a testa. <strong>Chiedimi il codice.</strong>`,
+        noteStrip: `🕒 L'orario non ti va bene? Dimmelo e troviamo una soluzione.`,
+        levelTest: `Se non conosci il tuo livello, fai il test gratuito qui`,
         examTitle: `Prossime convocazioni ufficiali del DELE`,
         febMonth: `Febbraio 2027`,
         febDate: `12 febbraio`,
