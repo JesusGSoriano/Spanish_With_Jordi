@@ -121,6 +121,13 @@
     margin: 0 0 20px;
   }
 
+  .course-card .one-off {
+    margin: -14px 0 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--terracotta-dark);
+  }
+
   /* DESCUENTO AMIGOS */
   .friend-promo {
     max-width: 640px;
@@ -380,6 +387,7 @@
         <li id="courseDuration"></li>
       </ul>
       <div class="price" id="coursePrice"></div>
+      <p class="one-off" id="courseOneOff" style="display:none"></p>
       <p class="friend-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno. <strong>Pídeme el código.</strong></p>
       <a href="#" id="stripeBtn" class="pay-btn" data-i18n="payBtn">Quiero inscribirme ahora →</a>
       <p class="no-stripe-note" id="noStripeNote" style="display:none" data-i18n="noStripeNote">Este nivel se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.</p>
@@ -447,7 +455,7 @@
       B1: { icon: '📚', levelKey: 'b1Level', taglineKey: 'b1Tagline', scheduleKey: 'b1Schedule', priceKey: 'b1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'b1Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/28E14p8QHcJU87U9wG3ZK01' },
       B2: { icon: '🔑', levelKey: 'b2Level', taglineKey: 'b2Tagline', scheduleKey: 'b2Schedule', priceKey: 'b2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'b2Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/dRmcN79UL4do4VI38i3ZK02' },
       C1: { icon: '🖋️', levelKey: 'c1Level', taglineKey: 'c1Tagline', scheduleKey: 'c1Schedule', priceKey: 'c1Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'c1Duration', badgeKey: 'targetBadge', stripe: 'https://buy.stripe.com/fZueVfaYP9xIgEqcIS3ZK03' },
-      A2F: { icon: '🚀', levelKey: 'a2fLevel', taglineKey: 'a2fTagline', scheduleKey: 'a2fSchedule', priceKey: 'a2Price', clasesKey: 'liClases', trucosKey: 'liTrucos', durationKey: 'a2fDuration', badgeKey: 'a2fBadge', stripe: 'https://buy.stripe.com/cNi8wR2sj7pA2NA5gq3ZK00' }
+      A2F: { icon: '🚀', levelKey: 'a2fLevel', taglineKey: 'a2fTagline', scheduleKey: 'a2fSchedule', priceKey: 'a2fPrice', clasesKey: 'a2fClases', oneOffKey: 'a2fOneOff', trucosKey: 'liTrucos', durationKey: 'a2fDuration', badgeKey: 'a2fBadge', stripe: '' }
     };
 
     var params = new URLSearchParams(window.location.search);
@@ -515,8 +523,11 @@
         a2fBadge: `🎯 Objetivo: Examen de Febrero`,
         a2fLevel: `A2 Exprés`,
         a2fTagline: `Prepárate a tiempo para el examen de febrero`,
-        a2fSchedule: `Lunes y miércoles, de 19:00 a 20:30 (hora de Madrid)`,
-        a2fDuration: `Del 2 de noviembre al 10 de febrero`,
+        a2fSchedule: `Lunes y miércoles, de 19:30 a 20:30 (hora de Madrid)`,
+        a2fDuration: `Del 16 de noviembre al 10 de febrero`,
+        a2fPrice: `99€/mes`,
+        a2fClases: `Clases de 1 hora (se graban por si faltas)`,
+        a2fOneOff: `o 279€ en un solo pago (ahorras 18€)`,
         payBtn: `Quiero inscribirme ahora →`,
         friendPromo: `👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno. <strong>Pídeme el código.</strong>`,
         noStripeNote: `Este nivel se confirma por WhatsApp o email. Escríbeme más abajo para reservar tu plaza.`,
@@ -563,8 +574,11 @@
         a2fBadge: `🎯 Target: February Exam`,
         a2fLevel: `A2 Express`,
         a2fTagline: `Get ready in time for the February exam`,
-        a2fSchedule: `Mondays and Wednesdays, 19:00-20:30 (Madrid time)`,
-        a2fDuration: `November 2 to February 10`,
+        a2fSchedule: `Mondays and Wednesdays, 19:30-20:30 (Madrid time)`,
+        a2fDuration: `November 16 to February 10`,
+        a2fPrice: `99€/month`,
+        a2fClases: `1-hour classes (recorded in case you miss one)`,
+        a2fOneOff: `or 279€ in a single payment (save 18€)`,
         payBtn: `I want to enroll now →`,
         friendPromo: `👫 Coming with a friend?<br>15€ off the first month for each of you. <strong>Ask me for the code.</strong>`,
         noStripeNote: `This level is confirmed by WhatsApp or email. Message me below to reserve your spot.`,
@@ -611,8 +625,11 @@
         a2fBadge: `🎯 Objectif : Examen de Février`,
         a2fLevel: `A2 Express`,
         a2fTagline: `Préparez-vous à temps pour l'examen de février`,
-        a2fSchedule: `Lundi et mercredi, de 19h00 à 20h30 (heure de Madrid)`,
-        a2fDuration: `Du 2 novembre au 10 février`,
+        a2fSchedule: `Lundi et mercredi, de 19h30 à 20h30 (heure de Madrid)`,
+        a2fDuration: `Du 16 novembre au 10 février`,
+        a2fPrice: `99€/mois`,
+        a2fClases: `Cours d'1 heure (enregistrés si vous en manquez un)`,
+        a2fOneOff: `ou 279€ en un seul paiement (vous économisez 18€)`,
         payBtn: `Je veux m'inscrire maintenant →`,
         friendPromo: `👫 Vous venez avec un ami ?<br>15€ de moins sur le premier mois pour chacun. <strong>Demandez-moi le code.</strong>`,
         noStripeNote: `Ce niveau se confirme par WhatsApp ou email. Écrivez-moi ci-dessous pour réserver votre place.`,
@@ -659,8 +676,11 @@
         a2fBadge: `🎯 Obiettivo: Esame di Febbraio`,
         a2fLevel: `A2 Express`,
         a2fTagline: `Preparati in tempo per l'esame di febbraio`,
-        a2fSchedule: `Lunedì e mercoledì, dalle 19:00 alle 20:30 (ora di Madrid)`,
-        a2fDuration: `Dal 2 novembre al 10 febbraio`,
+        a2fSchedule: `Lunedì e mercoledì, dalle 19:30 alle 20:30 (ora di Madrid)`,
+        a2fDuration: `Dal 16 novembre al 10 febbraio`,
+        a2fPrice: `99€/mese`,
+        a2fClases: `Lezioni da 1 ora (registrate nel caso ne perdessi una)`,
+        a2fOneOff: `oppure 279€ in un unico pagamento (risparmi 18€)`,
         payBtn: `Voglio iscrivermi ora →`,
         friendPromo: `👫 Vieni con un amico?<br>15€ in meno sul primo mese a testa. <strong>Chiedimi il codice.</strong>`,
         noStripeNote: `Questo livello si conferma via WhatsApp o email. Scrivimi qui sotto per prenotare il tuo posto.`,
@@ -698,6 +718,10 @@
         document.getElementById('courseTrucos').textContent = dict[currentCourse.trucosKey];
         document.getElementById('courseDuration').textContent = dict[currentCourse.durationKey];
         document.getElementById('coursePrice').textContent = dict[currentCourse.priceKey];
+        if (currentCourse.oneOffKey) {
+          document.getElementById('courseOneOff').textContent = dict[currentCourse.oneOffKey];
+          document.getElementById('courseOneOff').style.display = 'block';
+        }
         document.getElementById('courseBadge').textContent = dict[currentCourse.badgeKey];
       }
 
