@@ -600,6 +600,12 @@
   .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4); }
   .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
 
+  /* Salto de línea solo en móvil */
+  .br-narrow { display: inline; }
+  @media (min-width: 640px) {
+    .br-narrow { display: none; }
+  }
+
   /* WHATSAPP */
   .wa-float {
     position: fixed;
@@ -683,7 +689,7 @@
       <div class="divider"></div>
       <p class="cursos-subtitle" data-i18n="cursosSubtitle">Del 2 de noviembre al 10 de febrero, justo antes del examen.</p>
       <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
-        <span data-i18n="levelTest">Si no sabes tu nivel, haz la prueba gratis aquí</span>
+        <span data-i18n-html="levelTest">Si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí</span>
       </a>
     </div>
 
@@ -839,7 +845,7 @@
         liOnline: `100% online`,
         ctaInscribirme: `Inscribirme →`,
         friendPromo: `👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno. <strong>Pídeme el código.</strong>`,
-        levelTest: `Si no sabes tu nivel, haz la prueba gratis aquí`,
+        levelTest: `Si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí`,
         examTitle: `Convocatoria de febrero`,
         febMonth: `Febrero 2027`,
         febDate: `12 de febrero`,
@@ -886,7 +892,7 @@
         liOnline: `100% online`,
         ctaInscribirme: `Enroll →`,
         friendPromo: `👫 Coming with a friend?<br>15€ off the first month for each of you. <strong>Ask me for the code.</strong>`,
-        levelTest: `Don't know your level? Take the free test here`,
+        levelTest: `Don't know your level?<br class="br-narrow"> Take the free test here`,
         examTitle: `February exam sitting`,
         febMonth: `February 2027`,
         febDate: `February 12`,
@@ -933,7 +939,7 @@
         liOnline: `100% en ligne`,
         ctaInscribirme: `M'inscrire →`,
         friendPromo: `👫 Vous venez avec un ami ?<br>15€ de moins sur le premier mois pour chacun. <strong>Demandez-moi le code.</strong>`,
-        levelTest: `Si vous ne connaissez pas votre niveau, faites le test gratuit ici`,
+        levelTest: `Si vous ne connaissez pas votre niveau,<br class="br-narrow"> faites le test gratuit ici`,
         examTitle: `Session de février`,
         febMonth: `Février 2027`,
         febDate: `12 février`,
@@ -980,7 +986,7 @@
         liOnline: `100% online`,
         ctaInscribirme: `Iscrivimi →`,
         friendPromo: `👫 Vieni con un amico?<br>15€ in meno sul primo mese a testa. <strong>Chiedimi il codice.</strong>`,
-        levelTest: `Se non conosci il tuo livello, fai il test gratuito qui`,
+        levelTest: `Se non conosci il tuo livello,<br class="br-narrow"> fai il test gratuito qui`,
         examTitle: `Sessione di febbraio`,
         febMonth: `Febbraio 2027`,
         febDate: `12 febbraio`,

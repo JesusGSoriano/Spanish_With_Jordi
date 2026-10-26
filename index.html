@@ -195,6 +195,12 @@
   .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4); }
   .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
 
+  /* Salto de línea solo en móvil */
+  .br-narrow { display: inline; }
+  @media (min-width: 640px) {
+    .br-narrow { display: none; }
+  }
+
   /* WHATSAPP */
   .wa-float {
     position: fixed;
@@ -290,7 +296,7 @@
     </div>
 
     <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
-      <span data-i18n="levelTest">Y si no sabes tu nivel, haz la prueba gratis aquí</span>
+      <span data-i18n-html="levelTest">Y si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí</span>
     </a>
 
     <div class="wa-cta">
@@ -328,7 +334,7 @@
         privText: `Clases 1 a 1 por videollamada, para preparar el DELE o mejorar tu español, a tu ritmo.`,
         cardBtn: `Ver curso`,
         privBtn: `Ver precios`,
-        levelTest: `Y si no sabes tu nivel, haz la prueba gratis aquí`,
+        levelTest: `Y si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí`,
         waBtn: `Escríbeme por WhatsApp`,
         newsletter: `📬 Newsletter: muy pronto`,
         footer: `© 2026 Spanish with Jordi`
@@ -349,7 +355,7 @@
         privText: `One-to-one video lessons to prepare for the DELE or improve your Spanish, at your own pace.`,
         cardBtn: `See course`,
         privBtn: `See prices`,
-        levelTest: `Don't know your level? Take the free test here`,
+        levelTest: `Don't know your level?<br class="br-narrow"> Take the free test here`,
         waBtn: `Message me on WhatsApp`,
         newsletter: `📬 Newsletter: coming soon`,
         footer: `© 2026 Spanish with Jordi`
@@ -370,7 +376,7 @@
         privText: `Cours individuels en visio pour préparer le DELE ou améliorer votre espagnol, à votre rythme.`,
         cardBtn: `Voir le cours`,
         privBtn: `Voir les tarifs`,
-        levelTest: `Et si vous ne connaissez pas votre niveau, faites le test gratuit ici`,
+        levelTest: `Et si vous ne connaissez pas votre niveau,<br class="br-narrow"> faites le test gratuit ici`,
         waBtn: `Écrivez-moi sur WhatsApp`,
         newsletter: `📬 Newsletter : bientôt disponible`,
         footer: `© 2026 Spanish with Jordi`
@@ -391,7 +397,7 @@
         privText: `Lezioni individuali in videochiamata per preparare il DELE o migliorare il tuo spagnolo, al tuo ritmo.`,
         cardBtn: `Vedi il corso`,
         privBtn: `Vedi i prezzi`,
-        levelTest: `E se non conosci il tuo livello, fai il test gratuito qui`,
+        levelTest: `E se non conosci il tuo livello,<br class="br-narrow"> fai il test gratuito qui`,
         waBtn: `Scrivimi su WhatsApp`,
         newsletter: `📬 Newsletter: in arrivo`,
         footer: `© 2026 Spanish with Jordi`
@@ -406,6 +412,10 @@
       document.querySelectorAll('[data-i18n]').forEach(function (el) {
         var key = el.getAttribute('data-i18n');
         if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
       });
       document.querySelectorAll('[data-i18n-attr-alt]').forEach(function (el) {
         var key = el.getAttribute('data-i18n-attr-alt');

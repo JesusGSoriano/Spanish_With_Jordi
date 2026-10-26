@@ -592,6 +592,12 @@
   .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4); }
   .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
 
+  /* Salto de línea solo en móvil */
+  .br-narrow { display: inline; }
+  @media (min-width: 640px) {
+    .br-narrow { display: none; }
+  }
+
   /* WHATSAPP */
   .wa-float {
     position: fixed;
@@ -675,7 +681,7 @@
       <div class="divider"></div>
       <p class="cursos-subtitle" data-i18n="cursosSubtitle">Estos cursos están diseñados para llegar a punto a la convocatoria de mayo.</p>
       <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
-        <span data-i18n="levelTest">Si no sabes tu nivel, haz la prueba gratis aquí</span>
+        <span data-i18n-html="levelTest">Si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí</span>
       </a>
     </div>
 
@@ -697,7 +703,7 @@
           <div class="amount" data-i18n="a2Price">129€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
-        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br class="br-wide"> <strong>Pídeme el código.</strong></p>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br><strong>Pídeme el código.</strong></p>
       </div>
 
       <div class="card">
@@ -716,7 +722,7 @@
           <div class="amount" data-i18n="b1Price">139€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
-        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br class="br-wide"> <strong>Pídeme el código.</strong></p>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br><strong>Pídeme el código.</strong></p>
       </div>
 
       <div class="card">
@@ -735,7 +741,7 @@
           <div class="amount" data-i18n="b2Price">149€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
-        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br class="br-wide"> <strong>Pídeme el código.</strong></p>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br><strong>Pídeme el código.</strong></p>
       </div>
 
       <div class="card">
@@ -754,7 +760,7 @@
           <div class="amount" data-i18n="c1Price">159€/mes</div>
           <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
-        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br class="br-wide"> <strong>Pídeme el código.</strong></p>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br><strong>Pídeme el código.</strong></p>
       </div>
 
     </div>
@@ -921,8 +927,8 @@
         b2Duration: `Del 1 de febrero al 19 de mayo`,
         c1Duration: `Del 2 de febrero al 20 de mayo`,
         ctaInscribirme: `Inscribirme →`,
-        friendPromo: `👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br class="br-wide"> <strong>Pídeme el código.</strong>`,
-        levelTest: `Si no sabes tu nivel, haz la prueba gratis aquí`,
+        friendPromo: `👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br><strong>Pídeme el código.</strong>`,
+        levelTest: `Si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí`,
         examTitle: `Próximas convocatorias oficiales del DELE`,
         febMonth: `Febrero 2027`,
         febDate: `12 de febrero`,
@@ -992,8 +998,8 @@
         b2Duration: `February 1 to May 19`,
         c1Duration: `February 2 to May 20`,
         ctaInscribirme: `Enroll →`,
-        friendPromo: `👫 Coming with a friend?<br>15€ off the first month for each of you.<br class="br-wide"> <strong>Ask me for the code.</strong>`,
-        levelTest: `Don't know your level? Take the free test here`,
+        friendPromo: `👫 Coming with a friend?<br>15€ off the first month for each of you.<br><strong>Ask me for the code.</strong>`,
+        levelTest: `Don't know your level?<br class="br-narrow"> Take the free test here`,
         examTitle: `Upcoming official DELE exam dates`,
         febMonth: `February 2027`,
         febDate: `February 12`,
@@ -1063,8 +1069,8 @@
         b2Duration: `Du 1er février au 19 mai`,
         c1Duration: `Du 2 février au 20 mai`,
         ctaInscribirme: `M'inscrire →`,
-        friendPromo: `👫 Vous venez avec un ami ?<br>15€ de moins sur le premier mois pour chacun.<br class="br-wide"> <strong>Demandez-moi le code.</strong>`,
-        levelTest: `Si vous ne connaissez pas votre niveau, faites le test gratuit ici`,
+        friendPromo: `👫 Vous venez avec un ami ?<br>15€ de moins sur le premier mois pour chacun.<br><strong>Demandez-moi le code.</strong>`,
+        levelTest: `Si vous ne connaissez pas votre niveau,<br class="br-narrow"> faites le test gratuit ici`,
         examTitle: `Prochaines sessions officielles du DELE`,
         febMonth: `Février 2027`,
         febDate: `12 février`,
@@ -1134,8 +1140,8 @@
         b2Duration: `Dal 1° febbraio al 19 maggio`,
         c1Duration: `Dal 2 febbraio al 20 maggio`,
         ctaInscribirme: `Iscrivimi →`,
-        friendPromo: `👫 Vieni con un amico?<br>15€ in meno sul primo mese a testa.<br class="br-wide"> <strong>Chiedimi il codice.</strong>`,
-        levelTest: `Se non conosci il tuo livello, fai il test gratuito qui`,
+        friendPromo: `👫 Vieni con un amico?<br>15€ in meno sul primo mese a testa.<br><strong>Chiedimi il codice.</strong>`,
+        levelTest: `Se non conosci il tuo livello,<br class="br-narrow"> fai il test gratuito qui`,
         examTitle: `Prossime convocazioni ufficiali del DELE`,
         febMonth: `Febbraio 2027`,
         febDate: `12 febbraio`,
