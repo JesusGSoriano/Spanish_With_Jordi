@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlas de sobremesa: español conversacional con Jordi</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --cream: #F7EFDC;
+    --cream-dark: #EFE1BE;
+    --olive: #5C6B3B;
+    --olive-dark: #40492A;
+    --terracotta: #D9822E;
+    --terracotta-dark: #B5691F;
+    --brown: #5A3F28;
+    --ink: #3A3122;
+  }
+
+  * { box-sizing: border-box; }
+
+  /* SCROLL PROGRESS: se rellena con la bandera de España al hacer scroll */
+  .scroll-track {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(90, 63, 40, 0.12);
+    z-index: 9999;
+  }
+  .scroll-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #AA151B 0 25%, #F1BF00 25% 75%, #AA151B 75% 100%);
+    background-size: 100vw 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--olive-dark);
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 64px 24px 48px;
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .target-badge {
+    display: block;
+    background: var(--olive-dark);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin: 0 auto 18px;
+    width: fit-content;
+  }
+
+  .cursos-subtitle {
+    max-width: 480px;
+    margin: 12px auto 0;
+    font-size: 14px;
+    color: #6b6252;
+  }
+
+  .exam-badge {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 6vw, 44px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+  }
+
+  .avatar-frame {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--olive-dark);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.25);
+    margin: 0 auto 22px;
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.15);
+    transform-origin: 50% 32%;
+  }
+
+  .hero p.lead {
+    font-size: 17px;
+    max-width: 480px;
+    margin: 0 auto;
+    color: #5A5340;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 28px;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 6px 16px rgba(217, 130, 46, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(217, 130, 46, 0.4); }
+
+  /* SECTION LABEL */
+  .section-title {
+    text-align: center;
+    padding: 8px 0 6px;
+  }
+  .section-title h2 {
+    font-size: 26px;
+  }
+  .section-title .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--terracotta);
+    margin: 14px auto 0;
+    border-radius: 2px;
+  }
+
+  /* COURSE CARDS */
+  .courses {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 36px 0 20px;
+  }
+
+  @media (min-width: 640px) {
+    .courses { grid-template-columns: 1fr 1fr; }
+  }
+
+  .card {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 26px 24px;
+    position: relative;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .card .icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .card h3 {
+    font-size: 21px;
+    margin-bottom: 4px;
+  }
+
+  .card .tagline {
+    font-size: 13px;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+  }
+
+  .card li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .card li::before {
+    content: "✓";
+    color: var(--olive);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-box {
+    display: block;
+    background: var(--terracotta);
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  a.price-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(217, 130, 46, 0.35);
+  }
+
+  .price-box .amount {
+    font-size: 22px;
+  }
+
+  .price-box .note {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  .price-box .cta-label {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.95;
+    margin-top: 4px;
+  }
+
+  /* DESCUENTO AMIGOS (dentro de cada tarjeta) */
+  .card-promo {
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: #5A5340;
+    text-align: center;
+  }
+  .card-promo strong { color: var(--olive-dark); }
+
+  /* PRUEBA DE NIVEL */
+  .level-test {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 16px;
+    margin: 16px auto 0;
+    max-width: 640px;
+    padding: 10px 18px;
+    background: #fff;
+    border: 2px dashed var(--terracotta);
+    border-radius: 14px;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .level-test:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(217, 130, 46, 0.2); }
+
+  /* RESERVA SIN PAGAR */
+  .reserva {
+    padding: 8px 0 10px;
+  }
+  .reserva-lead {
+    font-size: 15px;
+    color: #5A5340;
+    max-width: 460px;
+    margin: 14px auto 22px;
+    text-align: center;
+  }
+  .reserva .dudas-form,
+  .reserva .dudas-thanks {
+    background: #fff;
+    border: 2px dashed var(--terracotta);
+  }
+  .dudas-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  /* CONVOCATORIAS DELE */
+  .exam-dates {
+    padding: 16px 0 10px;
+  }
+
+  .exam-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  @media (min-width: 640px) {
+    .exam-grid { grid-template-columns: 1fr 1fr; }
+    .exam-grid .exam-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: calc(50% - 9px);
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 860px) {
+    .exam-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .exam-grid .exam-card:last-child:nth-child(odd) {
+      grid-column: auto;
+      max-width: none;
+      margin: 0;
+    }
+  }
+
+  .exam-card {
+    background: var(--cream-dark);
+    border-radius: 16px;
+    padding: 22px 24px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+
+  .exam-card.highlight {
+    border: 2px solid var(--terracotta);
+    box-shadow: 0 8px 20px rgba(217, 130, 46, 0.18);
+  }
+
+  .exam-card .month {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--terracotta-dark);
+    margin-bottom: 6px;
+  }
+
+  .exam-card .date {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: var(--olive-dark);
+    margin-bottom: 10px;
+  }
+
+  .exam-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .exam-card li {
+    margin-bottom: 4px;
+  }
+
+  .exam-card li strong {
+    color: var(--olive-dark);
+  }
+
+  .exam-source {
+    text-align: center;
+    font-size: 13px;
+    color: #6b6252;
+    margin-top: 22px;
+  }
+
+  .exam-source a {
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* SOBRE JORDI */
+  .about {
+    background: var(--cream-dark);
+    padding: 56px 24px;
+    margin-top: 20px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    .about-grid {
+      grid-template-columns: 160px 1fr;
+      text-align: left;
+    }
+  }
+
+  .about-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--cream);
+    box-shadow: 0 8px 24px rgba(90, 63, 40, 0.2);
+    margin: 0 auto;
+    display: block;
+  }
+
+  .about h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .about p {
+    font-size: 15px;
+    color: #5A5340;
+    margin: 0 0 14px;
+  }
+
+  @media (min-width: 640px) {
+    .about p { text-align: justify; hyphens: auto; }
+  }
+
+  .about p:last-child { margin-bottom: 0; }
+
+  .about p strong {
+    color: var(--olive-dark);
+  }
+
+  /* CONTACT / FOOTER */
+  .contact {
+    background: var(--olive-dark);
+    color: var(--cream);
+    padding: 48px 24px 40px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .contact h2 {
+    color: var(--cream);
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .contact p {
+    color: #D9D6C4;
+    font-size: 15px;
+    max-width: 420px;
+    margin: 0 auto 24px;
+  }
+
+  /* Salto de línea solo en pantallas anchas */
+  .br-wide { display: none; }
+  @media (min-width: 640px) {
+    .br-wide { display: inline; }
+  }
+
+  .dudas-form {
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 26px 24px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .dudas-form .field {
+    margin-bottom: 14px;
+  }
+
+  .dudas-form label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--olive-dark);
+    margin-bottom: 6px;
+  }
+
+  .dudas-form textarea,
+  .dudas-form input[type=text] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  .dudas-form textarea { resize: vertical; min-height: 70px; }
+
+  .dudas-submit {
+    width: 100%;
+    background: var(--terracotta);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .dudas-submit:hover { background: var(--terracotta-dark); }
+
+  .dudas-thanks {
+    display: none;
+    background: var(--cream-dark);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 32px 24px;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .dudas-thanks h3 {
+    color: var(--olive-dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+  .dudas-thanks p { color: #5A5340; margin: 0; }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .contact-links a {
+    background: transparent;
+    border: 1px solid rgba(247, 239, 220, 0.4);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  footer.legal {
+    text-align: center;
+    font-size: 12px;
+    color: #A99E86;
+    padding: 18px 24px 30px;
+    background: var(--olive-dark);
+  }
+
+  /* NEWSLETTER */
+  .newsletter {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cream);
+    border: 1px solid rgba(247, 239, 220, 0.35);
+    padding: 8px 16px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  .wa-cta {
+    text-align: center;
+    margin: 0 0 24px;
+  }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 999px;
+    font-size: 17px;
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4); }
+  .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
+
+  /* Salto de línea solo en móvil */
+  .br-narrow { display: inline; }
+  @media (min-width: 640px) {
+    .br-narrow { display: none; }
+  }
+
+  /* WHATSAPP */
+  .wa-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9998;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  /* LANGUAGE SWITCH */
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 10000;
+    display: flex;
+    background: var(--cream-dark);
+    border: 1px solid rgba(90, 63, 40, 0.2);
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 4px 10px rgba(90, 63, 40, 0.15);
+  }
+
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--olive-dark);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .lang-btn.active {
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .price-box + .price-box { margin-top: 10px; }
+
+  /* CÓMO FUNCIONA */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 28px 0 30px;
+  }
+  @media (min-width: 640px) {
+    .steps { grid-template-columns: 1fr 1fr; }
+  }
+  .step {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px 22px;
+    border: 1px solid rgba(90, 63, 40, 0.12);
+  }
+  .step h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-size: 14px;
+    color: #5A5340;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+  <div class="scroll-track"><div class="scroll-fill" id="scrollFill"></div></div>
+
+  <div class="lang-switch" id="langSwitch">
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="fr">FR</button>
+    <button type="button" class="lang-btn" data-lang="it">IT</button>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <a href="index.html" style="display:inline-block; margin-bottom:14px; font-size:13px; font-weight:700; color:var(--olive-dark); text-decoration:none;" data-i18n="backLink">← Volver al inicio</a><br>
+      <span class="eyebrow" data-i18n="heroEyebrow">Español conversacional</span>
+      <span class="target-badge" data-i18n="targetBadge">🗓️ Empiezan las clases el 16 de noviembre</span>
+      <div class="avatar-frame">
+        <img class="avatar" src="jordi_preview.jpg" alt="Jordi, profesor de español" data-i18n-attr-alt="avatarAlt">
+      </div>
+      <h1 data-i18n="heroH1">Charlas de sobremesa 🍷</h1>
+      <p class="lead" data-i18n-html="heroLead">Gana fluidez y pierde el miedo a hablar<br class="br-wide"> en un grupo reducido y cercano.<br class="br-wide"> Clases siempre en directo y 100% online.</p>
+      <a href="#grupos" class="cta-btn" data-i18n="heroCta">Ver grupos</a>
+    </div>
+  </section>
+
+  <div class="wrap" id="grupos">
+    <div class="section-title">
+      <h2 data-i18n="gruposTitle">Elige tu grupo</h2>
+      <div class="divider"></div>
+      <p class="cursos-subtitle" data-i18n="gruposSubtitle">Una clase a la semana, o dos si quieres hablar todavía más.</p>
+      <a class="level-test" href="https://forms.gle/KLJH7u2iUeWmRHWD9" target="_blank" rel="noopener">
+        <span data-i18n-html="levelTest">Si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí</span>
+      </a>
+    </div>
+
+    <div class="courses">
+
+      <div class="card">
+        <div class="icon">☕</div>
+        <h3 data-i18n="g1Level">Grupo A2/B1</h3>
+        <div class="tagline" data-i18n="g1Tagline">Pierde el miedo a hablar</div>
+        <ul>
+          <li data-i18n="g1Clase">Clase: lunes de 15:00 a 16:00 (hora de Madrid)</li>
+          <li data-i18n="g1Extra">Práctica extra (Plus): viernes de 15:00 a 16:00</li>
+          <li data-i18n="liReducidos">Grupos reducidos</li>
+          <li data-i18n="liOnline">100% online</li>
+        </ul>
+        <a href="https://buy.stripe.com/9B65kF1of6lwdseeR03ZK0c" class="price-box">
+          <div class="amount" data-i18n="plan1Price">49€/mes</div>
+          <div class="note" data-i18n="plan1Note">1 hora a la semana</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
+        </a>
+        <a href="https://buy.stripe.com/fZu3cx2sjcJUag2bEO3ZK0d" class="price-box">
+          <div class="amount" data-i18n="plan2Price">89€/mes</div>
+          <div class="note" data-i18n="plan2Note">Plus: 2 horas a la semana</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🍷</div>
+        <h3 data-i18n="g2Level">Grupo B2/C1</h3>
+        <div class="tagline" data-i18n="g2Tagline">Habla con soltura y matices</div>
+        <ul>
+          <li data-i18n="g2Clase">Clase: miércoles de 15:00 a 16:00 (hora de Madrid)</li>
+          <li data-i18n="g2Extra">Práctica extra (Plus): viernes de 16:00 a 17:00</li>
+          <li data-i18n="liReducidos">Grupos reducidos</li>
+          <li data-i18n="liOnline">100% online</li>
+        </ul>
+        <a href="https://buy.stripe.com/8x228teb111cdse6ku3ZK0f" class="price-box">
+          <div class="amount" data-i18n="plan1Price">49€/mes</div>
+          <div class="note" data-i18n="plan1Note">1 hora a la semana</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
+        </a>
+        <a href="https://buy.stripe.com/8x228t5EvcJU2NA38i3ZK0e" class="price-box">
+          <div class="amount" data-i18n="plan2Price">89€/mes</div>
+          <div class="note" data-i18n="plan2Note">Plus: 2 horas a la semana</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="section-title">
+      <h2 data-i18n="comoTitle">¿Cómo funcionan las clases?</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3 data-i18n="step1Title">🗣️ La clase semanal</h3>
+        <p data-i18n="step1Text">Cada semana elegimos un tema de conversación y una estructura gramatical en la que nos vamos a fijar. Unos minutos de explicación y el resto del tiempo, ¡a hablar!</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="step2Title">➕ Práctica extra (Plus)</h3>
+        <p data-i18n="step2Text">Una segunda hora solo con los alumnos Plus: más tiempo para hablar, para poner en práctica lo de la semana y para corregir tus errores.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap reserva" id="reserva">
+    <div class="section-title">
+      <h2 data-i18n="reservaTitle">¿Aún no quieres pagar?</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="reserva-lead" data-i18n-html="reservaLead">Déjame tus datos y te escribo<br class="br-wide"> con todos los detalles para empezar.</p>
+
+    <form class="dudas-form" id="reservaForm">
+      <div class="field">
+        <label for="reservaNombre" data-i18n="reservaNombreLabel">Tu nombre</label>
+        <input type="text" id="reservaNombre" required>
+      </div>
+      <div class="field">
+        <label for="reservaContacto" data-i18n="dudaContactoLabel">Número de WhatsApp o email para contactar contigo</label>
+        <input type="text" id="reservaContacto" required>
+      </div>
+      <div class="field">
+        <label for="reservaGrupo" data-i18n="reservaGrupoLabel">¿Qué grupo?</label>
+        <select id="reservaGrupo" required>
+          <option value="" data-i18n="reservaGrupoElige">Elige un grupo</option>
+          <option value="A2/B1" data-i18n="g1Level">Grupo A2/B1</option>
+          <option value="B2/C1" data-i18n="g2Level">Grupo B2/C1</option>
+          <option value="No lo sé" data-i18n="reservaGrupoNoSe">No sé mi nivel</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="reservaPlan" data-i18n="reservaPlanLabel">¿Qué plan?</label>
+        <select id="reservaPlan" required>
+          <option value="" data-i18n="reservaPlanElige">Elige un plan</option>
+          <option value="49€" data-i18n="plan1Option">49€/mes: 1 hora a la semana</option>
+          <option value="89€" data-i18n="plan2Option">89€/mes: 2 horas a la semana (Plus)</option>
+        </select>
+      </div>
+      <button type="submit" class="dudas-submit" data-i18n="reservaSubmit">Guárdame una plaza</button>
+    </form>
+
+    <div class="dudas-thanks" id="reservaThanks">
+      <h3 data-i18n="reservaThanksTitle">¡Plaza guardada!</h3>
+      <p data-i18n="reservaThanksText">Te escribo muy pronto con los detalles para empezar.</p>
+    </div>
+  </div>
+
+  <section class="contact" id="contacto">
+    <h2 data-i18n="contactTitle">¿Hablamos?</h2>
+    <p data-i18n-html="contactLead">¿Tienes dudas o no te va bien el horario?<br>Escríbeme y lo hablamos.</p>
+    <div class="wa-cta">
+      <a class="wa-btn" href="https://wa.me/34656679262?text=Hola%20Jordi%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20clases%20%3A%29" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="waBtn">Escríbeme por WhatsApp</span>
+      </a>
+    </div>
+    <form class="dudas-form" id="dudasForm">
+      <div class="field">
+        <label for="duda" data-i18n="dudaLabel">¿Alguna duda?</label>
+        <textarea id="duda" required></textarea>
+      </div>
+      <div class="field">
+        <label for="dudaContacto" data-i18n="dudaContactoLabel">Número de WhatsApp o email para contactar contigo</label>
+        <input type="text" id="dudaContacto" required>
+      </div>
+      <button type="submit" class="dudas-submit" data-i18n="dudasSubmit">Enviar duda</button>
+    </form>
+
+    <div class="dudas-thanks" id="dudasThanks">
+      <h3 data-i18n="dudasThanksTitle">¡Gracias!</h3>
+      <p data-i18n="dudasThanksText">Te contesto lo antes posible.</p>
+    </div>
+
+    <!-- Envío silencioso al formulario de dudas de Google -->
+    <iframe name="dudas_iframe" id="dudas_iframe" style="display:none;"></iframe>
+    <form id="dudasGform"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScMv5Tm5l31CUkk5w17WnYIB-g1LlPQHKOgNLi4W872bhERLw/formResponse"
+          method="POST" target="dudas_iframe" style="display:none;">
+      <input type="text" name="entry.609687656" id="g-duda">
+      <input type="text" name="entry.174317246" id="g-contacto">
+    </form>
+
+    <div class="contact-links">
+      <a href="https://www.tiktok.com/@spanish_with_jordi" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/spanish_with_jordi" target="_blank" rel="noopener">Instagram</a>
+      <a href="#grupos" data-i18n="linkReservar">Reservar plaza</a>
+      <a href="index.html" data-i18n="linkVolver">Volver al inicio</a>
+    </div>
+  </section>
+
+  <footer class="legal">
+    <div class="newsletter" data-i18n="newsletter">📬 Newsletter: muy pronto</div><br>
+    <span data-i18n="footer">© 2026 Spanish with Jordi · Español conversacional online</span>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/34656679262?text=Hola%20Jordi%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20clases%20%3A%29" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    var scrollFill = document.getElementById('scrollFill');
+    window.addEventListener('scroll', function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+      scrollFill.style.width = pct + '%';
+    });
+
+    var reservaForm = document.getElementById('reservaForm');
+    reservaForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('g-duda').value =
+        '💬 CHARLAS DE SOBREMESA · Grupo: ' + document.getElementById('reservaGrupo').value +
+        ' · Plan: ' + document.getElementById('reservaPlan').value +
+        ' · Nombre: ' + document.getElementById('reservaNombre').value;
+      document.getElementById('g-contacto').value = document.getElementById('reservaContacto').value;
+      document.getElementById('dudasGform').submit();
+      reservaForm.style.display = 'none';
+      document.getElementById('reservaThanks').style.display = 'block';
+    });
+
+    var dudasForm = document.getElementById('dudasForm');
+    dudasForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('g-duda').value = document.getElementById('duda').value;
+      document.getElementById('g-contacto').value = document.getElementById('dudaContacto').value;
+      document.getElementById('dudasGform').submit();
+      dudasForm.style.display = 'none';
+      document.getElementById('dudasThanks').style.display = 'block';
+    });
+
+    var translations = {
+      es: {
+        pageTitle: `Charlas de sobremesa: español conversacional con Jordi`,
+        backLink: `← Volver al inicio`,
+        heroEyebrow: `Español conversacional`,
+        targetBadge: `🗓️ Empiezan las clases el 16 de noviembre`,
+        avatarAlt: `Jordi, profesor de español`,
+        heroH1: `Charlas de sobremesa 🍷`,
+        heroLead: `Gana fluidez y pierde el miedo a hablar<br class="br-wide"> en un grupo reducido y cercano.<br class="br-wide"> Clases siempre en directo y 100% online.`,
+        heroCta: `Ver grupos`,
+        gruposTitle: `Elige tu grupo`,
+        gruposSubtitle: `Una clase a la semana, o dos si quieres hablar todavía más.`,
+        levelTest: `Si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí`,
+        g1Level: `Grupo A2/B1`,
+        g1Tagline: `Pierde el miedo a hablar`,
+        g1Clase: `Clase: lunes de 15:00 a 16:00 (hora de Madrid)`,
+        g1Extra: `Práctica extra (Plus): viernes de 15:00 a 16:00`,
+        g2Level: `Grupo B2/C1`,
+        g2Tagline: `Habla con soltura y matices`,
+        g2Clase: `Clase: miércoles de 15:00 a 16:00 (hora de Madrid)`,
+        g2Extra: `Práctica extra (Plus): viernes de 16:00 a 17:00`,
+        liReducidos: `Grupos reducidos`,
+        liOnline: `100% online`,
+        plan1Price: `49€/mes`,
+        plan1Note: `1 hora a la semana`,
+        plan2Price: `89€/mes`,
+        plan2Note: `Plus: 2 horas a la semana`,
+        ctaInscribirme: `Inscribirme →`,
+        comoTitle: `¿Cómo funcionan las clases?`,
+        step1Title: `🗣️ La clase semanal`,
+        step1Text: `Cada semana elegimos un tema de conversación y una estructura gramatical en la que nos vamos a fijar. Unos minutos de explicación y el resto del tiempo, ¡a hablar!`,
+        step2Title: `➕ Práctica extra (Plus)`,
+        step2Text: `Una segunda hora solo con los alumnos Plus: más tiempo para hablar, para poner en práctica lo de la semana y para corregir tus errores.`,
+        reservaTitle: `¿Aún no quieres pagar?`,
+        reservaLead: `Déjame tus datos y te guardo un hueco, <strong>sin compromiso</strong>.<br class="br-wide"> Te escribo con todos los detalles para empezar.`,
+        reservaNombreLabel: `Tu nombre`,
+        reservaGrupoLabel: `¿Qué grupo?`,
+        reservaGrupoElige: `Elige un grupo`,
+        reservaGrupoNoSe: `No sé mi nivel`,
+        reservaPlanLabel: `¿Qué plan?`,
+        reservaPlanElige: `Elige un plan`,
+        plan1Option: `49€/mes: 1 hora a la semana`,
+        plan2Option: `89€/mes: 2 horas a la semana (Plus)`,
+        reservaSubmit: `Guárdame una plaza`,
+        reservaThanksTitle: `¡Plaza guardada!`,
+        reservaThanksText: `Te escribo muy pronto con los detalles para empezar.`,
+        contactTitle: `¿Hablamos?`,
+        contactLead: `¿Tienes dudas o no te va bien el horario?<br>Escríbeme y lo hablamos.`,
+        waBtn: `Escríbeme por WhatsApp`,
+        dudaLabel: `¿Alguna duda?`,
+        dudaContactoLabel: `Número de WhatsApp o email para contactar contigo`,
+        dudasSubmit: `Enviar duda`,
+        dudasThanksTitle: `¡Gracias!`,
+        dudasThanksText: `Te contesto lo antes posible.`,
+        linkReservar: `Reservar plaza`,
+        linkVolver: `Volver al inicio`,
+        newsletter: `📬 Newsletter: muy pronto`,
+        footer: `© 2026 Spanish with Jordi · Español conversacional online`
+      },
+      en: {
+        pageTitle: `Charlas de sobremesa: conversational Spanish with Jordi`,
+        backLink: `← Back to home`,
+        heroEyebrow: `Conversational Spanish`,
+        targetBadge: `🗓️ Classes start on November 16`,
+        avatarAlt: `Jordi, Spanish teacher`,
+        heroH1: `Charlas de sobremesa 🍷`,
+        heroLead: `Gain fluency and lose your fear of speaking<br class="br-wide"> in a small, friendly group.<br class="br-wide"> Always live classes, 100% online.`,
+        heroCta: `See groups`,
+        gruposTitle: `Choose your group`,
+        gruposSubtitle: `One class a week, or two if you want to speak even more.`,
+        levelTest: `Don't know your level?<br class="br-narrow"> Take the free test here`,
+        g1Level: `A2/B1 group`,
+        g1Tagline: `Lose your fear of speaking`,
+        g1Clase: `Class: Mondays, 15:00-16:00 (Madrid time)`,
+        g1Extra: `Extra practice (Plus): Fridays, 15:00-16:00`,
+        g2Level: `B2/C1 group`,
+        g2Tagline: `Speak fluently and with nuance`,
+        g2Clase: `Class: Wednesdays, 15:00-16:00 (Madrid time)`,
+        g2Extra: `Extra practice (Plus): Fridays, 16:00-17:00`,
+        liReducidos: `Small groups`,
+        liOnline: `100% online`,
+        plan1Price: `49€/month`,
+        plan1Note: `1 hour a week`,
+        plan2Price: `89€/month`,
+        plan2Note: `Plus: 2 hours a week`,
+        ctaInscribirme: `Enroll →`,
+        comoTitle: `How do the classes work?`,
+        step1Title: `🗣️ The weekly class`,
+        step1Text: `Every week we pick a conversation topic and a grammar structure to focus on. A few minutes of explanation and the rest of the time, we talk!`,
+        step2Title: `➕ Extra practice (Plus)`,
+        step2Text: `A second hour just with Plus students: more time to speak, to put the week's grammar into practice and to correct your mistakes.`,
+        reservaTitle: `Not ready to pay yet?`,
+        reservaLead: `Leave me your details and I'll save you a spot, <strong>no commitment</strong>.<br class="br-wide"> I'll get in touch with everything you need to get started.`,
+        reservaNombreLabel: `Your name`,
+        reservaGrupoLabel: `Which group?`,
+        reservaGrupoElige: `Choose a group`,
+        reservaGrupoNoSe: `I don't know my level`,
+        reservaPlanLabel: `Which plan?`,
+        reservaPlanElige: `Choose a plan`,
+        plan1Option: `49€/month: 1 hour a week`,
+        plan2Option: `89€/month: 2 hours a week (Plus)`,
+        reservaSubmit: `Save me a spot`,
+        reservaThanksTitle: `Spot saved!`,
+        reservaThanksText: `I'll get in touch very soon with the details to get started.`,
+        contactTitle: `Shall we talk?`,
+        contactLead: `Any questions, or the schedule doesn't suit you?<br>Message me and we'll sort it out.`,
+        waBtn: `Message me on WhatsApp`,
+        dudaLabel: `Any questions?`,
+        dudaContactoLabel: `WhatsApp number or email so I can contact you`,
+        dudasSubmit: `Send question`,
+        dudasThanksTitle: `Thank you!`,
+        dudasThanksText: `I'll reply as soon as possible.`,
+        linkReservar: `Book your spot`,
+        linkVolver: `Back to home`,
+        newsletter: `📬 Newsletter: coming soon`,
+        footer: `© 2026 Spanish with Jordi · Online conversational Spanish`
+      },
+      fr: {
+        pageTitle: `Charlas de sobremesa : espagnol conversationnel avec Jordi`,
+        backLink: `← Retour à l'accueil`,
+        heroEyebrow: `Espagnol conversationnel`,
+        targetBadge: `🗓️ Début des cours le 16 novembre`,
+        avatarAlt: `Jordi, professeur d'espagnol`,
+        heroH1: `Charlas de sobremesa 🍷`,
+        heroLead: `Gagnez en aisance et perdez la peur de parler<br class="br-wide"> dans un petit groupe convivial.<br class="br-wide"> Cours toujours en direct, 100 % en ligne.`,
+        heroCta: `Voir les groupes`,
+        gruposTitle: `Choisissez votre groupe`,
+        gruposSubtitle: `Un cours par semaine, ou deux si vous voulez parler encore plus.`,
+        levelTest: `Si vous ne connaissez pas votre niveau,<br class="br-narrow"> faites le test gratuit ici`,
+        g1Level: `Groupe A2/B1`,
+        g1Tagline: `Perdez la peur de parler`,
+        g1Clase: `Cours : lundi de 15h00 à 16h00 (heure de Madrid)`,
+        g1Extra: `Pratique en plus (Plus) : vendredi de 15h00 à 16h00`,
+        g2Level: `Groupe B2/C1`,
+        g2Tagline: `Parlez avec aisance et nuance`,
+        g2Clase: `Cours : mercredi de 15h00 à 16h00 (heure de Madrid)`,
+        g2Extra: `Pratique en plus (Plus) : vendredi de 16h00 à 17h00`,
+        liReducidos: `Petits groupes`,
+        liOnline: `100 % en ligne`,
+        plan1Price: `49€/mois`,
+        plan1Note: `1 heure par semaine`,
+        plan2Price: `89€/mois`,
+        plan2Note: `Plus : 2 heures par semaine`,
+        ctaInscribirme: `M'inscrire →`,
+        comoTitle: `Comment se déroulent les cours ?`,
+        step1Title: `🗣️ Le cours de la semaine`,
+        step1Text: `Chaque semaine, nous choisissons un thème de conversation et une structure grammaticale sur laquelle nous concentrer. Quelques minutes d'explication et le reste du temps, on parle !`,
+        step2Title: `➕ Pratique en plus (Plus)`,
+        step2Text: `Une deuxième heure uniquement avec les élèves Plus : plus de temps pour parler, pour mettre en pratique la grammaire de la semaine et pour corriger vos erreurs.`,
+        reservaTitle: `Pas encore prêt à payer ?`,
+        reservaLead: `Laissez-moi vos coordonnées et je vous garde une place, <strong>sans engagement</strong>.<br class="br-wide"> Je vous écris avec tous les détails pour commencer.`,
+        reservaNombreLabel: `Votre prénom`,
+        reservaGrupoLabel: `Quel groupe ?`,
+        reservaGrupoElige: `Choisissez un groupe`,
+        reservaGrupoNoSe: `Je ne connais pas mon niveau`,
+        reservaPlanLabel: `Quelle formule ?`,
+        reservaPlanElige: `Choisissez une formule`,
+        plan1Option: `49€/mois : 1 heure par semaine`,
+        plan2Option: `89€/mois : 2 heures par semaine (Plus)`,
+        reservaSubmit: `Gardez-moi une place`,
+        reservaThanksTitle: `Place réservée !`,
+        reservaThanksText: `Je vous écris très vite avec les détails pour commencer.`,
+        contactTitle: `On en parle ?`,
+        contactLead: `Des questions, ou l'horaire ne vous convient pas ?<br>Écrivez-moi et on en parle.`,
+        waBtn: `Écrivez-moi sur WhatsApp`,
+        dudaLabel: `Une question ?`,
+        dudaContactoLabel: `Numéro WhatsApp ou e-mail pour vous contacter`,
+        dudasSubmit: `Envoyer`,
+        dudasThanksTitle: `Merci !`,
+        dudasThanksText: `Je vous réponds au plus vite.`,
+        linkReservar: `Réserver ma place`,
+        linkVolver: `Retour à l'accueil`,
+        newsletter: `📬 Newsletter : bientôt disponible`,
+        footer: `© 2026 Spanish with Jordi · Espagnol conversationnel en ligne`
+      },
+      it: {
+        pageTitle: `Charlas de sobremesa: spagnolo conversazionale con Jordi`,
+        backLink: `← Torna alla home`,
+        heroEyebrow: `Spagnolo conversazionale`,
+        targetBadge: `🗓️ Le lezioni iniziano il 16 novembre`,
+        avatarAlt: `Jordi, insegnante di spagnolo`,
+        heroH1: `Charlas de sobremesa 🍷`,
+        heroLead: `Acquista scioltezza e perdi la paura di parlare<br class="br-wide"> in un gruppo piccolo e accogliente.<br class="br-wide"> Lezioni sempre dal vivo, 100% online.`,
+        heroCta: `Vedi i gruppi`,
+        gruposTitle: `Scegli il tuo gruppo`,
+        gruposSubtitle: `Una lezione a settimana, o due se vuoi parlare ancora di più.`,
+        levelTest: `Se non conosci il tuo livello,<br class="br-narrow"> fai il test gratuito qui`,
+        g1Level: `Gruppo A2/B1`,
+        g1Tagline: `Perdi la paura di parlare`,
+        g1Clase: `Lezione: lunedì dalle 15:00 alle 16:00 (ora di Madrid)`,
+        g1Extra: `Pratica extra (Plus): venerdì dalle 15:00 alle 16:00`,
+        g2Level: `Gruppo B2/C1`,
+        g2Tagline: `Parla con scioltezza e sfumature`,
+        g2Clase: `Lezione: mercoledì dalle 15:00 alle 16:00 (ora di Madrid)`,
+        g2Extra: `Pratica extra (Plus): venerdì dalle 16:00 alle 17:00`,
+        liReducidos: `Gruppi ridotti`,
+        liOnline: `100% online`,
+        plan1Price: `49€/mese`,
+        plan1Note: `1 ora a settimana`,
+        plan2Price: `89€/mese`,
+        plan2Note: `Plus: 2 ore a settimana`,
+        ctaInscribirme: `Iscrivimi →`,
+        comoTitle: `Come funzionano le lezioni?`,
+        step1Title: `🗣️ La lezione settimanale`,
+        step1Text: `Ogni settimana scegliamo un tema di conversazione e una struttura grammaticale su cui concentrarci. Qualche minuto di spiegazione e il resto del tempo, si parla!`,
+        step2Title: `➕ Pratica extra (Plus)`,
+        step2Text: `Una seconda ora solo con gli studenti Plus: più tempo per parlare, per mettere in pratica la grammatica della settimana e per correggere i tuoi errori.`,
+        reservaTitle: `Non vuoi ancora pagare?`,
+        reservaLead: `Lasciami i tuoi dati e ti tengo un posto, <strong>senza impegno</strong>.<br class="br-wide"> Ti scrivo con tutti i dettagli per iniziare.`,
+        reservaNombreLabel: `Il tuo nome`,
+        reservaGrupoLabel: `Quale gruppo?`,
+        reservaGrupoElige: `Scegli un gruppo`,
+        reservaGrupoNoSe: `Non conosco il mio livello`,
+        reservaPlanLabel: `Quale piano?`,
+        reservaPlanElige: `Scegli un piano`,
+        plan1Option: `49€/mese: 1 ora a settimana`,
+        plan2Option: `89€/mese: 2 ore a settimana (Plus)`,
+        reservaSubmit: `Tienimi un posto`,
+        reservaThanksTitle: `Posto riservato!`,
+        reservaThanksText: `Ti scrivo molto presto con i dettagli per iniziare.`,
+        contactTitle: `Ne parliamo?`,
+        contactLead: `Hai dubbi o l'orario non ti va bene?<br>Scrivimi e ne parliamo.`,
+        waBtn: `Scrivimi su WhatsApp`,
+        dudaLabel: `Qualche dubbio?`,
+        dudaContactoLabel: `Numero WhatsApp o email per contattarti`,
+        dudasSubmit: `Invia`,
+        dudasThanksTitle: `Grazie!`,
+        dudasThanksText: `Ti rispondo il prima possibile.`,
+        linkReservar: `Prenota il tuo posto`,
+        linkVolver: `Torna alla home`,
+        newsletter: `📬 Newsletter: in arrivo`,
+        footer: `© 2026 Spanish with Jordi · Spagnolo conversazionale online`
+      }
+    };
+
+    function applyLanguage(lang) {
+      var dict = translations[lang] || translations.es;
+      document.documentElement.lang = lang;
+      document.title = dict.pageTitle;
+
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-attr-alt]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-attr-alt');
+        if (dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      localStorage.setItem('siteLang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    function detectDefaultLang() {
+      var saved = localStorage.getItem('siteLang');
+      if (saved) return saved;
+      var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      var supported = ['en', 'fr', 'it'];
+      for (var i = 0; i < supported.length; i++) {
+        if (browserLang.indexOf(supported[i]) === 0) return supported[i];
+      }
+      return 'es';
+    }
+
+    applyLanguage(detectDefaultLang());
+  </script>
+
+</body>
+</html>
