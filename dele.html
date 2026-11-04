@@ -296,6 +296,33 @@
   }
   .level-test:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(217, 130, 46, 0.2); }
 
+  /* RESERVA SIN PAGAR */
+  .reserva {
+    padding: 8px 0 10px;
+  }
+  .reserva-lead {
+    font-size: 15px;
+    color: #5A5340;
+    max-width: 460px;
+    margin: 14px auto 22px;
+    text-align: center;
+  }
+  .reserva .dudas-form,
+  .reserva .dudas-thanks {
+    background: #fff;
+    border: 2px dashed var(--terracotta);
+  }
+  .dudas-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(90, 63, 40, 0.25);
+    background: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
   /* CONVOCATORIAS DELE */
   .exam-dates {
     padding: 16px 0 10px;
@@ -767,6 +794,42 @@
 
   </div>
 
+  <div class="wrap reserva" id="reserva">
+    <div class="section-title">
+      <h2 data-i18n="reservaTitle">¿Aún no quieres pagar?</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="reserva-lead" data-i18n-html="reservaLead">Los grupos son de 3 a 5 personas y las plazas vuelan.<br class="br-wide"> Déjame tus datos y te guardo un hueco, <strong>sin compromiso</strong>.<br class="br-wide"> Te escribo antes de que empiece el curso.</p>
+
+    <form class="dudas-form" id="reservaForm">
+      <div class="field">
+        <label for="reservaNombre" data-i18n="reservaNombreLabel">Tu nombre</label>
+        <input type="text" id="reservaNombre" required>
+      </div>
+      <div class="field">
+        <label for="reservaContacto" data-i18n="dudaContactoLabel">Número de WhatsApp o email para contactar contigo</label>
+        <input type="text" id="reservaContacto" required>
+      </div>
+      <div class="field">
+        <label for="reservaNivel" data-i18n="reservaNivelLabel">¿Qué nivel quieres preparar?</label>
+        <select id="reservaNivel" required>
+          <option value="" data-i18n="reservaNivelElige">Elige un nivel</option>
+          <option value="A2">A2</option>
+          <option value="B1">B1</option>
+          <option value="B2">B2</option>
+          <option value="C1">C1</option>
+          <option value="No lo sé" data-i18n="reservaNivelNoSe">No lo sé todavía</option>
+        </select>
+      </div>
+      <button type="submit" class="dudas-submit" data-i18n="reservaSubmit">Guárdame una plaza</button>
+    </form>
+
+    <div class="dudas-thanks" id="reservaThanks">
+      <h3 data-i18n="reservaThanksTitle">¡Plaza guardada!</h3>
+      <p data-i18n="reservaThanksText">Te escribo antes de que empiece el curso para confirmarla.</p>
+    </div>
+  </div>
+
   <div class="wrap exam-dates">
     <div class="section-title">
       <h2 data-i18n="examTitle">Próximas convocatorias oficiales del DELE</h2>
@@ -890,6 +953,18 @@
       document.getElementById('dudasThanks').style.display = 'block';
     });
 
+    var reservaForm = document.getElementById('reservaForm');
+    reservaForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('g-duda').value =
+        '📌 RESERVA DELE MAYO · Nivel: ' + document.getElementById('reservaNivel').value +
+        ' · Nombre: ' + document.getElementById('reservaNombre').value;
+      document.getElementById('g-contacto').value = document.getElementById('reservaContacto').value;
+      document.getElementById('dudasGform').submit();
+      reservaForm.style.display = 'none';
+      document.getElementById('reservaThanks').style.display = 'block';
+    });
+
     var translations = {
       es: {
         pageTitle: `Español con Jordi: prepara tu DELE`,
@@ -929,6 +1004,15 @@
         ctaInscribirme: `Inscribirme →`,
         friendPromo: `👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br><strong>Pídeme el código.</strong>`,
         levelTest: `Si no sabes tu nivel,<br class="br-narrow"> haz la prueba gratis aquí`,
+        reservaTitle: `¿Aún no quieres pagar?`,
+        reservaLead: `Los grupos son de 3 a 5 personas y las plazas vuelan.<br class="br-wide"> Déjame tus datos y te guardo un hueco, <strong>sin compromiso</strong>.<br class="br-wide"> Te escribo antes de que empiece el curso.`,
+        reservaNombreLabel: `Tu nombre`,
+        reservaNivelLabel: `¿Qué nivel quieres preparar?`,
+        reservaNivelElige: `Elige un nivel`,
+        reservaNivelNoSe: `No lo sé todavía`,
+        reservaSubmit: `Guárdame una plaza`,
+        reservaThanksTitle: `¡Plaza guardada!`,
+        reservaThanksText: `Te escribo antes de que empiece el curso para confirmarla.`,
         examTitle: `Próximas convocatorias oficiales del DELE`,
         febMonth: `Febrero 2027`,
         febDate: `12 de febrero`,
@@ -1000,6 +1084,15 @@
         ctaInscribirme: `Enroll →`,
         friendPromo: `👫 Coming with a friend?<br>15€ off the first month for each of you.<br><strong>Ask me for the code.</strong>`,
         levelTest: `Don't know your level?<br class="br-narrow"> Take the free test here`,
+        reservaTitle: `Not ready to pay yet?`,
+        reservaLead: `Groups are 3 to 5 people and places go fast.<br class="br-wide"> Leave me your details and I'll save you a spot, <strong>no commitment</strong>.<br class="br-wide"> I'll get in touch before the course starts.`,
+        reservaNombreLabel: `Your name`,
+        reservaNivelLabel: `Which level do you want to prepare?`,
+        reservaNivelElige: `Choose a level`,
+        reservaNivelNoSe: `I don't know yet`,
+        reservaSubmit: `Save me a spot`,
+        reservaThanksTitle: `Spot saved!`,
+        reservaThanksText: `I'll get in touch before the course starts to confirm it.`,
         examTitle: `Upcoming official DELE exam dates`,
         febMonth: `February 2027`,
         febDate: `February 12`,
@@ -1071,6 +1164,15 @@
         ctaInscribirme: `M'inscrire →`,
         friendPromo: `👫 Vous venez avec un ami ?<br>15€ de moins sur le premier mois pour chacun.<br><strong>Demandez-moi le code.</strong>`,
         levelTest: `Si vous ne connaissez pas votre niveau,<br class="br-narrow"> faites le test gratuit ici`,
+        reservaTitle: `Pas encore prêt à payer ?`,
+        reservaLead: `Les groupes sont de 3 à 5 personnes et les places partent vite.<br class="br-wide"> Laissez-moi vos coordonnées et je vous garde une place, <strong>sans engagement</strong>.<br class="br-wide"> Je vous écris avant le début du cours.`,
+        reservaNombreLabel: `Votre prénom`,
+        reservaNivelLabel: `Quel niveau voulez-vous préparer ?`,
+        reservaNivelElige: `Choisissez un niveau`,
+        reservaNivelNoSe: `Je ne sais pas encore`,
+        reservaSubmit: `Gardez-moi une place`,
+        reservaThanksTitle: `Place réservée !`,
+        reservaThanksText: `Je vous écris avant le début du cours pour la confirmer.`,
         examTitle: `Prochaines sessions officielles du DELE`,
         febMonth: `Février 2027`,
         febDate: `12 février`,
@@ -1142,6 +1244,15 @@
         ctaInscribirme: `Iscrivimi →`,
         friendPromo: `👫 Vieni con un amico?<br>15€ in meno sul primo mese a testa.<br><strong>Chiedimi il codice.</strong>`,
         levelTest: `Se non conosci il tuo livello,<br class="br-narrow"> fai il test gratuito qui`,
+        reservaTitle: `Non vuoi ancora pagare?`,
+        reservaLead: `I gruppi sono da 3 a 5 persone e i posti vanno a ruba.<br class="br-wide"> Lasciami i tuoi dati e ti tengo un posto, <strong>senza impegno</strong>.<br class="br-wide"> Ti scrivo prima che inizi il corso.`,
+        reservaNombreLabel: `Il tuo nome`,
+        reservaNivelLabel: `Quale livello vuoi preparare?`,
+        reservaNivelElige: `Scegli un livello`,
+        reservaNivelNoSe: `Non lo so ancora`,
+        reservaSubmit: `Tienimi un posto`,
+        reservaThanksTitle: `Posto riservato!`,
+        reservaThanksText: `Ti scrivo prima che inizi il corso per confermarlo.`,
         examTitle: `Prossime convocazioni ufficiali del DELE`,
         febMonth: `Febbraio 2027`,
         febDate: `12 febbraio`,
