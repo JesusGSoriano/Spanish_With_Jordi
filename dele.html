@@ -265,11 +265,6 @@
     margin-top: 4px;
   }
 
-  .card-text {
-    font-size: 14px;
-    margin: 0 0 18px;
-  }
-
   /* DESCUENTO AMIGOS (dentro de cada tarjeta) */
   .card-promo {
     margin: 12px 0 0;
@@ -722,12 +717,20 @@
       <div class="card">
         <div class="icon">🪪</div>
         <h3 data-i18n="a2Level">Nivel A2</h3>
-        <div class="tagline" data-i18n="a2Tagline">El A2 necesario para tu nacionalidad</div>
-        <p class="card-text" data-i18n-html="a2CardText">El próximo examen de A2 es el <strong>5 de marzo</strong>. Prepárate con el <strong>A2 Exprés</strong>: martes y jueves de 18:00 a 19:00, desde el 1 de diciembre.</p>
-        <a href="dele-febrero.html" class="price-box">
-          <div class="amount" data-i18n="a2CardBtn">Ver el A2 Exprés →</div>
+        <div class="tagline" data-i18n="a2Tagline">Necesario para tu nacionalidad</div>
+        <ul>
+          <li data-i18n="a2Schedule">Martes y jueves, de 17:30 a 19:00 (hora de Madrid)</li>
+          <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
+          <li data-i18n="liTrucos">Trucos directos de examinador</li>
+          <li data-i18n="liGrupos">Grupos de 3 a 5 personas</li>
+          <li data-i18n="liOnline">100% online</li>
+          <li data-i18n="a2Duration">Del 9 de marzo al 20 de mayo</li>
+        </ul>
+        <a href="dele-inscripcion.html?nivel=A2" class="price-box">
+          <div class="amount" data-i18n="a2Price">129€/mes</div>
+          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
         </a>
-        <p class="card-promo" data-i18n-html="a2CardMay">¿Prefieres el examen de mayo? Abro grupo el <strong>9 de marzo</strong>.<br><strong>Escríbeme y te guardo plaza.</strong></p>
+        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br><strong>Pídeme el código.</strong></p>
       </div>
 
       <div class="card">
@@ -977,10 +980,7 @@
         b1Level: `Nivel B1`,
         b2Level: `Nivel B2`,
         c1Level: `Nivel C1`,
-        a2Tagline: `El A2 necesario para tu nacionalidad`,
-        a2CardText: `El próximo examen de A2 es el <strong>5 de marzo</strong>. Prepárate con el <strong>A2 Exprés</strong>: martes y jueves de 18:00 a 19:00, desde el 1 de diciembre.`,
-        a2CardBtn: `Ver el A2 Exprés →`,
-        a2CardMay: `¿Prefieres el examen de mayo? Abro grupo el <strong>9 de marzo</strong>.<br><strong>Escríbeme y te guardo plaza.</strong>`,
+        a2Tagline: `Necesario para tu nacionalidad`,
         a2Schedule: `Martes y jueves, de 17:30 a 19:00 (hora de Madrid)`,
         b1Tagline: `Domina las bases sin agobios`,
         b1Schedule: `Lunes y miércoles, de 16:00 a 17:30 (hora de Madrid)`,
@@ -1059,10 +1059,7 @@
         b1Level: `B1 Level`,
         b2Level: `B2 Level`,
         c1Level: `C1 Level`,
-        a2Tagline: `The A2 required for your citizenship`,
-        a2CardText: `The next A2 exam is on <strong>March 5</strong>. Get ready with the <strong>A2 Express</strong> course: Tuesdays and Thursdays, 18:00-19:00, from December 1.`,
-        a2CardBtn: `See A2 Express →`,
-        a2CardMay: `Prefer the May exam? I'm opening a group on <strong>March 9</strong>.<br><strong>Message me and I'll save you a spot.</strong>`,
+        a2Tagline: `Required for your citizenship`,
         a2Schedule: `Tuesdays and Thursdays, 17:30-19:00 (Madrid time)`,
         b1Tagline: `Master the basics, stress-free`,
         b1Schedule: `Mondays and Wednesdays, 16:00-17:30 (Madrid time)`,
@@ -1141,10 +1138,7 @@
         b1Level: `Niveau B1`,
         b2Level: `Niveau B2`,
         c1Level: `Niveau C1`,
-        a2Tagline: `Le A2 nécessaire pour votre nationalité`,
-        a2CardText: `Le prochain examen A2 a lieu le <strong>5 mars</strong>. Préparez-vous avec l'<strong>A2 Express</strong> : mardi et jeudi de 18h00 à 19h00, à partir du 1er décembre.`,
-        a2CardBtn: `Voir l'A2 Express →`,
-        a2CardMay: `Vous préférez l'examen de mai ? J'ouvre un groupe le <strong>9 mars</strong>.<br><strong>Écrivez-moi et je vous garde une place.</strong>`,
+        a2Tagline: `Nécessaire pour votre nationalité`,
         a2Schedule: `Mardi et jeudi, de 17h30 à 19h00 (heure de Madrid)`,
         b1Tagline: `Maîtrisez les bases sans stress`,
         b1Schedule: `Lundi et mercredi, de 16h00 à 17h30 (heure de Madrid)`,
@@ -1223,10 +1217,7 @@
         b1Level: `Livello B1`,
         b2Level: `Livello B2`,
         c1Level: `Livello C1`,
-        a2Tagline: `L'A2 necessario per la tua cittadinanza`,
-        a2CardText: `Il prossimo esame A2 è il <strong>5 marzo</strong>. Preparati con l'<strong>A2 Express</strong>: martedì e giovedì dalle 18:00 alle 19:00, dal 1° dicembre.`,
-        a2CardBtn: `Vedi l'A2 Express →`,
-        a2CardMay: `Preferisci l'esame di maggio? Apro un gruppo il <strong>9 marzo</strong>.<br><strong>Scrivimi e ti tengo un posto.</strong>`,
+        a2Tagline: `Necessario per la tua cittadinanza`,
         a2Schedule: `Martedì e giovedì, dalle 17:30 alle 19:00 (ora di Madrid)`,
         b1Tagline: `Padroneggia le basi senza stress`,
         b1Schedule: `Lunedì e mercoledì, dalle 16:00 alle 17:30 (ora di Madrid)`,
