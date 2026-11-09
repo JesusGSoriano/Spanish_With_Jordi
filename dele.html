@@ -265,6 +265,11 @@
     margin-top: 4px;
   }
 
+  .card-text {
+    font-size: 14px;
+    margin: 0 0 18px;
+  }
+
   /* DESCUENTO AMIGOS (dentro de cada tarjeta) */
   .card-promo {
     margin: 12px 0 0;
@@ -717,20 +722,12 @@
       <div class="card">
         <div class="icon">🪪</div>
         <h3 data-i18n="a2Level">Nivel A2</h3>
-        <div class="tagline" data-i18n="a2Tagline">El A2 que necesitas para la nacionalidad</div>
-        <ul>
-          <li data-i18n="a2Schedule">Martes y jueves, de 17:30 a 19:00 (hora de Madrid)</li>
-          <li data-i18n="liClases">Clases de 1h 30min (se graban por si faltas)</li>
-          <li data-i18n="liTrucos">Trucos directos de examinador</li>
-          <li data-i18n="liGrupos">Grupos de 3 a 5 personas</li>
-          <li data-i18n="liOnline">100% online</li>
-          <li data-i18n="a2Duration">Del 16 de febrero al 20 de mayo</li>
-        </ul>
-        <a href="dele-inscripcion.html?nivel=A2" class="price-box">
-          <div class="amount" data-i18n="a2Price">129€/mes</div>
-          <div class="cta-label" data-i18n="ctaInscribirme">Inscribirme →</div>
+        <div class="tagline" data-i18n="a2Tagline">El A2 necesario para tu nacionalidad</div>
+        <p class="card-text" data-i18n-html="a2CardText">El próximo examen de A2 es el <strong>5 de marzo</strong>. Prepárate con el <strong>A2 Exprés</strong>: martes y jueves de 18:00 a 19:00, desde el 1 de diciembre.</p>
+        <a href="dele-febrero.html" class="price-box">
+          <div class="amount" data-i18n="a2CardBtn">Ver el A2 Exprés →</div>
         </a>
-        <p class="card-promo" data-i18n-html="friendPromo">👫 ¿Vienes con un amigo?<br>15€ menos el primer mes cada uno.<br><strong>Pídeme el código.</strong></p>
+        <p class="card-promo" data-i18n-html="a2CardMay">¿Prefieres el examen de mayo? Abro grupo el <strong>9 de marzo</strong>.<br><strong>Escríbeme y te guardo plaza.</strong></p>
       </div>
 
       <div class="card">
@@ -838,11 +835,11 @@
 
     <div class="exam-grid">
       <div class="exam-card">
-        <div class="month" data-i18n="febMonth">Febrero 2027</div>
-        <div class="date" data-i18n="febDate">12 de febrero</div>
+        <div class="month" data-i18n="febMonth">Marzo 2027</div>
+        <div class="date" data-i18n="febDate">5 de marzo</div>
         <ul>
           <li data-i18n="febLi1">Generales: A2</li>
-          <li data-i18n="febLi2">Inscripción hasta el 7 de enero</li>
+          <li data-i18n="febLi2">Inscripción hasta el 20 de enero</li>
         </ul>
       </div>
 
@@ -980,7 +977,10 @@
         b1Level: `Nivel B1`,
         b2Level: `Nivel B2`,
         c1Level: `Nivel C1`,
-        a2Tagline: `El A2 que necesitas para la nacionalidad`,
+        a2Tagline: `El A2 necesario para tu nacionalidad`,
+        a2CardText: `El próximo examen de A2 es el <strong>5 de marzo</strong>. Prepárate con el <strong>A2 Exprés</strong>: martes y jueves de 18:00 a 19:00, desde el 1 de diciembre.`,
+        a2CardBtn: `Ver el A2 Exprés →`,
+        a2CardMay: `¿Prefieres el examen de mayo? Abro grupo el <strong>9 de marzo</strong>.<br><strong>Escríbeme y te guardo plaza.</strong>`,
         a2Schedule: `Martes y jueves, de 17:30 a 19:00 (hora de Madrid)`,
         b1Tagline: `Domina las bases sin agobios`,
         b1Schedule: `Lunes y miércoles, de 16:00 a 17:30 (hora de Madrid)`,
@@ -997,7 +997,7 @@
         liTrucos: `Trucos directos de examinador`,
         liGrupos: `Grupos de 3 a 5 personas`,
         liOnline: `100% online`,
-        a2Duration: `Del 16 de febrero al 20 de mayo`,
+        a2Duration: `Del 9 de marzo al 20 de mayo`,
         b2Duration: `Del 1 de febrero al 19 de mayo`,
         c1Duration: `Del 2 de febrero al 20 de mayo`,
         ctaInscribirme: `Inscribirme →`,
@@ -1013,10 +1013,10 @@
         reservaThanksTitle: `¡Plaza guardada!`,
         reservaThanksText: `Te escribo antes de que empiece el curso para confirmarla.`,
         examTitle: `Próximas convocatorias oficiales del DELE`,
-        febMonth: `Febrero 2027`,
-        febDate: `12 de febrero`,
+        febMonth: `Marzo 2027`,
+        febDate: `5 de marzo`,
         febLi1: `Generales: A2`,
-        febLi2: `Inscripción hasta el 7 de enero`,
+        febLi2: `Inscripción hasta el 20 de enero`,
         aprMonth: `Abril 2027`,
         aprDate: `2 de abril`,
         aprLi1: `Generales: A1, A2, B1, B2, C1`,
@@ -1059,7 +1059,10 @@
         b1Level: `B1 Level`,
         b2Level: `B2 Level`,
         c1Level: `C1 Level`,
-        a2Tagline: `The A2 you need for citizenship`,
+        a2Tagline: `The A2 required for your citizenship`,
+        a2CardText: `The next A2 exam is on <strong>March 5</strong>. Get ready with the <strong>A2 Express</strong> course: Tuesdays and Thursdays, 18:00-19:00, from December 1.`,
+        a2CardBtn: `See A2 Express →`,
+        a2CardMay: `Prefer the May exam? I'm opening a group on <strong>March 9</strong>.<br><strong>Message me and I'll save you a spot.</strong>`,
         a2Schedule: `Tuesdays and Thursdays, 17:30-19:00 (Madrid time)`,
         b1Tagline: `Master the basics, stress-free`,
         b1Schedule: `Mondays and Wednesdays, 16:00-17:30 (Madrid time)`,
@@ -1076,7 +1079,7 @@
         liTrucos: `Direct tips from an examiner`,
         liGrupos: `Groups of 3 to 5 people`,
         liOnline: `100% online`,
-        a2Duration: `February 16 to May 20`,
+        a2Duration: `March 9 to May 20`,
         b2Duration: `February 1 to May 19`,
         c1Duration: `February 2 to May 20`,
         ctaInscribirme: `Enroll →`,
@@ -1092,10 +1095,10 @@
         reservaThanksTitle: `Spot saved!`,
         reservaThanksText: `I'll get in touch before the course starts to confirm it.`,
         examTitle: `Upcoming official DELE exam dates`,
-        febMonth: `February 2027`,
-        febDate: `February 12`,
+        febMonth: `March 2027`,
+        febDate: `March 5`,
         febLi1: `General exams: A2`,
-        febLi2: `Registration until January 7`,
+        febLi2: `Registration until January 20`,
         aprMonth: `April 2027`,
         aprDate: `April 2`,
         aprLi1: `General exams: A1, A2, B1, B2, C1`,
@@ -1138,7 +1141,10 @@
         b1Level: `Niveau B1`,
         b2Level: `Niveau B2`,
         c1Level: `Niveau C1`,
-        a2Tagline: `Le A2 qu'il vous faut pour la nationalité`,
+        a2Tagline: `Le A2 nécessaire pour votre nationalité`,
+        a2CardText: `Le prochain examen A2 a lieu le <strong>5 mars</strong>. Préparez-vous avec l'<strong>A2 Express</strong> : mardi et jeudi de 18h00 à 19h00, à partir du 1er décembre.`,
+        a2CardBtn: `Voir l'A2 Express →`,
+        a2CardMay: `Vous préférez l'examen de mai ? J'ouvre un groupe le <strong>9 mars</strong>.<br><strong>Écrivez-moi et je vous garde une place.</strong>`,
         a2Schedule: `Mardi et jeudi, de 17h30 à 19h00 (heure de Madrid)`,
         b1Tagline: `Maîtrisez les bases sans stress`,
         b1Schedule: `Lundi et mercredi, de 16h00 à 17h30 (heure de Madrid)`,
@@ -1155,7 +1161,7 @@
         liTrucos: `Astuces directes d'un examinateur`,
         liGrupos: `Groupes de 3 à 5 personnes`,
         liOnline: `100% en ligne`,
-        a2Duration: `Du 16 février au 20 mai`,
+        a2Duration: `Du 9 mars au 20 mai`,
         b2Duration: `Du 1er février au 19 mai`,
         c1Duration: `Du 2 février au 20 mai`,
         ctaInscribirme: `M'inscrire →`,
@@ -1171,10 +1177,10 @@
         reservaThanksTitle: `Place réservée !`,
         reservaThanksText: `Je vous écris avant le début du cours pour la confirmer.`,
         examTitle: `Prochaines sessions officielles du DELE`,
-        febMonth: `Février 2027`,
-        febDate: `12 février`,
+        febMonth: `Mars 2027`,
+        febDate: `5 mars`,
         febLi1: `Sessions générales : A2`,
-        febLi2: `Inscription jusqu'au 7 janvier`,
+        febLi2: `Inscription jusqu'au 20 janvier`,
         aprMonth: `Avril 2027`,
         aprDate: `2 avril`,
         aprLi1: `Sessions générales : A1, A2, B1, B2, C1`,
@@ -1217,7 +1223,10 @@
         b1Level: `Livello B1`,
         b2Level: `Livello B2`,
         c1Level: `Livello C1`,
-        a2Tagline: `L'A2 che ti serve per la cittadinanza`,
+        a2Tagline: `L'A2 necessario per la tua cittadinanza`,
+        a2CardText: `Il prossimo esame A2 è il <strong>5 marzo</strong>. Preparati con l'<strong>A2 Express</strong>: martedì e giovedì dalle 18:00 alle 19:00, dal 1° dicembre.`,
+        a2CardBtn: `Vedi l'A2 Express →`,
+        a2CardMay: `Preferisci l'esame di maggio? Apro un gruppo il <strong>9 marzo</strong>.<br><strong>Scrivimi e ti tengo un posto.</strong>`,
         a2Schedule: `Martedì e giovedì, dalle 17:30 alle 19:00 (ora di Madrid)`,
         b1Tagline: `Padroneggia le basi senza stress`,
         b1Schedule: `Lunedì e mercoledì, dalle 16:00 alle 17:30 (ora di Madrid)`,
@@ -1234,7 +1243,7 @@
         liTrucos: `Consigli diretti da un esaminatore`,
         liGrupos: `Gruppi da 3 a 5 persone`,
         liOnline: `100% online`,
-        a2Duration: `Dal 16 febbraio al 20 maggio`,
+        a2Duration: `Dal 9 marzo al 20 maggio`,
         b2Duration: `Dal 1° febbraio al 19 maggio`,
         c1Duration: `Dal 2 febbraio al 20 maggio`,
         ctaInscribirme: `Iscrivimi →`,
@@ -1250,10 +1259,10 @@
         reservaThanksTitle: `Posto riservato!`,
         reservaThanksText: `Ti scrivo prima che inizi il corso per confermarlo.`,
         examTitle: `Prossime convocazioni ufficiali del DELE`,
-        febMonth: `Febbraio 2027`,
-        febDate: `12 febbraio`,
+        febMonth: `Marzo 2027`,
+        febDate: `5 marzo`,
         febLi1: `Sessioni generali: A2`,
-        febLi2: `Iscrizione entro il 7 gennaio`,
+        febLi2: `Iscrizione entro il 20 gennaio`,
         aprMonth: `Aprile 2027`,
         aprDate: `2 aprile`,
         aprLi1: `Sessioni generali: A1, A2, B1, B2, C1`,
